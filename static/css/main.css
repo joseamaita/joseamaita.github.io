@@ -10,8 +10,8 @@ font-size: 13px;
 
 #navigation-bar {
 border-top: 3px solid #3670A0;
-margin: 0;
-padding;
+margin-top: 40px;
+padding-top: 40px;
 }
 
 .navbar li a {
