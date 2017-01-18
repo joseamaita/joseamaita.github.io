@@ -70,7 +70,7 @@ background: rgba(0, 0, 0, 0) linear-gradient(45deg, #020031 0%, #3670A0 100%) re
 border-bottom: 1px solid #DDD;
 box-shadow: 0 3px 7px rgba(0, 0, 0, 0.2) inset, 0 -3px 7px rgba(0, 0, 0, 0.2) inset;
 color: #FFF;
-margin-bottom: 0;
+margin-bottom: 30px;
 padding: 40px 0;
 position: relative;
 text-align: left;
