@@ -102,7 +102,7 @@ margin-right: 50px;
 
 .breadcrumb {
 border-bottom: 3px solid #EEEEEE;
-margin-bottom: 10px;
+margin-bottom: 5px;
 }
 
 section.intro {
@@ -148,10 +148,6 @@ padding: 30px 15px;
 
 .content-page h2, .content-page h3 {
 padding-top: 10px;
-}
-
-.container-content-page {
-min-height: 0px !important;
 }
 
 footer h3 {
