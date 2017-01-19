@@ -147,7 +147,7 @@ padding: 30px 15px;
 }
 
 .content-page h2, .content-page h3 {
-margin-top: 20px
+padding-top: 10px;
 }
 
 footer h3 {
