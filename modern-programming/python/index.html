@@ -152,6 +152,25 @@ code to Python 3.</p>
 <p>Why learn Python 3? Because it's the best Python so far. Also, as projects switch to take advantage 
 of its improvements, it will be the dominant Python version for years to come. Python 3 not only is 
 it better, but it's the future.</p>
+<h2>Prepare your work environment</h2>
+<h3>Download, install and start up Python</h3>
+<p>The following procedure was applied on a Debian-based box and for the version 3.6.0:</p>
+<ul>
+<li>Go to the <a href="https://www.python.org/downloads/">Python's download page</a>.</li>
+<li>There, download the <a href="https://www.python.org/ftp/python/3.6.0/Python-3.6.0.tar.xz">latest source release</a> 
+(in this case, the selected version was 3.6.0).</li>
+<li>Extract the compressed file to a desired folder (i.e. ~/Python-3.6.0).</li>
+<li>Open a terminal prompt as root.</li>
+<li>Change directories as needed and enter the designated folder.</li>
+<li>There, run the "./configure" script by typing "# sh configure --enable-optimizations". Wait until 
+the process is completed.</li>
+<li>Then, continue the build process by typing "# make". Wait until the process is completed (tests 
+also have to be performed).</li>
+<li>Install the Python version, which live side-by-side with the other versions, by typing 
+"# make altinstall". Wait until the process is completed (tests also have to be performed again).</li>
+<li>Make sure the Python version is installed by typing "# python3.6". The interpreter has to be 
+shown.</li>
+</ul>
 <ol>
 <li><a href="/modern-programming/python/">Overview</a><ul>
 <li><a href="/modern-programming/python/workflow">Workflow</a></li>
