@@ -146,7 +146,12 @@ border-top-right-radius: 4px;
 padding: 30px 15px;
 }
 
-.content-page h2, .content-page h3 {
+.content-page h2 {
+margin: 10px 0;
+padding-top: 5px;
+}
+
+.content-page h3 {
 margin: 5px 0;
 padding-top: 5px;
 }
