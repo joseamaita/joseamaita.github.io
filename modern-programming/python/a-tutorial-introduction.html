@@ -115,9 +115,58 @@
 <p>Python programs are executed by an interpreter. Usually, the interpreter is started by simply 
 typing <code>python</code>, <code>python3</code> or <code>python3.6</code> into a command shell. When the interpreter starts, 
 a prompt appears at which you can start typing programs into a simple read-evaluation loop.</p>
-<div class="highlight"><pre><span></span>&gt;&gt;&gt;
-&amp;#126;&amp;#36; python
-&amp;gt;&amp;gt;&amp;gt; print &amp;#39;Hello, World!&amp;#39;
+<div class="highlight"><pre><span></span>~$ python
+&gt;&gt;&gt; print &quot;Hello, World!&quot;
+Hello, World!
+&gt;&gt;&gt;
+&lt;Ctrl + D&gt;
+
+~$ python3.6
+&gt;&gt;&gt; print(&quot;Hello, World!&quot;)
+Hello, World!
+&gt;&gt;&gt;
+&lt;Ctrl + D&gt;
+</pre></div>
+
+
+<h4>Example of Python's interactive mode (desktop calculator)</h4>
+<p>This is one of its most useful features. For instance:</p>
+<div class="highlight"><pre><span></span>&gt;&gt;&gt; 6000 + 4523.50 + 134.12
+10657.62
+&gt;&gt;&gt; _ + 8192.32
+18849.940000000002
+&gt;&gt;&gt;
+</pre></div>
+
+
+<p>The special variable <code>_</code> holds the result of the last operation. This can be useful if you want 
+to save or use the result of the last operation in subsequent statements.</p>
+<h4>Create a program or "script"</h4>
+<p>If you want to create a program that you can run repeatedly, put statements in a file such as the 
+following:</p>
+<div class="highlight"><pre><span></span># helloworld.py
+print(&quot;Hello, World!&quot;)
+</pre></div>
+
+
+<p>To execute the <code>helloworld.py</code> file, you provide the filename to the interpreter as follows:</p>
+<div class="highlight"><pre><span></span>~$ python3.6 helloworld.py
+Hello, World!
+</pre></div>
+
+
+<p>On UNIX, you can use <code>#!</code> on the first line of the program, like this:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3.6</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello, World!&quot;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>The interpreter runs statements until it reaches the end of the input file. If it's running 
+interactively, you can exit the interpreter by typing the EOF (end of file) character or by 
+selecting <strong>Exit</strong> from pull-down menu of a Python IDE. On UNIX, EOF is <code>Ctrl+D</code>; on Windows, 
+it's <code>Ctrl+Z</code>. A program can request to exit by raising the <strong>SystemExit</strong> exception.</p>
+<div class="highlight"><pre><span></span>&gt;&gt;&gt; raise SystemExit
 </pre></div>
 					</div>
 					<div class="span4">
