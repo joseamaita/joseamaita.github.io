@@ -160,6 +160,91 @@ selecting <strong>Exit</strong> from pull-down menu of a Python IDE. On UNIX, EO
 it's <code>&lt;Ctrl+Z&gt;</code>. A program can request to exit by raising the <strong>SystemExit</strong> exception.</p>
 <div class="highlight"><pre><span></span>&gt;&gt;&gt; raise SystemExit
 </pre></div>
+
+
+<h2>Variables and Arithmetic Expressions</h2>
+<hr>
+<p>The following program shows the use of variables and expressions by performing a simple 
+compound-interest calculation.</p>
+<div class="highlight"><pre><span></span># Simple Compound-Interest Calculation
+# simple-compound-interest-calculation-01a.py
+principal = 1000    # Initial amount
+rate = 0.05         # Interest rate
+numyears = 5        # Number of years
+year = 1
+while year &lt;= numyears:
+    principal = principal * (1 + rate)
+    print(year, principal)
+    year += 1
+</pre></div>
+
+
+<p>Running <code>simple-compound-interest-calculation-01a.py</code> with <code>python3.6</code>, the output is:</p>
+<div class="highlight"><pre><span></span>~$ python3.6 simple-compound-interest-calculation-01a.py
+1 1050.0
+2 1102.5
+3 1157.625
+4 1215.5062500000001
+5 1276.2815625000003
+</pre></div>
+
+
+<p>Python is a dynamically typed language where variable names are bound to different values, possibly 
+of varying types, during program execution. The assignment operator simply creates an association 
+between a name and a value. Although each value has an associated type such as an integer or string, 
+variable names are untyped and can be made to refer to any type of data during execution. This is 
+different from C, for example, in which a name represents a fixed type, size, and location in memory 
+into which a value is stored. This dynamic behavior can be seen with the <code>principal</code> variable. 
+Initially, it's assigned to an integer value. However, later in the program it's reassigned as 
+follows:</p>
+<div class="highlight"><pre><span></span>principal = principal * (1 + rate)
+</pre></div>
+
+
+<p>This statement evaluates the expression and reassociates the name <code>principal</code> with the result. 
+Although the original value of <code>principal</code> was an integer <code>1000</code>, the new value is now a 
+floating-point number ( <code>rate</code> is defined as a float, so the value of the above expression is 
+also a float). Thus, the apparent "type" of <code>principal</code> dynamically changes from an integer to a 
+float in the middle of the program. However, to be precise, it's not the type of <code>principal</code> that 
+has changed, but rather the value to which the <code>principal</code> name refers.</p>
+<p>A newline terminates each statement. However, you can use a semicolon to separate statements on the 
+same line, as shown here:</p>
+<div class="highlight"><pre><span></span>principal = 1000; rate = 0.05; numyears = 5;
+</pre></div>
+
+
+<p>Also, Python doesn't specify the amount of required indentation, as long as it's consistent within 
+a block. However, it is most common (and generally recommended) to use 
+<strong>four (04) spaces per indentation level</strong>.</p>
+<p>To make the output better, you could right-align the columns and limit the precision of 
+<code>principal</code> to two digits. There are several ways to achieve this formatting. One of these would
+be to use the string formatting operator <code>%</code> like this:</p>
+<div class="highlight"><pre><span></span>print(&quot;%3d %0.2f&quot; % (year, principal))
+</pre></div>
+
+
+<p>Updating the code:</p>
+<div class="highlight"><pre><span></span># Simple Compound-Interest Calculation
+# simple-compound-interest-calculation-01b.py
+principal = 1000    # Initial amount
+rate = 0.05         # Interest rate
+numyears = 5        # Number of years
+year = 1
+while year &lt;= numyears:
+    principal = principal * (1 + rate)
+    print(&quot;%3d %0.2f&quot; % (year, principal))
+    year += 1
+</pre></div>
+
+
+<p>Running <code>simple-compound-interest-calculation-01b.py</code> with <code>python3.6</code>, the output is:</p>
+<div class="highlight"><pre><span></span>~$ python3.6 simple-compound-interest-calculation-01b.py
+  1 1050.00
+  2 1102.50
+  3 1157.62
+  4 1215.51
+  5 1276.28
+</pre></div>
 					</div>
 					<div class="span4">
 						<h3>Sidebar</h3>
