@@ -245,6 +245,124 @@ while year &lt;= numyears:
   4 1215.51
   5 1276.28
 </pre></div>
+
+
+<p>Format strings contain ordinary text and special formatting-character sequences such as <code>"%d"</code>, 
+<code>"%s"</code>, and <code>"%f"</code>. These sequences specify the formatting of a particular type of data such as 
+an integer, string, or floating-point number, respectively. The special-character sequences can 
+also contain modifiers that specify a width and precision. For example, <code>"%3d"</code> formats an 
+integer right-aligned in a column of width 3, and <code>"%0.2f"</code> formats a floating-point number so 
+that only two digits appear after the decimal point.</p>
+<p>A more modern approach to string formatting is to format each part individually using the 
+<code>format()</code> function. For example:</p>
+<div class="highlight"><pre><span></span>print(format(year,&quot;3d&quot;),format(principal,&quot;0.2f&quot;))
+</pre></div>
+
+
+<p>Updating the code:</p>
+<div class="highlight"><pre><span></span># Simple Compound-Interest Calculation
+# simple-compound-interest-calculation-01c.py
+principal = 1000    # Initial amount
+rate = 0.05         # Interest rate
+numyears = 5        # Number of years
+year = 1
+while year &lt;= numyears:
+    principal = principal * (1 + rate)
+    print(format(year,&quot;3d&quot;),format(principal,&quot;0.2f&quot;))
+    year += 1
+</pre></div>
+
+
+<p>Running <code>simple-compound-interest-calculation-01c.py</code> with <code>python3.6</code>, the output is:</p>
+<div class="highlight"><pre><span></span>~$ python3.6 simple-compound-interest-calculation-01c.py
+  1 1050.00
+  2 1102.50
+  3 1157.62
+  4 1215.51
+  5 1276.28
+</pre></div>
+
+
+<p>The <code>format()</code> function uses format specifiers that are similar to those used with the 
+traditional string formatting operator <code>%</code>. For example, <code>"3d"</code> formats an integer 
+right-aligned in a column of width 3, and <code>"0.2f"</code> formats a float-point number to have two 
+digits of accuracy. Strings also have a <code>format()</code> method that can be used to format many values 
+at once. For example:</p>
+<div class="highlight"><pre><span></span>print(&quot;{0:3d} {1:0.2f}&quot;.format(year,principal))
+</pre></div>
+
+
+<p>The number before the colon in <code>"{0:3d}"</code> and <code>"{1:0.2f}"</code> refers to the associated argument 
+passed to the <code>format()</code> method and the part after the colon is the format specifier.</p>
+<p>Updating the code:</p>
+<div class="highlight"><pre><span></span># Simple Compound-Interest Calculation
+# simple-compound-interest-calculation-01d.py
+principal = 1000    # Initial amount
+rate = 0.05         # Interest rate
+numyears = 5        # Number of years
+year = 1
+while year &lt;= numyears:
+    principal = principal * (1 + rate)
+    print(&quot;{0:3d} {1:0.2f}&quot;.format(year,principal))
+    year += 1
+</pre></div>
+
+
+<p>Running <code>simple-compound-interest-calculation-01d.py</code> with <code>python3.6</code>, the output is:</p>
+<div class="highlight"><pre><span></span>~$ python3.6 simple-compound-interest-calculation-01d.py
+  1 1050.00
+  2 1102.50
+  3 1157.62
+  4 1215.51
+  5 1276.28
+</pre></div>
+
+
+<h2>Conditionals</h2>
+<hr>
+<p>The <code>if</code> and <code>else</code> statements can perform simple tests. Here's an example:</p>
+<div class="highlight"><pre><span></span>if a &lt; b:
+    print &quot;Computer says Yes&quot;
+else:
+    print &quot;Computer says No&quot;
+</pre></div>
+
+
+<p>The bodies of the <code>if</code> and <code>else</code> clauses are denoted by indentation. The <code>else</code> clause is 
+optional.</p>
+<p>To create an empty clause, use the <code>pass</code> statement, as follows:</p>
+<div class="highlight"><pre><span></span>if a &lt; b:
+    pass    # Do nothing
+else:
+    print &quot;Computer says No&quot;
+</pre></div>
+
+
+<p>You can form Boolean expressions by using the <code>or</code>, <code>and</code>, and <code>not</code> keywords:</p>
+<div class="highlight"><pre><span></span>if product == &quot;game&quot; and type == &quot;pirate memory&quot; \
+                     and not (age &lt; 4 or age &gt; 8):
+    print &quot;I&#39;ll take it!&quot;
+</pre></div>
+
+
+<p><strong>Note</strong></p>
+<blockquote>
+<p>Writing complex test cases commonly results in statements that involve an annoyingly long line 
+of code. To improve readability, you can continue any statement to the next line by using a 
+backslash <code>\</code> at the end of a line as shown. If you do this, the normal indentation rules don't 
+apply to the next line, so you are free to format the continued lines as you wish.</p>
+</blockquote>
+<p>Keep in mind that Python does not have a special <strong>switch</strong> or <strong>case</strong> statement for testing 
+values. To handle multiple-test cases, use the <code>elif</code> statement, like this:</p>
+<div class="highlight"><pre><span></span>if suffix == &quot;.htm&quot;:
+    content = &quot;text/html&quot;
+elif suffix == &quot;.jpg&quot;:
+    content = &quot;image/jpeg&quot;
+elif suffix == &quot;.png&quot;:
+    content = &quot;image/png&quot;
+else:
+    raise RuntimeError(&quot;Unknown content type&quot;)
+</pre></div>
 					</div>
 					<div class="span4">
 						<h3>Sidebar</h3>
