@@ -363,6 +363,97 @@ elif suffix == &quot;.png&quot;:
 else:
     raise RuntimeError(&quot;Unknown content type&quot;)
 </pre></div>
+
+
+<p>It's possible to write workarounds of "switch/case" statements on Python. One of these would be 
+the use of a <strong>dictionary mapping</strong>:</p>
+<div class="highlight"><pre><span></span>def numbers_to_strings(argument):
+    switcher = {
+        0: &quot;zero&quot;,
+        1: &quot;one&quot;,
+        2: &quot;two&quot;,
+    }
+    return switcher.get(argument, &quot;nothing&quot;)
+</pre></div>
+
+
+<p>This code is analogous to:</p>
+<div class="highlight"><pre><span></span>function(argument){
+    switch(argument) {
+        case 0:
+            return &quot;zero&quot;;
+        case 1:
+            return &quot;one&quot;;
+        case 2:
+            return &quot;two&quot;;
+        default:
+            return &quot;nothing&quot;;
+    };
+};
+</pre></div>
+
+
+<p>Another approach would be the use of <strong>dictionary mapping for functions</strong>. In Python, we can also 
+include functions or lambdas in our dictionary mapping:</p>
+<div class="highlight"><pre><span></span>def zero():
+    return &quot;zero&quot;
+
+def one():
+    return &quot;one&quot;
+
+def numbers_to_functions_to_strings(argument):
+    switcher = {
+        0: zero,
+        1: one,
+        2: lambda: &quot;two&quot;,
+    }
+    # Get the function from switcher dictionary
+    func = switcher.get(argument, lambda: &quot;nothing&quot;)
+    # Execute the function
+    return func()
+</pre></div>
+
+
+<p>While the code inside <code>zero()</code> and <code>one()</code> are simple, many Python programs use dictionary 
+mappings like this to dispatch complex procedures.</p>
+<p>A different approach would be the use of <strong>dispatch methods for classes</strong>. In Python, if we don't 
+know what method to call on a class, we can use a dispatch method to determine it at runtime.</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">Switcher</span>(<span class="n">object</span>):
+    <span class="n">def</span> <span class="n">numbers_to_methods_to_strings</span>(<span class="k">self</span>, <span class="n">argument</span>):
+        <span class="s">&quot;&quot;&quot;Dispatch method&quot;&quot;&quot;</span>
+        <span class="c c-Singleline"># prefix the method_name with &#39;number_&#39; because method names</span>
+        <span class="c c-Singleline"># cannot begin with an integer.</span>
+        <span class="n">method_name</span> = <span class="s">&#39;number_&#39;</span> + <span class="n">str</span>(<span class="n">argument</span>)
+        <span class="c c-Singleline"># Get the method from &#39;self&#39;. Default to a lambda.</span>
+        <span class="k">method</span> = <span class="n">getattr</span>(<span class="k">self</span>, <span class="n">method_name</span>, <span class="n">lambda:</span> <span class="s">&quot;nothing&quot;</span>)
+        <span class="c c-Singleline"># Call the method as we return it</span>
+        <span class="k">return</span> <span class="k">method</span>()
+
+    <span class="n">def</span> <span class="n">number_0</span>(<span class="k">self</span>):
+        <span class="k">return</span> <span class="s">&quot;zero&quot;</span>
+
+    <span class="n">def</span> <span class="n">number_1</span>(<span class="k">self</span>):
+        <span class="k">return</span> <span class="s">&quot;one&quot;</span>
+
+    <span class="n">def</span> <span class="n">number_2</span>(<span class="k">self</span>):
+        <span class="k">return</span> <span class="s">&quot;two&quot;</span>
+</pre></div>
+
+
+<p>To denote truth values, use the <strong>Boolean</strong> values <code>True</code> and <code>False</code>. Here's an example:</p>
+<div class="highlight"><pre><span></span>if &#39;spam&#39; in s:
+    has_spam = True
+else:
+    has_spam = False
+</pre></div>
+
+
+<p>All relational operators such as <code>&lt;</code> and <code>&gt;</code> return <code>True</code> or <code>False</code> as results. 
+The <code>in</code> operator used in this example is commonly used to check whether a value is contained 
+inside of another object such as a string, list, or dictionary. It also returns <code>True</code> or 
+<code>False</code>, so the preceding example could be shortened to this:</p>
+<div class="highlight"><pre><span></span>has_spam = &#39;spam&#39; in s
+</pre></div>
 					</div>
 					<div class="span4">
 						<h3>Sidebar</h3>
