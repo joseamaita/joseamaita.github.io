@@ -10,6 +10,7 @@
 		<link media="all" rel="stylesheet" href="/static/css/bootstrap.min.css">
 		<link media="all" rel="stylesheet" href="/static/css/bootstrap-responsive.min.css">
 		<link media="all" rel="stylesheet" href="/static/css/main.css">
+		<link media="all" rel="stylesheet" href="/static/css/monokai.css">
 		<link rel="shortcut icon" href="/static/img/favicon.png">
 	</head>
 	<body>
@@ -454,6 +455,140 @@ inside of another object such as a string, list, or dictionary. It also returns 
 <code>False</code>, so the preceding example could be shortened to this:</p>
 <div class="highlight"><pre><span></span>has_spam = &#39;spam&#39; in s
 </pre></div>
+
+
+<h2>File Input and Output</h2>
+<hr>
+<p>Imagine that you have a data file like this one:</p>
+<div class="highlight"><pre><span></span>  1 1050.000000
+  2 1102.500000
+  3 1157.625000
+  4 1215.506250
+  5 1276.281563
+  6 1340.095641
+  7 1407.100423
+  8 1477.455444
+  9 1551.328216
+ 10 1628.894627
+ 11 1710.339358
+ 12 1795.856326
+ 13 1885.649142
+ 14 1979.931599
+ 15 2078.928179
+ 16 2182.874588
+ 17 2292.018318
+ 18 2406.619234
+ 19 2526.950195
+ 20 2653.297705
+ 21 2785.962590
+ 22 2925.260720
+ 23 3071.523756
+ 24 3225.099944
+ 25 3386.354941
+</pre></div>
+
+
+<p>This script opens a file and reads its contents line by line:</p>
+<div class="highlight"><pre><span></span># Opens a specific file and reads its contents line by line
+# open-file-read-lines-01a.py
+f = open(&quot;datafile&quot;)    # Returns a file object
+line = f.readline()    # Invokes readline() method on file
+while line:
+    print(line, end=&#39;&#39;)
+    line = f.readline()
+f.close()    # Close the file object
+</pre></div>
+
+
+<p>The <code>open()</code> function returns a new file object. By invoking methods on this object, you can 
+perform various file operations. The <code>readline()</code> method reads a single line of input, including 
+the terminating newline. The empty string is returned at the end of the file.</p>
+<p>In the example, the program is simply looping over all the lines in the file <code>datafile</code>. Whenever 
+a program loops over a collection of data like this (for instance input lines, numbers, strings, 
+etc.), it is commonly known as <em>iteration</em>. Because iteration is such a common operation, Python 
+provides a dedicated statement, <code>for</code>, that is used to iterate over items. For instance, the same 
+program can be written much more succinctly as follows:</p>
+<div class="highlight"><pre><span></span># Opens a specific file and reads its contents line by line
+# open-file-read-lines-01b.py
+f = open(&quot;datafile&quot;)
+for line in f:
+    print(line, end=&#39;&#39;)
+f.close()
+</pre></div>
+
+
+<p>To make the output of a program go to a file, you can supply a file to the <code>print</code> statement, as 
+shown in the following example:</p>
+<div class="highlight"><pre><span></span># Opens a specific file to be written with the results of the program
+# open-file-write-values-01a.py
+principal = 1000
+rate = 0.05
+numyears = 25
+year = 1
+f = open(&quot;datafile-02&quot;, &quot;w&quot;)
+while year &lt;= numyears:
+    principal = principal * (1 + rate)
+    print(&quot;%3d %0.2f&quot; % (year, principal), file=f)
+    year += 1
+f.close()
+</pre></div>
+
+
+<p>You can even use the <code>format()</code> method:</p>
+<div class="highlight"><pre><span></span># Opens a specific file to be written with the results of the program
+# open-file-write-values-01b.py
+principal = 1000
+rate = 0.05
+numyears = 25
+year = 1
+f = open(&quot;datafile-02&quot;, &quot;w&quot;)
+while year &lt;= numyears:
+    principal = principal * (1 + rate)
+    print(&quot;{0:3d} {1:0.2f}&quot;.format(year, principal), file=f)
+    year += 1
+f.close()
+</pre></div>
+
+
+<p>In addition, file objects support a <code>write()</code> method that can be used to write raw data. For 
+example, the <code>print</code> statement in the previous example could have been written this way:</p>
+<div class="highlight"><pre><span></span># Opens a specific file to be written with the results of the program
+# open-file-write-values-01c.py
+principal = 1000
+rate = 0.05
+numyears = 25
+year = 1
+f = open(&quot;datafile-02&quot;, &quot;w&quot;)
+while year &lt;= numyears:
+    principal = principal * (1 + rate)
+    f.write(&quot;{0:3d} {1:0.2f}\n&quot;.format(year, principal))
+    year += 1
+f.close()
+</pre></div>
+
+
+<p>Although these examples have worked with files, the same techniques apply to the standard output 
+and input streams of the interpreter. For example, if you wanted to read user input interactively, 
+you can read from the file <code>sys.stdin</code>. If you want to write data to the screen, you can write 
+to <code>sys.stdout</code>, which is the same file used to output data produced by the <code>print</code> statement. 
+For example:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Run as script, not from the interpreter!</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Enter your name: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">name</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Hello, {0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+</pre></div>
+
+
+<p>This code can also be shortened to the following:</p>
+<div class="highlight"><pre><span></span>name = input(&quot;Enter your name: \n&quot;)
+print(&quot;\nHello, {0}&quot;.format(name))
+</pre></div>
+
+
+<h2>Strings</h2>
+<hr>
+<p>(more soon here)</p>
 					</div>
 					<div class="span4">
 						<h3>Sidebar</h3>
