@@ -115,27 +115,27 @@
 <p>Python programs are executed by an interpreter. Usually, the interpreter is started by simply 
 typing <code>python</code>, <code>python3</code> or <code>python3.6</code> into a command shell. When the interpreter starts, 
 a prompt appears at which you can start typing programs into a simple read-evaluation loop.</p>
-<div class="highlight"><pre><span></span>~$ python
-&gt;&gt;&gt; print &quot;Hello, World!&quot;
-Hello, World!
-&gt;&gt;&gt;
-&lt;Ctrl+D&gt;
+<div class="highlight"><pre><span></span><span class="o">~</span><span class="err">$</span> <span class="n">python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="s2">&quot;Hello, World!&quot;</span>
+<span class="n">Hello</span><span class="p">,</span> <span class="n">World</span><span class="err">!</span>
+<span class="o">&gt;&gt;&gt;</span>
+<span class="o">&lt;</span><span class="n">Ctrl</span><span class="o">+</span><span class="n">D</span><span class="o">&gt;</span>
 
-~$ python3.6
-&gt;&gt;&gt; print(&quot;Hello, World!&quot;)
-Hello, World!
-&gt;&gt;&gt;
-&lt;Ctrl+D&gt;
+<span class="o">~</span><span class="err">$</span> <span class="n">python3</span><span class="o">.</span><span class="mi">6</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Hello, World!&quot;</span><span class="p">)</span>
+<span class="n">Hello</span><span class="p">,</span> <span class="n">World</span><span class="err">!</span>
+<span class="o">&gt;&gt;&gt;</span>
+<span class="o">&lt;</span><span class="n">Ctrl</span><span class="o">+</span><span class="n">D</span><span class="o">&gt;</span>
 </pre></div>
 
 
 <p>See this example of Python's interactive mode as a desktop calculator, which is one of its most 
 useful features. For instance:</p>
-<div class="highlight"><pre><span></span>&gt;&gt;&gt; 6000 + 4523.50 + 134.12
-10657.62
-&gt;&gt;&gt; _ + 8192.32
-18849.940000000002
-&gt;&gt;&gt;
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="mi">6000</span> <span class="o">+</span> <span class="mf">4523.50</span> <span class="o">+</span> <span class="mf">134.12</span>
+<span class="mf">10657.62</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">_</span> <span class="o">+</span> <span class="mf">8192.32</span>
+<span class="mf">18849.940000000002</span>
+<span class="o">&gt;&gt;&gt;</span>
 </pre></div>
 
 
@@ -143,14 +143,14 @@ useful features. For instance:</p>
 to save or use the result of the last operation in subsequent statements.</p>
 <p>If you want to create a program that you can run repeatedly, put statements in a file such as the 
 following:</p>
-<div class="highlight"><pre><span></span># helloworld.py
-print(&quot;Hello, World!&quot;)
+<div class="highlight"><pre><span></span><span class="c1"># helloworld.py</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Hello, World!&quot;</span><span class="p">)</span>
 </pre></div>
 
 
 <p>To execute the <code>helloworld.py</code> file, you provide the filename to the interpreter as follows:</p>
-<div class="highlight"><pre><span></span>~$ python3.6 helloworld.py
-Hello, World!
+<div class="highlight"><pre><span></span><span class="o">~</span><span class="err">$</span> <span class="n">python3</span><span class="o">.</span><span class="mi">6</span> <span class="n">helloworld</span><span class="o">.</span><span class="n">py</span>
+<span class="n">Hello</span><span class="p">,</span> <span class="n">World</span><span class="err">!</span>
 </pre></div>
 
 
@@ -159,7 +159,7 @@ Hello, World!
 interactively, you can exit the interpreter by typing the EOF (end of file) character or by 
 selecting <strong>Exit</strong> from pull-down menu of a Python IDE. On UNIX, EOF is <code>&lt;Ctrl+D&gt;</code>; on Windows, 
 it's <code>&lt;Ctrl+Z&gt;</code>. A program can request to exit by raising the <strong>SystemExit</strong> exception.</p>
-<div class="highlight"><pre><span></span>&gt;&gt;&gt; raise SystemExit
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">raise</span> <span class="ne">SystemExit</span>
 </pre></div>
 
 
@@ -167,26 +167,26 @@ it's <code>&lt;Ctrl+Z&gt;</code>. A program can request to exit by raising the <
 <hr>
 <p>The following program shows the use of variables and expressions by performing a simple 
 compound-interest calculation.</p>
-<div class="highlight"><pre><span></span># Simple Compound-Interest Calculation
-# simple-compound-interest-calculation-01a.py
-principal = 1000    # Initial amount
-rate = 0.05         # Interest rate
-numyears = 5        # Number of years
-year = 1
-while year &lt;= numyears:
-    principal = principal * (1 + rate)
-    print(year, principal)
-    year += 1
+<div class="highlight"><pre><span></span><span class="c1"># Simple Compound-Interest Calculation</span>
+<span class="c1"># simple-compound-interest-calculation-01a.py</span>
+<span class="n">principal</span> <span class="o">=</span> <span class="mi">1000</span>    <span class="c1"># Initial amount</span>
+<span class="n">rate</span> <span class="o">=</span> <span class="mf">0.05</span>         <span class="c1"># Interest rate</span>
+<span class="n">numyears</span> <span class="o">=</span> <span class="mi">5</span>        <span class="c1"># Number of years</span>
+<span class="n">year</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">while</span> <span class="n">year</span> <span class="o">&lt;=</span> <span class="n">numyears</span><span class="p">:</span>
+    <span class="n">principal</span> <span class="o">=</span> <span class="n">principal</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">rate</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">principal</span><span class="p">)</span>
+    <span class="n">year</span> <span class="o">+=</span> <span class="mi">1</span>
 </pre></div>
 
 
 <p>Running <code>simple-compound-interest-calculation-01a.py</code> with <code>python3.6</code>, the output is:</p>
-<div class="highlight"><pre><span></span>~$ python3.6 simple-compound-interest-calculation-01a.py
-1 1050.0
-2 1102.5
-3 1157.625
-4 1215.5062500000001
-5 1276.2815625000003
+<div class="highlight"><pre><span></span><span class="o">~</span><span class="err">$</span> <span class="n">python3</span><span class="o">.</span><span class="mi">6</span> <span class="n">simple</span><span class="o">-</span><span class="n">compound</span><span class="o">-</span><span class="n">interest</span><span class="o">-</span><span class="n">calculation</span><span class="o">-</span><span class="mo">01</span><span class="n">a</span><span class="o">.</span><span class="n">py</span>
+<span class="mi">1</span> <span class="mf">1050.0</span>
+<span class="mi">2</span> <span class="mf">1102.5</span>
+<span class="mi">3</span> <span class="mf">1157.625</span>
+<span class="mi">4</span> <span class="mf">1215.5062500000001</span>
+<span class="mi">5</span> <span class="mf">1276.2815625000003</span>
 </pre></div>
 
 
@@ -198,7 +198,7 @@ different from C, for example, in which a name represents a fixed type, size, an
 into which a value is stored. This dynamic behavior can be seen with the <code>principal</code> variable. 
 Initially, it's assigned to an integer value. However, later in the program it's reassigned as 
 follows:</p>
-<div class="highlight"><pre><span></span>principal = principal * (1 + rate)
+<div class="highlight"><pre><span></span><span class="n">principal</span> <span class="o">=</span> <span class="n">principal</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">rate</span><span class="p">)</span>
 </pre></div>
 
 
@@ -210,7 +210,7 @@ float in the middle of the program. However, to be precise, it's not the type of
 has changed, but rather the value to which the <code>principal</code> name refers.</p>
 <p>A newline terminates each statement. However, you can use a semicolon to separate statements on the 
 same line, as shown here:</p>
-<div class="highlight"><pre><span></span>principal = 1000; rate = 0.05; numyears = 5;
+<div class="highlight"><pre><span></span><span class="n">principal</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">;</span> <span class="n">rate</span> <span class="o">=</span> <span class="mf">0.05</span><span class="p">;</span> <span class="n">numyears</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
 </pre></div>
 
 
@@ -220,31 +220,31 @@ a block. However, it is most common (and generally recommended) to use
 <p>To make the output better, you could right-align the columns and limit the precision of 
 <code>principal</code> to two digits. There are several ways to achieve this formatting. One of these would
 be to use the string formatting operator <code>%</code> like this:</p>
-<div class="highlight"><pre><span></span>print(&quot;%3d %0.2f&quot; % (year, principal))
+<div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%3d</span><span class="s2"> </span><span class="si">%0.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">principal</span><span class="p">))</span>
 </pre></div>
 
 
 <p>Updating the code:</p>
-<div class="highlight"><pre><span></span># Simple Compound-Interest Calculation
-# simple-compound-interest-calculation-01b.py
-principal = 1000    # Initial amount
-rate = 0.05         # Interest rate
-numyears = 5        # Number of years
-year = 1
-while year &lt;= numyears:
-    principal = principal * (1 + rate)
-    print(&quot;%3d %0.2f&quot; % (year, principal))
-    year += 1
+<div class="highlight"><pre><span></span><span class="c1"># Simple Compound-Interest Calculation</span>
+<span class="c1"># simple-compound-interest-calculation-01b.py</span>
+<span class="n">principal</span> <span class="o">=</span> <span class="mi">1000</span>    <span class="c1"># Initial amount</span>
+<span class="n">rate</span> <span class="o">=</span> <span class="mf">0.05</span>         <span class="c1"># Interest rate</span>
+<span class="n">numyears</span> <span class="o">=</span> <span class="mi">5</span>        <span class="c1"># Number of years</span>
+<span class="n">year</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">while</span> <span class="n">year</span> <span class="o">&lt;=</span> <span class="n">numyears</span><span class="p">:</span>
+    <span class="n">principal</span> <span class="o">=</span> <span class="n">principal</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">rate</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%3d</span><span class="s2"> </span><span class="si">%0.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">principal</span><span class="p">))</span>
+    <span class="n">year</span> <span class="o">+=</span> <span class="mi">1</span>
 </pre></div>
 
 
 <p>Running <code>simple-compound-interest-calculation-01b.py</code> with <code>python3.6</code>, the output is:</p>
-<div class="highlight"><pre><span></span>~$ python3.6 simple-compound-interest-calculation-01b.py
-  1 1050.00
-  2 1102.50
-  3 1157.62
-  4 1215.51
-  5 1276.28
+<div class="highlight"><pre><span></span><span class="o">~</span><span class="err">$</span> <span class="n">python3</span><span class="o">.</span><span class="mi">6</span> <span class="n">simple</span><span class="o">-</span><span class="n">compound</span><span class="o">-</span><span class="n">interest</span><span class="o">-</span><span class="n">calculation</span><span class="o">-</span><span class="mo">01</span><span class="n">b</span><span class="o">.</span><span class="n">py</span>
+  <span class="mi">1</span> <span class="mf">1050.00</span>
+  <span class="mi">2</span> <span class="mf">1102.50</span>
+  <span class="mi">3</span> <span class="mf">1157.62</span>
+  <span class="mi">4</span> <span class="mf">1215.51</span>
+  <span class="mi">5</span> <span class="mf">1276.28</span>
 </pre></div>
 
 
@@ -256,31 +256,31 @@ integer right-aligned in a column of width 3, and <code>"%0.2f"</code> formats a
 that only two digits appear after the decimal point.</p>
 <p>A more modern approach to string formatting is to format each part individually using the 
 <code>format()</code> function. For example:</p>
-<div class="highlight"><pre><span></span>print(format(year,&quot;3d&quot;),format(principal,&quot;0.2f&quot;))
+<div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">format</span><span class="p">(</span><span class="n">year</span><span class="p">,</span><span class="s2">&quot;3d&quot;</span><span class="p">),</span><span class="n">format</span><span class="p">(</span><span class="n">principal</span><span class="p">,</span><span class="s2">&quot;0.2f&quot;</span><span class="p">))</span>
 </pre></div>
 
 
 <p>Updating the code:</p>
-<div class="highlight"><pre><span></span># Simple Compound-Interest Calculation
-# simple-compound-interest-calculation-01c.py
-principal = 1000    # Initial amount
-rate = 0.05         # Interest rate
-numyears = 5        # Number of years
-year = 1
-while year &lt;= numyears:
-    principal = principal * (1 + rate)
-    print(format(year,&quot;3d&quot;),format(principal,&quot;0.2f&quot;))
-    year += 1
+<div class="highlight"><pre><span></span><span class="c1"># Simple Compound-Interest Calculation</span>
+<span class="c1"># simple-compound-interest-calculation-01c.py</span>
+<span class="n">principal</span> <span class="o">=</span> <span class="mi">1000</span>    <span class="c1"># Initial amount</span>
+<span class="n">rate</span> <span class="o">=</span> <span class="mf">0.05</span>         <span class="c1"># Interest rate</span>
+<span class="n">numyears</span> <span class="o">=</span> <span class="mi">5</span>        <span class="c1"># Number of years</span>
+<span class="n">year</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">while</span> <span class="n">year</span> <span class="o">&lt;=</span> <span class="n">numyears</span><span class="p">:</span>
+    <span class="n">principal</span> <span class="o">=</span> <span class="n">principal</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">rate</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">format</span><span class="p">(</span><span class="n">year</span><span class="p">,</span><span class="s2">&quot;3d&quot;</span><span class="p">),</span><span class="n">format</span><span class="p">(</span><span class="n">principal</span><span class="p">,</span><span class="s2">&quot;0.2f&quot;</span><span class="p">))</span>
+    <span class="n">year</span> <span class="o">+=</span> <span class="mi">1</span>
 </pre></div>
 
 
 <p>Running <code>simple-compound-interest-calculation-01c.py</code> with <code>python3.6</code>, the output is:</p>
-<div class="highlight"><pre><span></span>~$ python3.6 simple-compound-interest-calculation-01c.py
-  1 1050.00
-  2 1102.50
-  3 1157.62
-  4 1215.51
-  5 1276.28
+<div class="highlight"><pre><span></span><span class="o">~</span><span class="err">$</span> <span class="n">python3</span><span class="o">.</span><span class="mi">6</span> <span class="n">simple</span><span class="o">-</span><span class="n">compound</span><span class="o">-</span><span class="n">interest</span><span class="o">-</span><span class="n">calculation</span><span class="o">-</span><span class="mo">01</span><span class="n">c</span><span class="o">.</span><span class="n">py</span>
+  <span class="mi">1</span> <span class="mf">1050.00</span>
+  <span class="mi">2</span> <span class="mf">1102.50</span>
+  <span class="mi">3</span> <span class="mf">1157.62</span>
+  <span class="mi">4</span> <span class="mf">1215.51</span>
+  <span class="mi">5</span> <span class="mf">1276.28</span>
 </pre></div>
 
 
@@ -289,60 +289,60 @@ traditional string formatting operator <code>%</code>. For example, <code>"3d"</
 right-aligned in a column of width 3, and <code>"0.2f"</code> formats a float-point number to have two 
 digits of accuracy. Strings also have a <code>format()</code> method that can be used to format many values 
 at once. For example:</p>
-<div class="highlight"><pre><span></span>print(&quot;{0:3d} {1:0.2f}&quot;.format(year,principal))
+<div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;{0:3d} {1:0.2f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">year</span><span class="p">,</span><span class="n">principal</span><span class="p">))</span>
 </pre></div>
 
 
 <p>The number before the colon in <code>"{0:3d}"</code> and <code>"{1:0.2f}"</code> refers to the associated argument 
 passed to the <code>format()</code> method and the part after the colon is the format specifier.</p>
 <p>Updating the code:</p>
-<div class="highlight"><pre><span></span># Simple Compound-Interest Calculation
-# simple-compound-interest-calculation-01d.py
-principal = 1000    # Initial amount
-rate = 0.05         # Interest rate
-numyears = 5        # Number of years
-year = 1
-while year &lt;= numyears:
-    principal = principal * (1 + rate)
-    print(&quot;{0:3d} {1:0.2f}&quot;.format(year,principal))
-    year += 1
+<div class="highlight"><pre><span></span><span class="c1"># Simple Compound-Interest Calculation</span>
+<span class="c1"># simple-compound-interest-calculation-01d.py</span>
+<span class="n">principal</span> <span class="o">=</span> <span class="mi">1000</span>    <span class="c1"># Initial amount</span>
+<span class="n">rate</span> <span class="o">=</span> <span class="mf">0.05</span>         <span class="c1"># Interest rate</span>
+<span class="n">numyears</span> <span class="o">=</span> <span class="mi">5</span>        <span class="c1"># Number of years</span>
+<span class="n">year</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">while</span> <span class="n">year</span> <span class="o">&lt;=</span> <span class="n">numyears</span><span class="p">:</span>
+    <span class="n">principal</span> <span class="o">=</span> <span class="n">principal</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">rate</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;{0:3d} {1:0.2f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">year</span><span class="p">,</span><span class="n">principal</span><span class="p">))</span>
+    <span class="n">year</span> <span class="o">+=</span> <span class="mi">1</span>
 </pre></div>
 
 
 <p>Running <code>simple-compound-interest-calculation-01d.py</code> with <code>python3.6</code>, the output is:</p>
-<div class="highlight"><pre><span></span>~$ python3.6 simple-compound-interest-calculation-01d.py
-  1 1050.00
-  2 1102.50
-  3 1157.62
-  4 1215.51
-  5 1276.28
+<div class="highlight"><pre><span></span><span class="o">~</span><span class="err">$</span> <span class="n">python3</span><span class="o">.</span><span class="mi">6</span> <span class="n">simple</span><span class="o">-</span><span class="n">compound</span><span class="o">-</span><span class="n">interest</span><span class="o">-</span><span class="n">calculation</span><span class="o">-</span><span class="mo">01</span><span class="n">d</span><span class="o">.</span><span class="n">py</span>
+  <span class="mi">1</span> <span class="mf">1050.00</span>
+  <span class="mi">2</span> <span class="mf">1102.50</span>
+  <span class="mi">3</span> <span class="mf">1157.62</span>
+  <span class="mi">4</span> <span class="mf">1215.51</span>
+  <span class="mi">5</span> <span class="mf">1276.28</span>
 </pre></div>
 
 
 <h2>Conditionals</h2>
 <hr>
 <p>The <code>if</code> and <code>else</code> statements can perform simple tests. Here's an example:</p>
-<div class="highlight"><pre><span></span>if a &lt; b:
-    print &quot;Computer says Yes&quot;
-else:
-    print &quot;Computer says No&quot;
+<div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s2">&quot;Computer says Yes&quot;</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s2">&quot;Computer says No&quot;</span>
 </pre></div>
 
 
 <p>The bodies of the <code>if</code> and <code>else</code> clauses are denoted by indentation. The <code>else</code> clause is 
 optional.</p>
 <p>To create an empty clause, use the <code>pass</code> statement, as follows:</p>
-<div class="highlight"><pre><span></span>if a &lt; b:
-    pass    # Do nothing
-else:
-    print &quot;Computer says No&quot;
+<div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">:</span>
+    <span class="k">pass</span>    <span class="c1"># Do nothing</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s2">&quot;Computer says No&quot;</span>
 </pre></div>
 
 
 <p>You can form Boolean expressions by using the <code>or</code>, <code>and</code>, and <code>not</code> keywords:</p>
-<div class="highlight"><pre><span></span>if product == &quot;game&quot; and type == &quot;pirate memory&quot; \
-                     and not (age &lt; 4 or age &gt; 8):
-    print &quot;I&#39;ll take it!&quot;
+<div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">product</span> <span class="o">==</span> <span class="s2">&quot;game&quot;</span> <span class="ow">and</span> <span class="nb">type</span> <span class="o">==</span> <span class="s2">&quot;pirate memory&quot;</span> \
+                     <span class="ow">and</span> <span class="ow">not</span> <span class="p">(</span><span class="n">age</span> <span class="o">&lt;</span> <span class="mi">4</span> <span class="ow">or</span> <span class="n">age</span> <span class="o">&gt;</span> <span class="mi">8</span><span class="p">):</span>
+    <span class="k">print</span> <span class="s2">&quot;I&#39;ll take it!&quot;</span>
 </pre></div>
 
 
@@ -355,63 +355,63 @@ apply to the next line, so you are free to format the continued lines as you wis
 </blockquote>
 <p>Keep in mind that Python does not have a special <strong>switch</strong> or <strong>case</strong> statement for testing 
 values. To handle multiple-test cases, use the <code>elif</code> statement, like this:</p>
-<div class="highlight"><pre><span></span>if suffix == &quot;.htm&quot;:
-    content = &quot;text/html&quot;
-elif suffix == &quot;.jpg&quot;:
-    content = &quot;image/jpeg&quot;
-elif suffix == &quot;.png&quot;:
-    content = &quot;image/png&quot;
-else:
-    raise RuntimeError(&quot;Unknown content type&quot;)
+<div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">suffix</span> <span class="o">==</span> <span class="s2">&quot;.htm&quot;</span><span class="p">:</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="s2">&quot;text/html&quot;</span>
+<span class="k">elif</span> <span class="n">suffix</span> <span class="o">==</span> <span class="s2">&quot;.jpg&quot;</span><span class="p">:</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="s2">&quot;image/jpeg&quot;</span>
+<span class="k">elif</span> <span class="n">suffix</span> <span class="o">==</span> <span class="s2">&quot;.png&quot;</span><span class="p">:</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="s2">&quot;image/png&quot;</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Unknown content type&quot;</span><span class="p">)</span>
 </pre></div>
 
 
 <p>It's possible to write workarounds of "switch/case" statements on Python. One of these would be 
 the use of a <strong>dictionary mapping</strong>:</p>
-<div class="highlight"><pre><span></span>def numbers_to_strings(argument):
-    switcher = {
-        0: &quot;zero&quot;,
-        1: &quot;one&quot;,
-        2: &quot;two&quot;,
-    }
-    return switcher.get(argument, &quot;nothing&quot;)
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">numbers_to_strings</span><span class="p">(</span><span class="n">argument</span><span class="p">):</span>
+    <span class="n">switcher</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="mi">0</span><span class="p">:</span> <span class="s2">&quot;zero&quot;</span><span class="p">,</span>
+        <span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;one&quot;</span><span class="p">,</span>
+        <span class="mi">2</span><span class="p">:</span> <span class="s2">&quot;two&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">switcher</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">argument</span><span class="p">,</span> <span class="s2">&quot;nothing&quot;</span><span class="p">)</span>
 </pre></div>
 
 
 <p>This code is analogous to:</p>
-<div class="highlight"><pre><span></span>function(argument){
-    switch(argument) {
-        case 0:
-            return &quot;zero&quot;;
-        case 1:
-            return &quot;one&quot;;
-        case 2:
-            return &quot;two&quot;;
-        default:
-            return &quot;nothing&quot;;
-    };
-};
+<div class="highlight"><pre><span></span><span class="n">function</span><span class="o">(</span><span class="n">argument</span><span class="o">){</span>
+    <span class="k">switch</span><span class="o">(</span><span class="n">argument</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">case</span> <span class="mi">0</span><span class="o">:</span>
+            <span class="k">return</span> <span class="s">&quot;zero&quot;</span><span class="o">;</span>
+        <span class="k">case</span> <span class="mi">1</span><span class="o">:</span>
+            <span class="k">return</span> <span class="s">&quot;one&quot;</span><span class="o">;</span>
+        <span class="k">case</span> <span class="mi">2</span><span class="o">:</span>
+            <span class="k">return</span> <span class="s">&quot;two&quot;</span><span class="o">;</span>
+        <span class="k">default</span><span class="o">:</span>
+            <span class="k">return</span> <span class="s">&quot;nothing&quot;</span><span class="o">;</span>
+    <span class="o">};</span>
+<span class="o">};</span>
 </pre></div>
 
 
 <p>Another approach would be the use of <strong>dictionary mapping for functions</strong>. In Python, we can also 
 include functions or lambdas in our dictionary mapping:</p>
-<div class="highlight"><pre><span></span>def zero():
-    return &quot;zero&quot;
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">zero</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">&quot;zero&quot;</span>
 
-def one():
-    return &quot;one&quot;
+<span class="k">def</span> <span class="nf">one</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">&quot;one&quot;</span>
 
-def numbers_to_functions_to_strings(argument):
-    switcher = {
-        0: zero,
-        1: one,
-        2: lambda: &quot;two&quot;,
-    }
-    # Get the function from switcher dictionary
-    func = switcher.get(argument, lambda: &quot;nothing&quot;)
-    # Execute the function
-    return func()
+<span class="k">def</span> <span class="nf">numbers_to_functions_to_strings</span><span class="p">(</span><span class="n">argument</span><span class="p">):</span>
+    <span class="n">switcher</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="mi">0</span><span class="p">:</span> <span class="n">zero</span><span class="p">,</span>
+        <span class="mi">1</span><span class="p">:</span> <span class="n">one</span><span class="p">,</span>
+        <span class="mi">2</span><span class="p">:</span> <span class="k">lambda</span><span class="p">:</span> <span class="s2">&quot;two&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="c1"># Get the function from switcher dictionary</span>
+    <span class="n">func</span> <span class="o">=</span> <span class="n">switcher</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">argument</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="s2">&quot;nothing&quot;</span><span class="p">)</span>
+    <span class="c1"># Execute the function</span>
+    <span class="k">return</span> <span class="n">func</span><span class="p">()</span>
 </pre></div>
 
 
@@ -419,33 +419,33 @@ def numbers_to_functions_to_strings(argument):
 mappings like this to dispatch complex procedures.</p>
 <p>A different approach would be the use of <strong>dispatch methods for classes</strong>. In Python, if we don't 
 know what method to call on a class, we can use a dispatch method to determine it at runtime.</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">Switcher</span>(<span class="n">object</span>):
-    <span class="n">def</span> <span class="n">numbers_to_methods_to_strings</span>(<span class="k">self</span>, <span class="n">argument</span>):
-        <span class="s">&quot;&quot;&quot;Dispatch method&quot;&quot;&quot;</span>
-        <span class="c c-Singleline"># prefix the method_name with &#39;number_&#39; because method names</span>
-        <span class="c c-Singleline"># cannot begin with an integer.</span>
-        <span class="n">method_name</span> = <span class="s">&#39;number_&#39;</span> + <span class="n">str</span>(<span class="n">argument</span>)
-        <span class="c c-Singleline"># Get the method from &#39;self&#39;. Default to a lambda.</span>
-        <span class="k">method</span> = <span class="n">getattr</span>(<span class="k">self</span>, <span class="n">method_name</span>, <span class="n">lambda:</span> <span class="s">&quot;nothing&quot;</span>)
-        <span class="c c-Singleline"># Call the method as we return it</span>
-        <span class="k">return</span> <span class="k">method</span>()
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Switcher</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">numbers_to_methods_to_strings</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Dispatch method&quot;&quot;&quot;</span>
+        <span class="c1"># prefix the method_name with &#39;number_&#39; because method names</span>
+        <span class="c1"># cannot begin with an integer.</span>
+        <span class="n">method_name</span> <span class="o">=</span> <span class="s1">&#39;number_&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">argument</span><span class="p">)</span>
+        <span class="c1"># Get the method from &#39;self&#39;. Default to a lambda.</span>
+        <span class="n">method</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method_name</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="s2">&quot;nothing&quot;</span><span class="p">)</span>
+        <span class="c1"># Call the method as we return it</span>
+        <span class="k">return</span> <span class="n">method</span><span class="p">()</span>
 
-    <span class="n">def</span> <span class="n">number_0</span>(<span class="k">self</span>):
-        <span class="k">return</span> <span class="s">&quot;zero&quot;</span>
+    <span class="k">def</span> <span class="nf">number_0</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;zero&quot;</span>
 
-    <span class="n">def</span> <span class="n">number_1</span>(<span class="k">self</span>):
-        <span class="k">return</span> <span class="s">&quot;one&quot;</span>
+    <span class="k">def</span> <span class="nf">number_1</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;one&quot;</span>
 
-    <span class="n">def</span> <span class="n">number_2</span>(<span class="k">self</span>):
-        <span class="k">return</span> <span class="s">&quot;two&quot;</span>
+    <span class="k">def</span> <span class="nf">number_2</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;two&quot;</span>
 </pre></div>
 
 
 <p>To denote truth values, use the <strong>Boolean</strong> values <code>True</code> and <code>False</code>. Here's an example:</p>
-<div class="highlight"><pre><span></span>if &#39;spam&#39; in s:
-    has_spam = True
-else:
-    has_spam = False
+<div class="highlight"><pre><span></span><span class="k">if</span> <span class="s1">&#39;spam&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+    <span class="n">has_spam</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">has_spam</span> <span class="o">=</span> <span class="bp">False</span>
 </pre></div>
 
 
@@ -453,7 +453,7 @@ else:
 The <code>in</code> operator used in this example is commonly used to check whether a value is contained 
 inside of another object such as a string, list, or dictionary. It also returns <code>True</code> or 
 <code>False</code>, so the preceding example could be shortened to this:</p>
-<div class="highlight"><pre><span></span>has_spam = &#39;spam&#39; in s
+<div class="highlight"><pre><span></span><span class="n">has_spam</span> <span class="o">=</span> <span class="s1">&#39;spam&#39;</span> <span class="ow">in</span> <span class="n">s</span>
 </pre></div>
 
 
@@ -489,14 +489,14 @@ inside of another object such as a string, list, or dictionary. It also returns 
 
 
 <p>This script opens a file and reads its contents line by line:</p>
-<div class="highlight"><pre><span></span># Opens a specific file and reads its contents line by line
-# open-file-read-lines-01a.py
-f = open(&quot;datafile&quot;)    # Returns a file object
-line = f.readline()    # Invokes readline() method on file
-while line:
-    print(line, end=&#39;&#39;)
-    line = f.readline()
-f.close()    # Close the file object
+<div class="highlight"><pre><span></span><span class="c1"># Opens a specific file and reads its contents line by line</span>
+<span class="c1"># open-file-read-lines-01a.py</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;datafile&quot;</span><span class="p">)</span>    <span class="c1"># Returns a file object</span>
+<span class="n">line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>    <span class="c1"># Invokes readline() method on file</span>
+<span class="k">while</span> <span class="n">line</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>    <span class="c1"># Close the file object</span>
 </pre></div>
 
 
@@ -508,45 +508,45 @@ a program loops over a collection of data like this (for instance input lines, n
 etc.), it is commonly known as <em>iteration</em>. Because iteration is such a common operation, Python 
 provides a dedicated statement, <code>for</code>, that is used to iterate over items. For instance, the same 
 program can be written much more succinctly as follows:</p>
-<div class="highlight"><pre><span></span># Opens a specific file and reads its contents line by line
-# open-file-read-lines-01b.py
-f = open(&quot;datafile&quot;)
-for line in f:
-    print(line, end=&#39;&#39;)
-f.close()
+<div class="highlight"><pre><span></span><span class="c1"># Opens a specific file and reads its contents line by line</span>
+<span class="c1"># open-file-read-lines-01b.py</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;datafile&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 
 
 <p>To make the output of a program go to a file, you can supply a file to the <code>print</code> statement, as 
 shown in the following example:</p>
-<div class="highlight"><pre><span></span># Opens a specific file to be written with the results of the program
-# open-file-write-values-01a.py
-principal = 1000
-rate = 0.05
-numyears = 25
-year = 1
-f = open(&quot;datafile-02&quot;, &quot;w&quot;)
-while year &lt;= numyears:
-    principal = principal * (1 + rate)
-    print(&quot;%3d %0.2f&quot; % (year, principal), file=f)
-    year += 1
-f.close()
+<div class="highlight"><pre><span></span><span class="c1"># Opens a specific file to be written with the results of the program</span>
+<span class="c1"># open-file-write-values-01a.py</span>
+<span class="n">principal</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">rate</span> <span class="o">=</span> <span class="mf">0.05</span>
+<span class="n">numyears</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="n">year</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;datafile-02&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="k">while</span> <span class="n">year</span> <span class="o">&lt;=</span> <span class="n">numyears</span><span class="p">:</span>
+    <span class="n">principal</span> <span class="o">=</span> <span class="n">principal</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">rate</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%3d</span><span class="s2"> </span><span class="si">%0.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">principal</span><span class="p">),</span> <span class="nb">file</span><span class="o">=</span><span class="n">f</span><span class="p">)</span>
+    <span class="n">year</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 
 
 <p>You can even use the <code>format()</code> method:</p>
-<div class="highlight"><pre><span></span># Opens a specific file to be written with the results of the program
-# open-file-write-values-01b.py
-principal = 1000
-rate = 0.05
-numyears = 25
-year = 1
-f = open(&quot;datafile-02&quot;, &quot;w&quot;)
-while year &lt;= numyears:
-    principal = principal * (1 + rate)
-    print(&quot;{0:3d} {1:0.2f}&quot;.format(year, principal), file=f)
-    year += 1
-f.close()
+<div class="highlight"><pre><span></span><span class="c1"># Opens a specific file to be written with the results of the program</span>
+<span class="c1"># open-file-write-values-01b.py</span>
+<span class="n">principal</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">rate</span> <span class="o">=</span> <span class="mf">0.05</span>
+<span class="n">numyears</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="n">year</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;datafile-02&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="k">while</span> <span class="n">year</span> <span class="o">&lt;=</span> <span class="n">numyears</span><span class="p">:</span>
+    <span class="n">principal</span> <span class="o">=</span> <span class="n">principal</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">rate</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;{0:3d} {1:0.2f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">principal</span><span class="p">),</span> <span class="nb">file</span><span class="o">=</span><span class="n">f</span><span class="p">)</span>
+    <span class="n">year</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 
 
