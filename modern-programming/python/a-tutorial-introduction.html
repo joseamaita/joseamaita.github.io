@@ -552,18 +552,18 @@ f.close()
 
 <p>In addition, file objects support a <code>write()</code> method that can be used to write raw data. For 
 example, the <code>print</code> statement in the previous example could have been written this way:</p>
-<div class="highlight"><pre><span></span># Opens a specific file to be written with the results of the program
-# open-file-write-values-01c.py
-principal = 1000
-rate = 0.05
-numyears = 25
-year = 1
-f = open(&quot;datafile-02&quot;, &quot;w&quot;)
-while year &lt;= numyears:
-    principal = principal * (1 + rate)
-    f.write(&quot;{0:3d} {1:0.2f}\n&quot;.format(year, principal))
-    year += 1
-f.close()
+<div class="highlight"><pre><span></span><span class="c1"># Opens a specific file to be written with the results of the program</span>
+<span class="c1"># open-file-write-values-01c.py</span>
+<span class="n">principal</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">rate</span> <span class="o">=</span> <span class="mf">0.05</span>
+<span class="n">numyears</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="n">year</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;datafile-02&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="k">while</span> <span class="n">year</span> <span class="o">&lt;=</span> <span class="n">numyears</span><span class="p">:</span>
+    <span class="n">principal</span> <span class="o">=</span> <span class="n">principal</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">rate</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;{0:3d} {1:0.2f}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">principal</span><span class="p">))</span>
+    <span class="n">year</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 
 
@@ -581,8 +581,8 @@ For example:</p>
 
 
 <p>This code can also be shortened to the following:</p>
-<div class="highlight"><pre><span></span>name = input(&quot;Enter your name: \n&quot;)
-print(&quot;\nHello, {0}&quot;.format(name))
+<div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter your name: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Hello, {0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
 </pre></div>
 
 
