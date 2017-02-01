@@ -161,6 +161,8 @@ margin: 0 0 5px 0;
 }
 
 pre {
+background-color: #272822;
+color: #F8F8F2;
 font-size: 12px;
 }
 
