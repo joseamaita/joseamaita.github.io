@@ -150,8 +150,8 @@ padding: 30px 15px;
 background-color: #F2F2F2;
 border-bottom: 1px solid #CCC;
 color: #20435C;
-margin: 0;
-padding: 20px 0 0 0;
+margin: 20px -20px 10px;
+padding: 3px 0 3px 10px;
 }
 
 .content-page h3 {
