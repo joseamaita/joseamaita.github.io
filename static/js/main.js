@@ -5,7 +5,8 @@ $(document).ready(function() {
 	
 	$('a.read-more-less').click(function(event) {
 		event.preventDefault();
-		var $moreContent = $('a.read-more-less').parent().prev();
+		var $moreContent = $(this).parent().prev();
+		console.log($moreContent);
 		$moreContent.slideToggle('slow');
 		var $link = $(this);
 		if ($link.text() == '(read more ...)') {
