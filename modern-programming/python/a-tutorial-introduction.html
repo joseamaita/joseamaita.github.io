@@ -112,574 +112,787 @@
 				<div class="row">
 					<div class="span8">
 <h2 id="running-python">Running Python</h2>
-<div class="p-content">
+<p>Python programs are executed by an interpreter. Usually, the interpreter is started by simply 
+typing <code>python</code>, <code>python3</code> or <code>python3.6</code> into a command shell. When the interpreter starts, 
+a prompt appears at which you can start typing programs into a simple read-evaluation loop.</p>
+<div class="highlight"><pre><span></span><span class="o">~</span><span class="err">$</span> <span class="n">python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="s2">&quot;Hello, World!&quot;</span>
+<span class="n">Hello</span><span class="p">,</span> <span class="n">World</span><span class="err">!</span>
+<span class="o">&gt;&gt;&gt;</span>
+<span class="o">&lt;</span><span class="n">Ctrl</span><span class="o">+</span><span class="n">D</span><span class="o">&gt;</span>
 
-Python programs are executed by an interpreter. Usually, the interpreter is started by simply 
-typing ``python``, ``python3`` or ``python3.6`` into a command shell. When the interpreter starts, 
-a prompt appears at which you can start typing programs into a simple read-evaluation loop.
-
-
-wzxhzdk:0
-
-
-See this example of Python's interactive mode as a desktop calculator, which is one of its most 
-useful features. For instance:
-
-
-wzxhzdk:1
-
-
-The special variable ``_`` holds the result of the last operation. This can be useful if you want 
-to save or use the result of the last operation in subsequent statements.
-
-If you want to create a program that you can run repeatedly, put statements in a file such as the 
-following:
+<span class="o">~</span><span class="err">$</span> <span class="n">python3</span><span class="o">.</span><span class="mi">6</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Hello, World!&quot;</span><span class="p">)</span>
+<span class="n">Hello</span><span class="p">,</span> <span class="n">World</span><span class="err">!</span>
+<span class="o">&gt;&gt;&gt;</span>
+<span class="o">&lt;</span><span class="n">Ctrl</span><span class="o">+</span><span class="n">D</span><span class="o">&gt;</span>
+</pre></div>
 
 
-wzxhzdk:2
+<p>See this example of Python's interactive mode as a desktop calculator, which is one of its most 
+useful features. For instance:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="mi">6000</span> <span class="o">+</span> <span class="mf">4523.50</span> <span class="o">+</span> <span class="mf">134.12</span>
+<span class="mf">10657.62</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">_</span> <span class="o">+</span> <span class="mf">8192.32</span>
+<span class="mf">18849.940000000002</span>
+<span class="o">&gt;&gt;&gt;</span>
+</pre></div>
 
 
-To execute the ``helloworld.py`` file, you provide the filename to the interpreter as follows:
+<p>The special variable <code>_</code> holds the result of the last operation. This can be useful if you want 
+to save or use the result of the last operation in subsequent statements.</p>
+<p>If you want to create a program that you can run repeatedly, put statements in a file such as the 
+following:</p>
+<div class="highlight"><pre><span></span><span class="c1"># helloworld.py</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Hello, World!&quot;</span><span class="p">)</span>
+</pre></div>
 
 
-wzxhzdk:3
+<p>To execute the <code>helloworld.py</code> file, you provide the filename to the interpreter as follows:</p>
+<div class="highlight"><pre><span></span><span class="o">~</span><span class="err">$</span> <span class="n">python3</span><span class="o">.</span><span class="mi">6</span> <span class="n">helloworld</span><span class="o">.</span><span class="n">py</span>
+<span class="n">Hello</span><span class="p">,</span> <span class="n">World</span><span class="err">!</span>
+</pre></div>
 
 
-On UNIX, you can use ``#!`` on the first line of the program, like this ``#!/usr/bin/env python3.6``.
-
-The interpreter runs statements until it reaches the end of the input file. If it's running 
+<p>On UNIX, you can use <code>#!</code> on the first line of the program, like this <code>#!/usr/bin/env python3.6</code>.</p>
+<p>The interpreter runs statements until it reaches the end of the input file. If it's running 
 interactively, you can exit the interpreter by typing the EOF (end of file) character or by 
-selecting **Exit** from pull-down menu of a Python IDE. On UNIX, EOF is ``<Ctrl+D>``; on Windows, 
-it's ``<Ctrl+Z>``. A program can request to exit by raising the **SystemExit** exception.
+selecting <strong>Exit</strong> from pull-down menu of a Python IDE. On UNIX, EOF is <code>&lt;Ctrl+D&gt;</code>; on Windows, 
+it's <code>&lt;Ctrl+Z&gt;</code>. A program can request to exit by raising the <strong>SystemExit</strong> exception.</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">raise</span> <span class="ne">SystemExit</span>
+</pre></div>
 
-
-wzxhzdk:4
-
-
-</div>
 
 <h2 id="variables-and-arithmetic-expressions">Variables and Arithmetic Expressions</h2>
-<div class="p-content">
+<p>The following program shows the use of variables and expressions by performing a simple 
+compound-interest calculation.</p>
+<div class="highlight"><pre><span></span><span class="c1"># Simple Compound-Interest Calculation</span>
+<span class="c1"># simple-compound-interest-calculation-01a.py</span>
+<span class="n">principal</span> <span class="o">=</span> <span class="mi">1000</span>    <span class="c1"># Initial amount</span>
+<span class="n">rate</span> <span class="o">=</span> <span class="mf">0.05</span>         <span class="c1"># Interest rate</span>
+<span class="n">numyears</span> <span class="o">=</span> <span class="mi">5</span>        <span class="c1"># Number of years</span>
+<span class="n">year</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">while</span> <span class="n">year</span> <span class="o">&lt;=</span> <span class="n">numyears</span><span class="p">:</span>
+    <span class="n">principal</span> <span class="o">=</span> <span class="n">principal</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">rate</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">principal</span><span class="p">)</span>
+    <span class="n">year</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
 
-The following program shows the use of variables and expressions by performing a simple 
-compound-interest calculation.
+
+<p>Running <code>simple-compound-interest-calculation-01a.py</code> with <code>python3.6</code>, the output is:</p>
+<div class="highlight"><pre><span></span><span class="o">~</span><span class="err">$</span> <span class="n">python3</span><span class="o">.</span><span class="mi">6</span> <span class="n">simple</span><span class="o">-</span><span class="n">compound</span><span class="o">-</span><span class="n">interest</span><span class="o">-</span><span class="n">calculation</span><span class="o">-</span><span class="mo">01</span><span class="n">a</span><span class="o">.</span><span class="n">py</span>
+<span class="mi">1</span> <span class="mf">1050.0</span>
+<span class="mi">2</span> <span class="mf">1102.5</span>
+<span class="mi">3</span> <span class="mf">1157.625</span>
+<span class="mi">4</span> <span class="mf">1215.5062500000001</span>
+<span class="mi">5</span> <span class="mf">1276.2815625000003</span>
+</pre></div>
 
 
-wzxhzdk:5
-
-
-Running ``simple-compound-interest-calculation-01a.py`` with ``python3.6``, the output is:
-
-
-wzxhzdk:6
-
-
-Python is a dynamically typed language where variable names are bound to different values, possibly 
+<p>Python is a dynamically typed language where variable names are bound to different values, possibly 
 of varying types, during program execution. The assignment operator simply creates an association 
 between a name and a value. Although each value has an associated type such as an integer or string, 
 variable names are untyped and can be made to refer to any type of data during execution. This is 
 different from C, for example, in which a name represents a fixed type, size, and location in memory 
-into which a value is stored. This dynamic behavior can be seen with the ``principal`` variable. 
+into which a value is stored. This dynamic behavior can be seen with the <code>principal</code> variable. 
 Initially, it's assigned to an integer value. However, later in the program it's reassigned as 
-follows:
+follows:</p>
+<div class="highlight"><pre><span></span><span class="n">principal</span> <span class="o">=</span> <span class="n">principal</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">rate</span><span class="p">)</span>
+</pre></div>
 
 
-wzxhzdk:7
+<p>This statement evaluates the expression and reassociates the name <code>principal</code> with the result. 
+Although the original value of <code>principal</code> was an integer <code>1000</code>, the new value is now a 
+floating-point number ( <code>rate</code> is defined as a float, so the value of the above expression is 
+also a float). Thus, the apparent "type" of <code>principal</code> dynamically changes from an integer to a 
+float in the middle of the program. However, to be precise, it's not the type of <code>principal</code> that 
+has changed, but rather the value to which the <code>principal</code> name refers.</p>
+<p>A newline terminates each statement. However, you can use a semicolon to separate statements on the 
+same line, as shown here:</p>
+<div class="highlight"><pre><span></span><span class="n">principal</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">;</span> <span class="n">rate</span> <span class="o">=</span> <span class="mf">0.05</span><span class="p">;</span> <span class="n">numyears</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+</pre></div>
 
 
-This statement evaluates the expression and reassociates the name ``principal`` with the result. 
-Although the original value of ``principal`` was an integer ``1000``, the new value is now a 
-floating-point number ( ``rate`` is defined as a float, so the value of the above expression is 
-also a float). Thus, the apparent "type" of ``principal`` dynamically changes from an integer to a 
-float in the middle of the program. However, to be precise, it's not the type of ``principal`` that 
-has changed, but rather the value to which the ``principal`` name refers.
-
-A newline terminates each statement. However, you can use a semicolon to separate statements on the 
-same line, as shown here:
-
-
-wzxhzdk:8
-
-
-Also, Python doesn't specify the amount of required indentation, as long as it's consistent within 
+<p>Also, Python doesn't specify the amount of required indentation, as long as it's consistent within 
 a block. However, it is most common (and generally recommended) to use 
-**four (04) spaces per indentation level**.
-
-To make the output better, you could right-align the columns and limit the precision of 
-``principal`` to two digits. There are several ways to achieve this formatting. One of these would
-be to use the string formatting operator ``%`` like this:
-
-
-wzxhzdk:9
+<strong>four (04) spaces per indentation level</strong>.</p>
+<p>To make the output better, you could right-align the columns and limit the precision of 
+<code>principal</code> to two digits. There are several ways to achieve this formatting. One of these would
+be to use the string formatting operator <code>%</code> like this:</p>
+<div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%3d</span><span class="s2"> </span><span class="si">%0.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">principal</span><span class="p">))</span>
+</pre></div>
 
 
-Updating the code:
+<p>Updating the code:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Simple Compound-Interest Calculation</span>
+<span class="c1"># simple-compound-interest-calculation-01b.py</span>
+<span class="n">principal</span> <span class="o">=</span> <span class="mi">1000</span>    <span class="c1"># Initial amount</span>
+<span class="n">rate</span> <span class="o">=</span> <span class="mf">0.05</span>         <span class="c1"># Interest rate</span>
+<span class="n">numyears</span> <span class="o">=</span> <span class="mi">5</span>        <span class="c1"># Number of years</span>
+<span class="n">year</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">while</span> <span class="n">year</span> <span class="o">&lt;=</span> <span class="n">numyears</span><span class="p">:</span>
+    <span class="n">principal</span> <span class="o">=</span> <span class="n">principal</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">rate</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%3d</span><span class="s2"> </span><span class="si">%0.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">principal</span><span class="p">))</span>
+    <span class="n">year</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
 
 
-wzxhzdk:10
+<p>Running <code>simple-compound-interest-calculation-01b.py</code> with <code>python3.6</code>, the output is:</p>
+<div class="highlight"><pre><span></span><span class="o">~</span><span class="err">$</span> <span class="n">python3</span><span class="o">.</span><span class="mi">6</span> <span class="n">simple</span><span class="o">-</span><span class="n">compound</span><span class="o">-</span><span class="n">interest</span><span class="o">-</span><span class="n">calculation</span><span class="o">-</span><span class="mo">01</span><span class="n">b</span><span class="o">.</span><span class="n">py</span>
+  <span class="mi">1</span> <span class="mf">1050.00</span>
+  <span class="mi">2</span> <span class="mf">1102.50</span>
+  <span class="mi">3</span> <span class="mf">1157.62</span>
+  <span class="mi">4</span> <span class="mf">1215.51</span>
+  <span class="mi">5</span> <span class="mf">1276.28</span>
+</pre></div>
 
 
-Running ``simple-compound-interest-calculation-01b.py`` with ``python3.6``, the output is:
-
-
-wzxhzdk:11
-
-
-Format strings contain ordinary text and special formatting-character sequences such as ``"%d"``, 
-``"%s"``, and ``"%f"``. These sequences specify the formatting of a particular type of data such as 
+<p>Format strings contain ordinary text and special formatting-character sequences such as <code>"%d"</code>, 
+<code>"%s"</code>, and <code>"%f"</code>. These sequences specify the formatting of a particular type of data such as 
 an integer, string, or floating-point number, respectively. The special-character sequences can 
-also contain modifiers that specify a width and precision. For example, ``"%3d"`` formats an 
-integer right-aligned in a column of width 3, and ``"%0.2f"`` formats a floating-point number so 
-that only two digits appear after the decimal point.
-
-A more modern approach to string formatting is to format each part individually using the 
-``format()`` function. For example:
-
-
-wzxhzdk:12
+also contain modifiers that specify a width and precision. For example, <code>"%3d"</code> formats an 
+integer right-aligned in a column of width 3, and <code>"%0.2f"</code> formats a floating-point number so 
+that only two digits appear after the decimal point.</p>
+<p>A more modern approach to string formatting is to format each part individually using the 
+<code>format()</code> function. For example:</p>
+<div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">format</span><span class="p">(</span><span class="n">year</span><span class="p">,</span><span class="s2">&quot;3d&quot;</span><span class="p">),</span><span class="n">format</span><span class="p">(</span><span class="n">principal</span><span class="p">,</span><span class="s2">&quot;0.2f&quot;</span><span class="p">))</span>
+</pre></div>
 
 
-Updating the code:
+<p>Updating the code:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Simple Compound-Interest Calculation</span>
+<span class="c1"># simple-compound-interest-calculation-01c.py</span>
+<span class="n">principal</span> <span class="o">=</span> <span class="mi">1000</span>    <span class="c1"># Initial amount</span>
+<span class="n">rate</span> <span class="o">=</span> <span class="mf">0.05</span>         <span class="c1"># Interest rate</span>
+<span class="n">numyears</span> <span class="o">=</span> <span class="mi">5</span>        <span class="c1"># Number of years</span>
+<span class="n">year</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">while</span> <span class="n">year</span> <span class="o">&lt;=</span> <span class="n">numyears</span><span class="p">:</span>
+    <span class="n">principal</span> <span class="o">=</span> <span class="n">principal</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">rate</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">format</span><span class="p">(</span><span class="n">year</span><span class="p">,</span><span class="s2">&quot;3d&quot;</span><span class="p">),</span><span class="n">format</span><span class="p">(</span><span class="n">principal</span><span class="p">,</span><span class="s2">&quot;0.2f&quot;</span><span class="p">))</span>
+    <span class="n">year</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
 
 
-wzxhzdk:13
+<p>Running <code>simple-compound-interest-calculation-01c.py</code> with <code>python3.6</code>, the output is:</p>
+<div class="highlight"><pre><span></span><span class="o">~</span><span class="err">$</span> <span class="n">python3</span><span class="o">.</span><span class="mi">6</span> <span class="n">simple</span><span class="o">-</span><span class="n">compound</span><span class="o">-</span><span class="n">interest</span><span class="o">-</span><span class="n">calculation</span><span class="o">-</span><span class="mo">01</span><span class="n">c</span><span class="o">.</span><span class="n">py</span>
+  <span class="mi">1</span> <span class="mf">1050.00</span>
+  <span class="mi">2</span> <span class="mf">1102.50</span>
+  <span class="mi">3</span> <span class="mf">1157.62</span>
+  <span class="mi">4</span> <span class="mf">1215.51</span>
+  <span class="mi">5</span> <span class="mf">1276.28</span>
+</pre></div>
 
 
-Running ``simple-compound-interest-calculation-01c.py`` with ``python3.6``, the output is:
+<p>The <code>format()</code> function uses format specifiers that are similar to those used with the 
+traditional string formatting operator <code>%</code>. For example, <code>"3d"</code> formats an integer 
+right-aligned in a column of width 3, and <code>"0.2f"</code> formats a float-point number to have two 
+digits of accuracy. Strings also have a <code>format()</code> method that can be used to format many values 
+at once. For example:</p>
+<div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;{0:3d} {1:0.2f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">year</span><span class="p">,</span><span class="n">principal</span><span class="p">))</span>
+</pre></div>
 
 
-wzxhzdk:14
+<p>The number before the colon in <code>"{0:3d}"</code> and <code>"{1:0.2f}"</code> refers to the associated argument 
+passed to the <code>format()</code> method and the part after the colon is the format specifier.</p>
+<p>Updating the code:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Simple Compound-Interest Calculation</span>
+<span class="c1"># simple-compound-interest-calculation-01d.py</span>
+<span class="n">principal</span> <span class="o">=</span> <span class="mi">1000</span>    <span class="c1"># Initial amount</span>
+<span class="n">rate</span> <span class="o">=</span> <span class="mf">0.05</span>         <span class="c1"># Interest rate</span>
+<span class="n">numyears</span> <span class="o">=</span> <span class="mi">5</span>        <span class="c1"># Number of years</span>
+<span class="n">year</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">while</span> <span class="n">year</span> <span class="o">&lt;=</span> <span class="n">numyears</span><span class="p">:</span>
+    <span class="n">principal</span> <span class="o">=</span> <span class="n">principal</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">rate</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;{0:3d} {1:0.2f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">year</span><span class="p">,</span><span class="n">principal</span><span class="p">))</span>
+    <span class="n">year</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
 
 
-The ``format()`` function uses format specifiers that are similar to those used with the 
-traditional string formatting operator ``%``. For example, ``"3d"`` formats an integer 
-right-aligned in a column of width 3, and ``"0.2f"`` formats a float-point number to have two 
-digits of accuracy. Strings also have a ``format()`` method that can be used to format many values 
-at once. For example:
+<p>Running <code>simple-compound-interest-calculation-01d.py</code> with <code>python3.6</code>, the output is:</p>
+<div class="highlight"><pre><span></span><span class="o">~</span><span class="err">$</span> <span class="n">python3</span><span class="o">.</span><span class="mi">6</span> <span class="n">simple</span><span class="o">-</span><span class="n">compound</span><span class="o">-</span><span class="n">interest</span><span class="o">-</span><span class="n">calculation</span><span class="o">-</span><span class="mo">01</span><span class="n">d</span><span class="o">.</span><span class="n">py</span>
+  <span class="mi">1</span> <span class="mf">1050.00</span>
+  <span class="mi">2</span> <span class="mf">1102.50</span>
+  <span class="mi">3</span> <span class="mf">1157.62</span>
+  <span class="mi">4</span> <span class="mf">1215.51</span>
+  <span class="mi">5</span> <span class="mf">1276.28</span>
+</pre></div>
 
-
-wzxhzdk:15
-
-
-The number before the colon in ``"{0:3d}"`` and ``"{1:0.2f}"`` refers to the associated argument 
-passed to the ``format()`` method and the part after the colon is the format specifier.
-
-Updating the code:
-
-
-wzxhzdk:16
-
-
-Running ``simple-compound-interest-calculation-01d.py`` with ``python3.6``, the output is:
-
-
-wzxhzdk:17
-
-
-</div>
 
 <h2 id="conditionals">Conditionals</h2>
-<div class="p-content">
-
-The ``if`` and ``else`` statements can perform simple tests. Here's an example:
-
-
-wzxhzdk:18
-
-
-The bodies of the ``if`` and ``else`` clauses are denoted by indentation. The ``else`` clause is 
-optional.
-
-To create an empty clause, use the ``pass`` statement, as follows:
+<p>The <code>if</code> and <code>else</code> statements can perform simple tests. Here's an example:</p>
+<div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s2">&quot;Computer says Yes&quot;</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s2">&quot;Computer says No&quot;</span>
+</pre></div>
 
 
-wzxhzdk:19
+<p>The bodies of the <code>if</code> and <code>else</code> clauses are denoted by indentation. The <code>else</code> clause is 
+optional.</p>
+<p>To create an empty clause, use the <code>pass</code> statement, as follows:</p>
+<div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">:</span>
+    <span class="k">pass</span>    <span class="c1"># Do nothing</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s2">&quot;Computer says No&quot;</span>
+</pre></div>
 
 
-You can form Boolean expressions by using the ``or``, ``and``, and ``not`` keywords:
+<p>You can form Boolean expressions by using the <code>or</code>, <code>and</code>, and <code>not</code> keywords:</p>
+<div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">product</span> <span class="o">==</span> <span class="s2">&quot;game&quot;</span> <span class="ow">and</span> <span class="nb">type</span> <span class="o">==</span> <span class="s2">&quot;pirate memory&quot;</span> \
+                     <span class="ow">and</span> <span class="ow">not</span> <span class="p">(</span><span class="n">age</span> <span class="o">&lt;</span> <span class="mi">4</span> <span class="ow">or</span> <span class="n">age</span> <span class="o">&gt;</span> <span class="mi">8</span><span class="p">):</span>
+    <span class="k">print</span> <span class="s2">&quot;I&#39;ll take it!&quot;</span>
+</pre></div>
 
 
-wzxhzdk:20
-
-
-**Note**
-> Writing complex test cases commonly results in statements that involve an annoyingly long line 
+<p><strong>Note</strong></p>
+<blockquote>
+<p>Writing complex test cases commonly results in statements that involve an annoyingly long line 
 of code. To improve readability, you can continue any statement to the next line by using a 
-backslash ``\`` at the end of a line as shown. If you do this, the normal indentation rules don't 
-apply to the next line, so you are free to format the continued lines as you wish.
-
-Keep in mind that Python does not have a special **switch** or **case** statement for testing 
-values. To handle multiple-test cases, use the ``elif`` statement, like this:
-
-
-wzxhzdk:21
-
-
-It's possible to write workarounds of "switch/case" statements on Python. One of these would be 
-the use of a **dictionary mapping**:
-
-
-wzxhzdk:22
-
-
-This code is analogous to:
+backslash <code>\</code> at the end of a line as shown. If you do this, the normal indentation rules don't 
+apply to the next line, so you are free to format the continued lines as you wish.</p>
+</blockquote>
+<p>Keep in mind that Python does not have a special <strong>switch</strong> or <strong>case</strong> statement for testing 
+values. To handle multiple-test cases, use the <code>elif</code> statement, like this:</p>
+<div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">suffix</span> <span class="o">==</span> <span class="s2">&quot;.htm&quot;</span><span class="p">:</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="s2">&quot;text/html&quot;</span>
+<span class="k">elif</span> <span class="n">suffix</span> <span class="o">==</span> <span class="s2">&quot;.jpg&quot;</span><span class="p">:</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="s2">&quot;image/jpeg&quot;</span>
+<span class="k">elif</span> <span class="n">suffix</span> <span class="o">==</span> <span class="s2">&quot;.png&quot;</span><span class="p">:</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="s2">&quot;image/png&quot;</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Unknown content type&quot;</span><span class="p">)</span>
+</pre></div>
 
 
-wzxhzdk:23
+<p>It's possible to write workarounds of "switch/case" statements on Python. One of these would be 
+the use of a <strong>dictionary mapping</strong>:</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">numbers_to_strings</span><span class="p">(</span><span class="n">argument</span><span class="p">):</span>
+    <span class="n">switcher</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="mi">0</span><span class="p">:</span> <span class="s2">&quot;zero&quot;</span><span class="p">,</span>
+        <span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;one&quot;</span><span class="p">,</span>
+        <span class="mi">2</span><span class="p">:</span> <span class="s2">&quot;two&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">switcher</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">argument</span><span class="p">,</span> <span class="s2">&quot;nothing&quot;</span><span class="p">)</span>
+</pre></div>
 
 
-Another approach would be the use of **dictionary mapping for functions**. In Python, we can also 
-include functions or lambdas in our dictionary mapping:
+<p>This code is analogous to:</p>
+<div class="highlight"><pre><span></span><span class="n">function</span><span class="o">(</span><span class="n">argument</span><span class="o">){</span>
+    <span class="k">switch</span><span class="o">(</span><span class="n">argument</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">case</span> <span class="mi">0</span><span class="o">:</span>
+            <span class="k">return</span> <span class="s">&quot;zero&quot;</span><span class="o">;</span>
+        <span class="k">case</span> <span class="mi">1</span><span class="o">:</span>
+            <span class="k">return</span> <span class="s">&quot;one&quot;</span><span class="o">;</span>
+        <span class="k">case</span> <span class="mi">2</span><span class="o">:</span>
+            <span class="k">return</span> <span class="s">&quot;two&quot;</span><span class="o">;</span>
+        <span class="k">default</span><span class="o">:</span>
+            <span class="k">return</span> <span class="s">&quot;nothing&quot;</span><span class="o">;</span>
+    <span class="o">};</span>
+<span class="o">};</span>
+</pre></div>
 
 
-wzxhzdk:24
+<p>Another approach would be the use of <strong>dictionary mapping for functions</strong>. In Python, we can also 
+include functions or lambdas in our dictionary mapping:</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">zero</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">&quot;zero&quot;</span>
+
+<span class="k">def</span> <span class="nf">one</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">&quot;one&quot;</span>
+
+<span class="k">def</span> <span class="nf">numbers_to_functions_to_strings</span><span class="p">(</span><span class="n">argument</span><span class="p">):</span>
+    <span class="n">switcher</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="mi">0</span><span class="p">:</span> <span class="n">zero</span><span class="p">,</span>
+        <span class="mi">1</span><span class="p">:</span> <span class="n">one</span><span class="p">,</span>
+        <span class="mi">2</span><span class="p">:</span> <span class="k">lambda</span><span class="p">:</span> <span class="s2">&quot;two&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="c1"># Get the function from switcher dictionary</span>
+    <span class="n">func</span> <span class="o">=</span> <span class="n">switcher</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">argument</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="s2">&quot;nothing&quot;</span><span class="p">)</span>
+    <span class="c1"># Execute the function</span>
+    <span class="k">return</span> <span class="n">func</span><span class="p">()</span>
+</pre></div>
 
 
-While the code inside ``zero()`` and ``one()`` are simple, many Python programs use dictionary 
-mappings like this to dispatch complex procedures.
+<p>While the code inside <code>zero()</code> and <code>one()</code> are simple, many Python programs use dictionary 
+mappings like this to dispatch complex procedures.</p>
+<p>A different approach would be the use of <strong>dispatch methods for classes</strong>. In Python, if we don't 
+know what method to call on a class, we can use a dispatch method to determine it at runtime.</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Switcher</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">numbers_to_methods_to_strings</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argument</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Dispatch method&quot;&quot;&quot;</span>
+        <span class="c1"># prefix the method_name with &#39;number_&#39; because method names</span>
+        <span class="c1"># cannot begin with an integer.</span>
+        <span class="n">method_name</span> <span class="o">=</span> <span class="s1">&#39;number_&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">argument</span><span class="p">)</span>
+        <span class="c1"># Get the method from &#39;self&#39;. Default to a lambda.</span>
+        <span class="n">method</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method_name</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="s2">&quot;nothing&quot;</span><span class="p">)</span>
+        <span class="c1"># Call the method as we return it</span>
+        <span class="k">return</span> <span class="n">method</span><span class="p">()</span>
 
-A different approach would be the use of **dispatch methods for classes**. In Python, if we don't 
-know what method to call on a class, we can use a dispatch method to determine it at runtime.
+    <span class="k">def</span> <span class="nf">number_0</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;zero&quot;</span>
+
+    <span class="k">def</span> <span class="nf">number_1</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;one&quot;</span>
+
+    <span class="k">def</span> <span class="nf">number_2</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;two&quot;</span>
+</pre></div>
 
 
-wzxhzdk:25
+<p>To denote truth values, use the <strong>Boolean</strong> values <code>True</code> and <code>False</code>. Here's an example:</p>
+<div class="highlight"><pre><span></span><span class="k">if</span> <span class="s1">&#39;spam&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+    <span class="n">has_spam</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">has_spam</span> <span class="o">=</span> <span class="bp">False</span>
+</pre></div>
 
 
-To denote truth values, use the **Boolean** values ``True`` and ``False``. Here's an example:
+<p>All relational operators such as <code>&lt;</code> and <code>&gt;</code> return <code>True</code> or <code>False</code> as results. 
+The <code>in</code> operator used in this example is commonly used to check whether a value is contained 
+inside of another object such as a string, list, or dictionary. It also returns <code>True</code> or 
+<code>False</code>, so the preceding example could be shortened to this:</p>
+<div class="highlight"><pre><span></span><span class="n">has_spam</span> <span class="o">=</span> <span class="s1">&#39;spam&#39;</span> <span class="ow">in</span> <span class="n">s</span>
+</pre></div>
 
-
-wzxhzdk:26
-
-
-All relational operators such as ``<`` and ``>`` return ``True`` or ``False`` as results. 
-The ``in`` operator used in this example is commonly used to check whether a value is contained 
-inside of another object such as a string, list, or dictionary. It also returns ``True`` or 
-``False``, so the preceding example could be shortened to this:
-
-
-wzxhzdk:27
-
-
-</div>
 
 <h2 id="file-input-and-output">File Input and Output</h2>
-<div class="p-content">
+<p>Imagine that you have a data file like this one:</p>
+<div class="highlight"><pre><span></span>  <span class="mi">1</span> <span class="mf">1050.000000</span>
+  <span class="mi">2</span> <span class="mf">1102.500000</span>
+  <span class="mi">3</span> <span class="mf">1157.625000</span>
+  <span class="mi">4</span> <span class="mf">1215.506250</span>
+  <span class="mi">5</span> <span class="mf">1276.281563</span>
+  <span class="mi">6</span> <span class="mf">1340.095641</span>
+  <span class="mi">7</span> <span class="mf">1407.100423</span>
+  <span class="mi">8</span> <span class="mf">1477.455444</span>
+  <span class="mi">9</span> <span class="mf">1551.328216</span>
+ <span class="mi">10</span> <span class="mf">1628.894627</span>
+ <span class="mi">11</span> <span class="mf">1710.339358</span>
+ <span class="mi">12</span> <span class="mf">1795.856326</span>
+ <span class="mi">13</span> <span class="mf">1885.649142</span>
+ <span class="mi">14</span> <span class="mf">1979.931599</span>
+ <span class="mi">15</span> <span class="mf">2078.928179</span>
+ <span class="mi">16</span> <span class="mf">2182.874588</span>
+ <span class="mi">17</span> <span class="mf">2292.018318</span>
+ <span class="mi">18</span> <span class="mf">2406.619234</span>
+ <span class="mi">19</span> <span class="mf">2526.950195</span>
+ <span class="mi">20</span> <span class="mf">2653.297705</span>
+ <span class="mi">21</span> <span class="mf">2785.962590</span>
+ <span class="mi">22</span> <span class="mf">2925.260720</span>
+ <span class="mi">23</span> <span class="mf">3071.523756</span>
+ <span class="mi">24</span> <span class="mf">3225.099944</span>
+ <span class="mi">25</span> <span class="mf">3386.354941</span>
+</pre></div>
 
-Imagine that you have a data file like this one:
+
+<p>This script opens a file and reads its contents line by line:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Opens a specific file and reads its contents line by line</span>
+<span class="c1"># open-file-read-lines-01a.py</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;datafile&quot;</span><span class="p">)</span>    <span class="c1"># Returns a file object</span>
+<span class="n">line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>    <span class="c1"># Invokes readline() method on file</span>
+<span class="k">while</span> <span class="n">line</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>    <span class="c1"># Close the file object</span>
+</pre></div>
 
 
-wzxhzdk:28
-
-
-This script opens a file and reads its contents line by line:
-
-
-wzxhzdk:29
-
-
-The ``open()`` function returns a new file object. By invoking methods on this object, you can 
-perform various file operations. The ``readline()`` method reads a single line of input, including 
-the terminating newline. The empty string is returned at the end of the file.
-
-In the example, the program is simply looping over all the lines in the file ``datafile``. Whenever 
+<p>The <code>open()</code> function returns a new file object. By invoking methods on this object, you can 
+perform various file operations. The <code>readline()</code> method reads a single line of input, including 
+the terminating newline. The empty string is returned at the end of the file.</p>
+<p>In the example, the program is simply looping over all the lines in the file <code>datafile</code>. Whenever 
 a program loops over a collection of data like this (for instance input lines, numbers, strings, 
-etc.), it is commonly known as *iteration*. Because iteration is such a common operation, Python 
-provides a dedicated statement, ``for``, that is used to iterate over items. For instance, the same 
-program can be written much more succinctly as follows:
+etc.), it is commonly known as <em>iteration</em>. Because iteration is such a common operation, Python 
+provides a dedicated statement, <code>for</code>, that is used to iterate over items. For instance, the same 
+program can be written much more succinctly as follows:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Opens a specific file and reads its contents line by line</span>
+<span class="c1"># open-file-read-lines-01b.py</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;datafile&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
 
 
-wzxhzdk:30
+<p>To make the output of a program go to a file, you can supply a file to the <code>print</code> statement, as 
+shown in the following example:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Opens a specific file to be written with the results of the program</span>
+<span class="c1"># open-file-write-values-01a.py</span>
+<span class="n">principal</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">rate</span> <span class="o">=</span> <span class="mf">0.05</span>
+<span class="n">numyears</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="n">year</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;datafile-02&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="k">while</span> <span class="n">year</span> <span class="o">&lt;=</span> <span class="n">numyears</span><span class="p">:</span>
+    <span class="n">principal</span> <span class="o">=</span> <span class="n">principal</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">rate</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%3d</span><span class="s2"> </span><span class="si">%0.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">principal</span><span class="p">),</span> <span class="nb">file</span><span class="o">=</span><span class="n">f</span><span class="p">)</span>
+    <span class="n">year</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
 
 
-To make the output of a program go to a file, you can supply a file to the ``print`` statement, as 
-shown in the following example:
+<p>You can even use the <code>format()</code> method:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Opens a specific file to be written with the results of the program</span>
+<span class="c1"># open-file-write-values-01b.py</span>
+<span class="n">principal</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">rate</span> <span class="o">=</span> <span class="mf">0.05</span>
+<span class="n">numyears</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="n">year</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;datafile-02&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="k">while</span> <span class="n">year</span> <span class="o">&lt;=</span> <span class="n">numyears</span><span class="p">:</span>
+    <span class="n">principal</span> <span class="o">=</span> <span class="n">principal</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">rate</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;{0:3d} {1:0.2f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">principal</span><span class="p">),</span> <span class="nb">file</span><span class="o">=</span><span class="n">f</span><span class="p">)</span>
+    <span class="n">year</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
 
 
-wzxhzdk:31
+<p>In addition, file objects support a <code>write()</code> method that can be used to write raw data. For 
+example, the <code>print</code> statement in the previous example could have been written this way:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Opens a specific file to be written with the results of the program</span>
+<span class="c1"># open-file-write-values-01c.py</span>
+<span class="n">principal</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">rate</span> <span class="o">=</span> <span class="mf">0.05</span>
+<span class="n">numyears</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="n">year</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;datafile-02&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="k">while</span> <span class="n">year</span> <span class="o">&lt;=</span> <span class="n">numyears</span><span class="p">:</span>
+    <span class="n">principal</span> <span class="o">=</span> <span class="n">principal</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">rate</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;{0:3d} {1:0.2f}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">principal</span><span class="p">))</span>
+    <span class="n">year</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
 
 
-You can even use the ``format()`` method:
-
-
-wzxhzdk:32
-
-
-In addition, file objects support a ``write()`` method that can be used to write raw data. For 
-example, the ``print`` statement in the previous example could have been written this way:
-
-
-wzxhzdk:33
-
-
-Although these examples have worked with files, the same techniques apply to the standard output 
+<p>Although these examples have worked with files, the same techniques apply to the standard output 
 and input streams of the interpreter. For example, if you wanted to read user input interactively, 
-you can read from the file ``sys.stdin``. If you want to write data to the screen, you can write 
-to ``sys.stdout``, which is the same file used to output data produced by the ``print`` statement. 
-For example:
+you can read from the file <code>sys.stdin</code>. If you want to write data to the screen, you can write 
+to <code>sys.stdout</code>, which is the same file used to output data produced by the <code>print</code> statement. 
+For example:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Run as script, not from the interpreter!</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Enter your name: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">name</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Hello, {0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+</pre></div>
 
 
-wzxhzdk:34
+<p>This code can also be shortened to the following:</p>
+<div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter your name: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Hello, {0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+</pre></div>
 
-
-This code can also be shortened to the following:
-
-
-wzxhzdk:35
-
-
-</div>
 
 <h2 id="strings">Strings</h2>
-<div class="p-content">
+<p>Create strings like this:</p>
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;Hello, World!&quot;</span>
+<span class="n">b</span> <span class="o">=</span> <span class="s1">&#39;Life is beautiful&#39;</span>
+<span class="n">c</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;The area of &#39;Data Structures and Algorithms in Python&#39; is very interesting&quot;&quot;&quot;</span>
+</pre></div>
 
-Create strings like this:
 
-
-wzxhzdk:36
-
-
-The use of triple-quoted strings allow us to capture all the text that appears prior to the 
+<p>The use of triple-quoted strings allow us to capture all the text that appears prior to the 
 terminating triple quote, as opposed to single -and double- quoted strings, which must be specified 
 on one logical line. Triple-quoted strings are useful when the contents of a string literal span 
-multiple lines of text such as the following:
+multiple lines of text such as the following:</p>
+<div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;&lt;!DOCTYPE html&gt;</span>
+<span class="s2">&lt;html lang=&quot;en&quot;&gt;</span>
+<span class="s2">    &lt;head&gt;</span>
+<span class="s2">        &lt;meta charset=&quot;utf-8&quot;&gt;</span>
+<span class="s2">        &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span>
+<span class="s2">        &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+</pre></div>
 
 
-wzxhzdk:37
+<p>Strings are stored as sequences of characters indexed by integers, starting at <strong>zero (0)</strong>. To 
+extract a single character, use the indexing operator <code>s[i]</code> like this:</p>
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;Hello, World!&quot;</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>    <span class="c1"># b = &#39;o&#39;</span>
+</pre></div>
 
 
-Strings are stored as sequences of characters indexed by integers, starting at **zero (0)**. To 
-extract a single character, use the indexing operator ``s[i]`` like this:
+<p>To extract a substring, use the slicing operator <code>s[i:j]</code>. This extracts all characters from <em>s</em> 
+whose index <em>k</em> is in the range <em>i &lt;= k &lt; j</em>. If either index is omitted, the beginning or end of 
+the string is assumed, respectively:</p>
+<div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>    <span class="c1"># c = &quot;Hello&#39;</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">6</span><span class="p">:]</span>    <span class="c1"># d = &quot; World!&quot;</span>
+<span class="n">e</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">8</span><span class="p">]</span>    <span class="c1"># e = &quot;lo, W&quot;</span>
+</pre></div>
 
 
-wzxhzdk:38
+<p>If you want to concatenate strings, use the plus (+) operator:</p>
+<div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="s2">&quot; This is a test&quot;</span>    <span class="c1"># g = &quot;Hello, World! This is a test&quot;</span>
+</pre></div>
 
 
-To extract a substring, use the slicing operator ``s[i:j]``. This extracts all characters from *s* 
-whose index *k* is in the range *i <= k < j*. If either index is omitted, the beginning or end of 
-the string is assumed, respectively:
+<p>Python never implicitly interprets the contents of a string as numerical data. For example, <code>+</code> 
+always concatenates strings:</p>
+<div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;49&quot;</span>
+<span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;26&quot;</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>    <span class="c1"># z = &quot;4926&quot;</span>
+</pre></div>
 
 
-wzxhzdk:39
+<p>To perform mathematical calculations, strings first have to be converted into a numeric value using 
+a function such as <code>int()</code> or <code>float()</code>. For example:</p>
+<div class="highlight"><pre><span></span><span class="n">z</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>    <span class="c1"># z = 75</span>
+<span class="n">z</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="nb">float</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>    <span class="c1"># z = 75.0</span>
+</pre></div>
 
 
-If you want to concatenate strings, use the plus (+) operator:
+<p>Non-string values can be converted into a string representation by using the <code>str()</code>, <code>repr()</code>, 
+or <code>format()</code> function. See how this works:</p>
+<div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">49</span>
+<span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;The value of x is &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>    <span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;The value of x is 49&quot;</span>
+<span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;The value of x is &quot;</span> <span class="o">+</span> <span class="nb">repr</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>    <span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;The value of x is 49&quot;</span>
+<span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;The value of x is &quot;</span> <span class="o">+</span> <span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s2">&quot;5d&quot;</span><span class="p">)</span>    <span class="n">s</span> <span class="o">=</span> <span class="n">The</span> <span class="n">value</span> <span class="n">of</span> <span class="n">x</span> <span class="ow">is</span>    <span class="mi">49</span><span class="s2">&quot;</span>
+</pre></div>
 
 
-wzxhzdk:40
+<p>Although <code>str()</code> and <code>repr()</code> both create strings, their output is usually slightly 
+different. <code>str()</code> produces the output that you get when you use the <code>print</code> statement, 
+whereas <code>repr()</code> creates a string that you type into a program to exactly represent the
+value of an object.</p>
+<p>The <code>format()</code> function is used to convert a value to a string with a specific formatting applied. 
+For example:</p>
+<div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s2">&quot;0.6f&quot;</span><span class="p">)</span>    <span class="c1"># f = 49.000000</span>
+</pre></div>
 
-
-Python never implicitly interprets the contents of a string as numerical data. For example, ``+`` 
-always concatenates strings:
-
-
-wzxhzdk:41
-
-
-To perform mathematical calculations, strings first have to be converted into a numeric value using 
-a function such as ``int()`` or ``float()``. For example:
-
-
-wzxhzdk:42
-
-
-Non-string values can be converted into a string representation by using the ``str()``, ``repr()``, 
-or ``format()`` function. See how this works:
-
-
-wzxhzdk:43
-
-
-Although ``str()`` and ``repr()`` both create strings, their output is usually slightly 
-different. ``str()`` produces the output that you get when you use the ``print`` statement, 
-whereas ``repr()`` creates a string that you type into a program to exactly represent the
-value of an object.
-
-The ``format()`` function is used to convert a value to a string with a specific formatting applied. 
-For example:
-
-
-wzxhzdk:44
-
-</div>
 
 <h2 id="lists">Lists</h2>
-<div class="p-content">
-
-*Lists* are sequences of arbitrary objects. You create a list by enclosing values in square 
-brackets:
-
-
-wzxhzdk:45
+<p><em>Lists</em> are sequences of arbitrary objects. You create a list by enclosing values in square 
+brackets:</p>
+<div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;Peter&quot;</span><span class="p">,</span> <span class="s2">&quot;Dalia&quot;</span><span class="p">,</span> <span class="s2">&quot;Johnny&quot;</span><span class="p">,</span> <span class="s2">&quot;Rick&quot;</span> <span class="p">]</span>
+</pre></div>
 
 
-Lists are indexed by integers, starting with **zero (0)**. Use the indexing operator to access and
-modify individual items of the list:
+<p>Lists are indexed by integers, starting with <strong>zero (0)</strong>. Use the indexing operator to access and
+modify individual items of the list:</p>
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">names</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>    <span class="c1"># a = &quot;Johnny&quot;</span>
+<span class="n">names</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Jeffrey&quot;</span>    <span class="c1"># names = [ &quot;Jeffrey&quot;, &quot;Dalia&quot;, &quot;Johnny&quot;, &quot;Rick&quot; ]</span>
+</pre></div>
 
 
-wzxhzdk:46
+<p>To append new items to the end of a list, use the <code>append()</code> method:</p>
+<div class="highlight"><pre><span></span><span class="n">names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Tristan&quot;</span><span class="p">)</span>    <span class="c1"># names = [ &quot;Jeffrey&quot;, &quot;Dalia&quot;, &quot;Johnny&quot;, &quot;Rick&quot;, &quot;Tristan&quot; ]</span>
+</pre></div>
 
 
-To append new items to the end of a list, use the ``append()`` method:
+<p>To insert an item into a specific position of a list, use the <code>insert()</code> method:</p>
+<div class="highlight"><pre><span></span><span class="n">names</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Sue&quot;</span><span class="p">)</span>    <span class="c1"># names = [ &quot;Jeffrey&quot;, &quot;Sue&quot;, &quot;Dalia&quot;, &quot;Johnny&quot;, &quot;Rick&quot;, &quot;Tristan&quot; ]</span>
+</pre></div>
 
 
-wzxhzdk:47
+<p>You can extract or reassign a portion of a list by using the slicing operator:</p>
+<div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="n">names</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>    <span class="c1"># b = [ &quot;Jeffrey&quot;, &quot;Sue&quot; ]</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">names</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>    <span class="c1"># c = [ &quot;Dalia&quot;, &quot;Johnny&quot;, &quot;Rick&quot;, &quot;Tristan&quot; ]</span>
+<span class="n">names</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Homer&quot;</span>    <span class="c1"># names = [ &quot;Jeffrey&quot;, &quot;Homer&quot;, &quot;Dalia&quot;, &quot;Johnny&quot;, &quot;Rick&quot;, &quot;Tristan&quot;]</span>
+<span class="n">names</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;Keith&quot;</span><span class="p">,</span> <span class="s2">&quot;Brandon&quot;</span><span class="p">,</span> <span class="s2">&quot;Mark&quot;</span> <span class="p">]</span>
+<span class="c1"># names = [ &quot;Keith&quot;, &quot;Brandon&quot;, &quot;Mark&quot;, &quot;Dalia&quot;, &quot;Johnny&quot;, &quot;Rick&quot;, &quot;Tristan&quot; ]</span>
+</pre></div>
 
 
-To insert an item into a specific position of a list, use the ``insert()`` method:
+<p>To concatenate lists, use the plus (+) operator:</p>
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span> <span class="mi">13</span> <span class="p">,</span> <span class="mi">14</span> <span class="p">]</span>    <span class="c1"># a = [ 10, 11, 12, 13, 14]</span>
+</pre></div>
 
 
-wzxhzdk:48
+<p>Create an empty list in these two ways:</p>
+<div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+</pre></div>
 
 
-You can extract or reassign a portion of a list by using the slicing operator:
+<p>Lists can contain any kind of Python object, including other lists:</p>
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">22</span><span class="p">,</span> <span class="s2">&quot;Louie&quot;</span><span class="p">,</span> <span class="mf">9.81</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;C.K.&quot;</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="p">[</span><span class="mi">200</span><span class="p">,</span> <span class="mi">300</span><span class="p">]],</span> <span class="mi">29</span><span class="p">]</span>
+</pre></div>
 
 
-wzxhzdk:49
+<p>Items contained in nested lists are accessed by applying more than one indexing operation:</p>
+<div class="highlight"><pre><span></span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>    <span class="c1"># a[2] = 9.81</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>    <span class="c1"># a[3][0] = &quot;C.K.&quot;</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">3</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>    <span class="c1"># a[3][3][0] = 200</span>
+</pre></div>
 
 
-To concatenate lists, use the plus (+) operator:
+<p>Imagine that you have a data file like this one:</p>
+<div class="highlight"><pre><span></span><span class="mf">1.07</span>
+<span class="mf">15.67</span>
+<span class="mf">2.45</span>
+<span class="mf">12.23</span>
+<span class="mf">13.49</span>
+<span class="mf">100.00</span>
+<span class="o">-</span><span class="mf">5.98</span>
+</pre></div>
 
 
-wzxhzdk:50
+<p>This script reads a list of numbers from a data file specified on the command line and shows the
+minimum and maximum values:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>    <span class="c1"># Load the sys module</span>
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>    <span class="c1"># Check number of command line arguments</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Please supply a filename&quot;</span><span class="p">)</span>
+    <span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>    <span class="c1"># Filename on the command line</span>
+<span class="n">lines</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>    <span class="c1"># Read all lines into a list</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="c1"># Convert all of the input values from strings to floats</span>
+<span class="n">fvalues</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">]</span>
+
+<span class="c1"># Print minimum and maximum values</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;The minimum values is {0:0.5f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">fvalues</span><span class="p">)))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;The maximum values is {0:0.5f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">fvalues</span><span class="p">)))</span>
+</pre></div>
 
 
-Create an empty list in these two ways:
+<p>Running the program with <code>python3.6</code>, the output is:</p>
+<div class="highlight"><pre><span></span><span class="o">~</span><span class="err">$</span> <span class="n">python3</span><span class="o">.</span><span class="mi">6</span> <span class="n">advanced</span><span class="o">-</span><span class="nb">list</span><span class="o">-</span><span class="n">features</span><span class="o">-</span><span class="mo">01</span><span class="n">a</span><span class="o">.</span><span class="n">py</span> <span class="n">datafile</span>
+<span class="n">The</span> <span class="n">minimum</span> <span class="n">values</span> <span class="ow">is</span> <span class="o">-</span><span class="mf">5.98000</span>
+<span class="n">The</span> <span class="n">maximum</span> <span class="n">values</span> <span class="ow">is</span> <span class="mf">100.00000</span>
+</pre></div>
 
 
-wzxhzdk:51
+<p>The first line of this program uses the <code>import</code> statement to load the <code>sys</code> module from the 
+Python library. This module is being loaded in order to obtain command-line arguments.</p>
+<p>The <code>open()</code> function uses a filename that has been supplied as a command-line option and placed 
+in the list <code>sys.argv</code>. The <code>readlines()</code> method reads all the input lines into a list of 
+strings.</p>
+<p>The expression <code>[float(line) for line in lines]</code> constructs a new list by looping over all the 
+strings in the list <code>lines</code> and applying the function <code>float()</code> to each element. This 
+particularly powerful method of constructing a list is known as a <em>list comprehension</em>. Because the 
+lines in a file can also be read using a <code>for</code> loop, the program can be shortened by converting 
+values using as shown:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>    <span class="c1"># Load the sys module</span>
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>    <span class="c1"># Check number of command line arguments</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Please supply a filename&quot;</span><span class="p">)</span>
+    <span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>    <span class="c1"># Filename on the command line</span>
+
+<span class="c1"># Convert all of the input values from strings to floats</span>
+<span class="n">fvalues</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">]</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="c1"># Print minimum and maximum values</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;The minimum values is {0:0.5f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">fvalues</span><span class="p">)))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;The maximum values is {0:0.5f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">fvalues</span><span class="p">)))</span>
+</pre></div>
 
 
-Lists can contain any kind of Python object, including other lists:
-
-
-wzxhzdk:52
-
-
-Items contained in nested lists are accessed by applying more than one indexing operation:
-
-
-wzxhzdk:53
-
-
-Imagine that you have a data file like this one:
-
-
-wzxhzdk:54
-
-
-This script reads a list of numbers from a data file specified on the command line and shows the
-minimum and maximum values:
-
-
-wzxhzdk:55
-
-
-Running the program with ``python3.6``, the output is:
-
-
-wzxhzdk:56
-
-
-The first line of this program uses the ``import`` statement to load the ``sys`` module from the 
-Python library. This module is being loaded in order to obtain command-line arguments.
-
-The ``open()`` function uses a filename that has been supplied as a command-line option and placed 
-in the list ``sys.argv``. The ``readlines()`` method reads all the input lines into a list of 
-strings.
-
-The expression ``[float(line) for line in lines]`` constructs a new list by looping over all the 
-strings in the list ``lines`` and applying the function ``float()`` to each element. This 
-particularly powerful method of constructing a list is known as a *list comprehension*. Because the 
-lines in a file can also be read using a ``for`` loop, the program can be shortened by converting 
-values using as shown:
-
-
-wzxhzdk:57
-
-
-After the input lines have been converted into a list of floating-point numbers, the 
-built-in ``min()`` and ``max()`` functions compute the minimum and maximum values.
-
-</div>
-
+<p>After the input lines have been converted into a list of floating-point numbers, the 
+built-in <code>min()</code> and <code>max()</code> functions compute the minimum and maximum values.</p>
 <h2 id="tuples">Tuples</h2>
-<div class="p-content">
-
-To create simple data structures, you can pack a collection of values together into a single 
-object using a *tuple*. You create a tuple by enclosing a group of values in parentheses:
-
-
-wzxhzdk:58
-
-
-Python often recognizes that a tuple is intended even if the parentheses are missing:
+<p>To create simple data structures, you can pack a collection of values together into a single 
+object using a <em>tuple</em>. You create a tuple by enclosing a group of values in parentheses:</p>
+<div class="highlight"><pre><span></span><span class="n">stock</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;CNTV&#39;</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mf">126.84</span><span class="p">)</span>
+<span class="n">address</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;www.python.org&#39;</span><span class="p">,</span> <span class="mi">80</span><span class="p">)</span>
+<span class="n">person</span> <span class="o">=</span> <span class="p">(</span><span class="n">first_name</span><span class="p">,</span> <span class="n">last_name</span><span class="p">,</span> <span class="n">phone</span><span class="p">)</span>
+</pre></div>
 
 
-wzxhzdk:59
+<p>Python often recognizes that a tuple is intended even if the parentheses are missing:</p>
+<div class="highlight"><pre><span></span><span class="n">stock</span> <span class="o">=</span> <span class="s1">&#39;CNTV&#39;</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mf">126.84</span>
+<span class="n">address</span> <span class="o">=</span> <span class="s1">&#39;www.python.org&#39;</span><span class="p">,</span> <span class="mi">80</span>
+<span class="n">person</span> <span class="o">=</span> <span class="n">first_name</span><span class="p">,</span> <span class="n">last_name</span><span class="p">,</span> <span class="n">phone</span>
+</pre></div>
 
 
-Tuples of 0 (empty) and 1-element have to be defined like this:
+<p>Tuples of 0 (empty) and 1-element have to be defined like this:</p>
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">()</span>    <span class="c1"># empty tuple</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="p">)</span>    <span class="c1"># tuple of 1-element</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">value</span><span class="p">,</span>    <span class="c1"># tuple of 1-element</span>
+</pre></div>
 
 
-wzxhzdk:60
+<p>The values in a tuple can be extracted by numerical index just like a list. However, it is more 
+common to unpack tuples into a set of variables:</p>
+<div class="highlight"><pre><span></span><span class="n">name</span><span class="p">,</span> <span class="n">shares</span><span class="p">,</span> <span class="n">price</span> <span class="o">=</span> <span class="n">stock</span>
+<span class="n">host</span><span class="p">,</span> <span class="n">port</span> <span class="o">=</span> <span class="n">address</span>
+<span class="n">first_name</span><span class="p">,</span> <span class="n">last_name</span><span class="p">,</span> <span class="n">phone</span> <span class="o">=</span> <span class="n">person</span>
+</pre></div>
 
 
-The values in a tuple can be extracted by numerical index just like a list. However, it is more 
-common to unpack tuples into a set of variables:
-
-
-wzxhzdk:61
-
-
-Although tuples support most of the same operations as lists (such as indexing, slicing, and 
+<p>Although tuples support most of the same operations as lists (such as indexing, slicing, and 
 concatenation), the contents of a tuple cannot be modified after creation (that is, you cannot 
 replace, delete, or append new elements to an existing tuple). This reflects the fact that a 
 tuple is best viewed as a single object consisting of several parts, not as a collection of 
-distinct objects to which you might insert or remove items.
-
-Because there is so much overlap between tuples and lists, some programmers are inclined to ignore 
+distinct objects to which you might insert or remove items.</p>
+<p>Because there is so much overlap between tuples and lists, some programmers are inclined to ignore 
 tuples altogether and simply use lists because they seem to be more flexible. Although this works, 
 it wastes memory if your program is going to create a large number of small lists (that is, each 
 containing fewer than a dozen items). This is because lists slightly overallocate memory to 
 optimize the performance of operations that add new items. Because tuples are immutable, they use 
-a more compact representation where there is no extra space.
-
-Tuples and lists are often used together to represent data. For example, this program shows how you 
+a more compact representation where there is no extra space.</p>
+<p>Tuples and lists are often used together to represent data. For example, this program shows how you 
 might read a file consisting of different columns of data separated by commas. The datafile has 
-this structure:
+this structure:</p>
+<div class="highlight"><pre><span></span><span class="n">CNTV</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mf">126.84</span>
+<span class="n">PLTR</span><span class="p">,</span><span class="mi">250</span><span class="p">,</span><span class="mf">321.78</span>
+<span class="n">PDVS</span><span class="p">,</span><span class="mi">400</span><span class="p">,</span><span class="mf">1007.87</span>
+<span class="n">SIDR</span><span class="p">,</span><span class="mi">125</span><span class="p">,</span><span class="mf">32.46</span>
+<span class="n">ALSA</span><span class="p">,</span><span class="mi">110</span><span class="p">,</span> <span class="mf">15.45</span>
+</pre></div>
 
 
-wzxhzdk:62
+<p>The script is:</p>
+<div class="highlight"><pre><span></span><span class="c1"># File containing lines of the form &quot;name,shares,price&quot;</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;datafile.csv&quot;</span>
+<span class="n">portfolio</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">fields</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>    <span class="c1"># Split each line into a list</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">fields</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>    <span class="c1"># Extract and convert individual fields</span>
+    <span class="n">shares</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">fields</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">price</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">fields</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">stock</span> <span class="o">=</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">shares</span><span class="p">,</span> <span class="n">price</span><span class="p">)</span>    <span class="c1"># Create a tuple (name, shares, price)</span>
+    <span class="n">portfolio</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">stock</span><span class="p">)</span>    <span class="c1"># Append to list of records</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;{0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">portfolio</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;{0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">portfolio</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;{0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">portfolio</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;{0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">portfolio</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">2</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;{0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">portfolio</span><span class="p">[</span><span class="mi">4</span><span class="p">]))</span>
+</pre></div>
 
 
-The script is:
-
-
-wzxhzdk:63
-
-
-The ``split()`` method of strings splits a string into a list of fields separated by the given 
-delimiter character. The resulting ``portfolio`` data structure created by this program looks like 
+<p>The <code>split()</code> method of strings splits a string into a list of fields separated by the given 
+delimiter character. The resulting <code>portfolio</code> data structure created by this program looks like 
 a two-dimension array of rows and columns. Each row is represented by a tuple and can be accessed 
-as follows:
+as follows:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">portfolio</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="p">(</span><span class="s1">&#39;CNTV&#39;</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mf">126.84</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">portfolio</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="p">(</span><span class="s1">&#39;PLTR&#39;</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="mf">321.78</span><span class="p">)</span>
+</pre></div>
 
 
-wzxhzdk:64
+<p>Individual items of data can be accessed like this:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">portfolio</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+<span class="mi">400</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">portfolio</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span>
+<span class="mf">32.46</span>
+</pre></div>
 
 
-Individual items of data can be accessed like this:
-
-
-wzxhzdk:65
-
-
-Here's an easy way to loop over all of the records and expand fields into a set of variables:
-
-
-wzxhzdk:66
-
-
-</div>
+<p>Here's an easy way to loop over all of the records and expand fields into a set of variables:</p>
+<div class="highlight"><pre><span></span><span class="c1"># File containing lines of the form &quot;name,shares,price&quot;</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;datafile.csv&quot;</span>
+<span class="n">portfolio</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">total</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">fields</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>    <span class="c1"># Split each line into a list</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">fields</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>    <span class="c1"># Extract and convert individual fields</span>
+    <span class="n">shares</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">fields</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">price</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">fields</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">stock</span> <span class="o">=</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">shares</span><span class="p">,</span> <span class="n">price</span><span class="p">)</span>    <span class="c1"># Create a tuple (name, shares, price)</span>
+    <span class="n">portfolio</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">stock</span><span class="p">)</span>    <span class="c1"># Append to list of records</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;{0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">portfolio</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">shares</span><span class="p">,</span> <span class="n">price</span> <span class="ow">in</span> <span class="n">portfolio</span><span class="p">:</span>
+    <span class="n">total</span> <span class="o">+=</span> <span class="n">shares</span> <span class="o">*</span> <span class="n">price</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;The amount of money that you have is {0} $&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">total</span><span class="p">))</span>
+</pre></div>
 					</div>
 					<div class="span4">
 						<h3>Sidebar</h3>
