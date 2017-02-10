@@ -160,6 +160,10 @@ margin: 0;
 padding: 5px 0 0 0;
 }
 
+.more-content {
+display: none;
+}
+
 hr {
 margin: 0 0 5px 0;
 }
