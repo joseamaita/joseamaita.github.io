@@ -3,12 +3,12 @@ $(document).ready(function() {
 	// alert('Message here !!!');
 	$('table').addClass("table table-bordered table-hover");
 	
-	var $more-content = $('.more-content').first();
+	var $moreContent = $('.more-content').first();
 	$('a.more').click(function(event) {
 		event.preventDefault();
 		console.log('Clicked here');
-		console.log($more-content);
-		$more-content.slideToggle('slow');
+		console.log($moreContent);
+		$moreContent.slideToggle('slow');
 		var $link = $(this);
 		if ($link.text() == 'read more') {
 			$link.text('read less');
