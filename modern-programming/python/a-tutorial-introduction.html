@@ -165,9 +165,8 @@ it's <code>&lt;Ctrl+Z&gt;</code>. A program can request to exit by raising the <
 
 
 </div>
-<p><a class="more" href="#">read more</a></p>
+<p><a class="read-more-less" href="#">(read more ...)</a></p>
 <h2 id="variables-and-arithmetic-expressions">Variables and Arithmetic Expressions</h2>
-<div class="content-01">
 <p>The following program shows the use of variables and expressions by performing a simple 
 compound-interest calculation.</p>
 <div class="highlight"><pre><span></span><span class="c1"># Simple Compound-Interest Calculation</span>
@@ -193,6 +192,7 @@ compound-interest calculation.</p>
 </pre></div>
 
 
+<div class="more-content">
 <p>Python is a dynamically typed language where variable names are bound to different values, possibly 
 of varying types, during program execution. The assignment operator simply creates an association 
 between a name and a value. Although each value has an associated type such as an integer or string, 
@@ -323,8 +323,8 @@ passed to the <code>format()</code> method and the part after the colon is the f
 
 
 </div>
+<p><a class="read-more-less" href="#">(read more ...)</a></p>
 <h2 id="conditionals">Conditionals</h2>
-<div class="content-01">
 <p>The <code>if</code> and <code>else</code> statements can perform simple tests. Here's an example:</p>
 <div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">:</span>
     <span class="k">print</span> <span class="s2">&quot;Computer says Yes&quot;</span>
@@ -350,6 +350,7 @@ optional.</p>
 </pre></div>
 
 
+<div class="more-content">
 <p><strong>Note</strong></p>
 <blockquote>
 <p>Writing complex test cases commonly results in statements that involve an annoyingly long line 
@@ -462,8 +463,8 @@ inside of another object such as a string, list, or dictionary. It also returns 
 
 
 </div>
+<p><a class="read-more-less" href="#">(read more ...)</a></p>
 <h2 id="file-input-and-output">File Input and Output</h2>
-<div class="content-01">
 <p>Imagine that you have a data file like this one:</p>
 <div class="highlight"><pre><span></span>  <span class="mi">1</span> <span class="mf">1050.000000</span>
   <span class="mi">2</span> <span class="mf">1102.500000</span>
@@ -505,6 +506,7 @@ inside of another object such as a string, list, or dictionary. It also returns 
 </pre></div>
 
 
+<div class="more-content">
 <p>The <code>open()</code> function returns a new file object. By invoking methods on this object, you can 
 perform various file operations. The <code>readline()</code> method reads a single line of input, including 
 the terminating newline. The empty string is returned at the end of the file.</p>
@@ -592,8 +594,8 @@ For example:</p>
 
 
 </div>
+<p><a class="read-more-less" href="#">(read more ...)</a></p>
 <h2 id="strings">Strings</h2>
-<div class="content-01">
 <p>Create strings like this:</p>
 <div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;Hello, World!&quot;</span>
 <span class="n">b</span> <span class="o">=</span> <span class="s1">&#39;Life is beautiful&#39;</span>
@@ -615,6 +617,7 @@ multiple lines of text such as the following:</p>
 </pre></div>
 
 
+<div class="more-content">
 <p>Strings are stored as sequences of characters indexed by integers, starting at <strong>zero (0)</strong>. To 
 extract a single character, use the indexing operator <code>s[i]</code> like this:</p>
 <div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;Hello, World!&quot;</span>
@@ -671,8 +674,8 @@ For example:</p>
 
 
 </div>
+<p><a class="read-more-less" href="#">(read more ...)</a></p>
 <h2 id="lists">Lists</h2>
-<div class="content-01">
 <p><em>Lists</em> are sequences of arbitrary objects. You create a list by enclosing values in square 
 brackets:</p>
 <div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;Peter&quot;</span><span class="p">,</span> <span class="s2">&quot;Dalia&quot;</span><span class="p">,</span> <span class="s2">&quot;Johnny&quot;</span><span class="p">,</span> <span class="s2">&quot;Rick&quot;</span> <span class="p">]</span>
@@ -686,6 +689,7 @@ modify individual items of the list:</p>
 </pre></div>
 
 
+<div class="more-content">
 <p>To append new items to the end of a list, use the <code>append()</code> method:</p>
 <div class="highlight"><pre><span></span><span class="n">names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Tristan&quot;</span><span class="p">)</span>    <span class="c1"># names = [ &quot;Jeffrey&quot;, &quot;Dalia&quot;, &quot;Johnny&quot;, &quot;Rick&quot;, &quot;Tristan&quot; ]</span>
 </pre></div>
@@ -794,8 +798,8 @@ values using as shown:</p>
 <p>After the input lines have been converted into a list of floating-point numbers, the 
 built-in <code>min()</code> and <code>max()</code> functions compute the minimum and maximum values.</p>
 </div>
+<p><a class="read-more-less" href="#">(read more ...)</a></p>
 <h2 id="tuples">Tuples</h2>
-<div class="content-01">
 <p>To create simple data structures, you can pack a collection of values together into a single 
 object using a <em>tuple</em>. You create a tuple by enclosing a group of values in parentheses:</p>
 <div class="highlight"><pre><span></span><span class="n">stock</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;CNTV&#39;</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mf">126.84</span><span class="p">)</span>
@@ -811,6 +815,7 @@ object using a <em>tuple</em>. You create a tuple by enclosing a group of values
 </pre></div>
 
 
+<div class="more-content">
 <p>Tuples of 0 (empty) and 1-element have to be defined like this:</p>
 <div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">()</span>    <span class="c1"># empty tuple</span>
 <span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="p">)</span>    <span class="c1"># tuple of 1-element</span>
@@ -910,6 +915,7 @@ as follows:</p>
 
 
 </div>
+<p><a class="read-more-less" href="#">(read more ...)</a></p>
 					</div>
 					<div class="span4">
 						<h3>Sidebar</h3>

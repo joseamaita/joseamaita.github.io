@@ -3,18 +3,16 @@ $(document).ready(function() {
 	// alert('Message here !!!');
 	$('table').addClass("table table-bordered table-hover");
 	
-	var $moreContent = $('.more-content').first();
-	$('a.more').click(function(event) {
+	$('a.read-more-less').click(function(event) {
 		event.preventDefault();
-		console.log('Clicked here');
-		console.log($moreContent);
+		var $moreContent = $('a.read-more-less').parent().prev();
 		$moreContent.slideToggle('slow');
 		var $link = $(this);
-		if ($link.text() == 'read more') {
+		if ($link.text() == '(read more ...)') {
 			$link.text('read less');
 		}
 		else {
-			$link.text('read more');
+			$link.text('(read more ...)');
 		}
 	});
 });
