@@ -618,6 +618,11 @@ multiple lines of text such as the following:</p>
 
 
 <div class="more-content">
+<p>Strings are immutable. The operators and functions that work with them return new strings derived 
+from the original. The operators ( <code>in</code>, <code>+</code>, and <code>*</code> ) and built-in functions ( <code>len</code>, 
+<code>max</code>, and <code>min</code> ) operate on strings as they do on lists and tuples. Index and slice notation 
+works the same for obtaining elements or slices but can't be used to add, remove, or replace 
+elements.</p>
 <p>Strings are stored as sequences of characters indexed by integers, starting at <strong>zero (0)</strong>. To 
 extract a single character, use the indexing operator <code>s[i]</code> like this:</p>
 <div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;Hello, World!&quot;</span>
@@ -673,6 +678,89 @@ For example:</p>
 </pre></div>
 
 
+<p>Let's see a brief example section for working with strings:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;Hello, World! This is Python&quot;</span>
+
+<span class="c1"># Basic operators</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s1">&#39;h&#39;</span> <span class="ow">in</span> <span class="n">s</span>    <span class="c1"># Check if &#39;h&#39; is in &#39;s&#39;</span>
+<span class="bp">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s1">&#39;A&#39;</span> <span class="ow">in</span> <span class="n">s</span>    <span class="c1"># Check if &#39;A&#39; is in &#39;s&#39;</span>
+<span class="bp">False</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">+</span> <span class="s2">&quot;, Peter&quot;</span>    <span class="c1"># Concatenate strings</span>
+<span class="s1">&#39;Hello, World! This is Python, Peter&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">&quot; Hello&quot;</span> <span class="o">*</span> <span class="mi">3</span>    <span class="c1"># Replicate strings</span>
+<span class="s1">&#39; Hello Hello Hello&#39;</span>
+
+<span class="c1"># Built-in functions</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>    <span class="c1"># Length or amount of characters in &#39;s&#39;</span>
+<span class="mi">28</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">min</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>    <span class="c1"># Minimum value in &#39;s&#39; (ASCII value of &lt;Space&gt; is 32d)</span>
+<span class="s1">&#39; &#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">max</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>    <span class="c1"># Maximum value in &#39;s&#39; (ASCII value of &#39;y&#39; is 121d)</span>
+<span class="s1">&#39;y&#39;</span>
+
+<span class="c1"># &quot;Find&quot; method</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;h&#39;</span><span class="p">)</span>    <span class="c1"># Try to find the position of the first ocurrence of &#39;h&#39; in &#39;s&#39;</span>
+<span class="mi">15</span>    <span class="c1"># s[15] = &#39;h&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">)</span>
+<span class="o">-</span><span class="mi">1</span>    <span class="c1"># (not found)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>    <span class="c1"># Find first &#39;o&#39; after position [5] in s</span>
+<span class="mi">8</span>    <span class="c1"># s[8] = &#39;o&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">27</span><span class="p">)</span>    <span class="c1"># Find first &#39;o&#39; between [9] and [27]</span>
+<span class="mi">26</span>    <span class="c1"># s[26] = &#39;o&#39;</span>
+
+<span class="c1"># &quot;Split&quot; method</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>    <span class="c1"># Split &#39;s&#39; whenever &lt;Space&gt; is found. Return a list</span>
+<span class="p">[</span><span class="s1">&#39;Hello,&#39;</span><span class="p">,</span> <span class="s1">&#39;World!&#39;</span><span class="p">,</span> <span class="s1">&#39;This&#39;</span><span class="p">,</span> <span class="s1">&#39;is&#39;</span><span class="p">,</span> <span class="s1">&#39;Python&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;!&#39;</span><span class="p">)</span>    <span class="c1"># Split &#39;s&#39; whenever &#39;!&#39; is found. Return a list</span>
+<span class="p">[</span><span class="s1">&#39;Hello, World&#39;</span><span class="p">,</span> <span class="s1">&#39; This is Python&#39;</span><span class="p">]</span>
+
+<span class="c1"># &quot;Join&quot; method</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">i</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Hello,&#39;</span><span class="p">,</span> <span class="s1">&#39;World!&#39;</span><span class="p">,</span> <span class="s1">&#39;This&#39;</span><span class="p">,</span> <span class="s1">&#39;is&#39;</span><span class="p">,</span> <span class="s1">&#39;Python&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>    <span class="c1"># Joins the list items into a string whenever &#39; &#39; is found</span>
+<span class="s1">&#39;Hello, World! This is Python&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">j</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Hello, World&#39;</span><span class="p">,</span> <span class="s1">&#39; This is Python&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">&quot;!&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+<span class="s1">&#39;Hello, World! This is Python&#39;</span>
+
+<span class="c1"># &quot;Lower&quot; and &quot;upper&quot; methods</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<span class="s1">&#39;hello, world! this is python&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+<span class="s1">&#39;HELLO, WORLD! THIS IS PYTHON&#39;</span>
+
+<span class="c1"># &quot;Strip&quot; method</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;   &quot;</span> <span class="o">+</span> <span class="n">s</span> <span class="o">+</span> <span class="s2">&quot;, Peter *!@   &quot;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39; *!@&#39;</span><span class="p">)</span>    <span class="c1"># Removes leading and trailing whitespace or characters</span>
+<span class="s1">&#39;Hello, World! This is Python, Peter&#39;</span>
+
+<span class="c1"># &quot;Replace&quot; method</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;World&#39;</span><span class="p">,</span> <span class="s1">&#39;Mary&#39;</span><span class="p">)</span>    <span class="c1"># Replaces substring &#39;World&#39; for &#39;Mary&#39;</span>
+<span class="s1">&#39;Hello, Mary! This is Python&#39;</span>
+
+<span class="c1"># Useful constants</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">string</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">string</span><span class="o">.</span><span class="n">digits</span>
+<span class="s1">&#39;0123456789&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">string</span><span class="o">.</span><span class="n">hexdigits</span>
+<span class="s1">&#39;0123456789abcdefABCDEF&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">string</span><span class="o">.</span><span class="n">octdigits</span>
+<span class="s1">&#39;01234567&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">string</span><span class="o">.</span><span class="n">ascii_letters</span>
+<span class="s1">&#39;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">string</span><span class="o">.</span><span class="n">ascii_lowercase</span>
+<span class="s1">&#39;abcdefghijklmnopqrstuvwxyz&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">string</span><span class="o">.</span><span class="n">ascii_uppercase</span>
+<span class="s1">&#39;ABCDEFGHIJKLMNOPQRSTUVWXYZ&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">string</span><span class="o">.</span><span class="n">printable</span>
+<span class="s1">&#39;0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!&quot;#$%&amp;</span><span class="se">\&#39;</span><span class="s1">()*+,-./:;&lt;=&gt;?@[</span><span class="se">\\</span><span class="s1">]^_`{|}~ </span><span class="se">\t\n\r\x0b\x0c</span><span class="s1">&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">string</span><span class="o">.</span><span class="n">punctuation</span>
+<span class="s1">&#39;!&quot;#$%&amp;</span><span class="se">\&#39;</span><span class="s1">()*+,-./:;&lt;=&gt;?@[</span><span class="se">\\</span><span class="s1">]^_`{|}~&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">string</span><span class="o">.</span><span class="n">whitespace</span>
+<span class="s1">&#39; </span><span class="se">\t\n\r\x0b\x0c</span><span class="s1">&#39;</span>
+</pre></div>
+
+
 </div>
 <p><a class="read-more-less" href="#">(read more ...)</a></p>
 <h2 id="lists">Lists</h2>
@@ -690,6 +778,21 @@ modify individual items of the list:</p>
 
 
 <div class="more-content">
+<p>Also, it is important to notice that indexing can be done from the front using positive indices 
+(starting with 0 as the first element) and from the back using negative indices (starting with 
+-1 as the last element). Let's see an example of this:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;first&quot;</span><span class="p">,</span> <span class="s2">&quot;second&quot;</span><span class="p">,</span> <span class="s2">&quot;third&quot;</span><span class="p">,</span> <span class="s2">&quot;fourth&quot;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="s1">&#39;first&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="s1">&#39;fourth&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="s1">&#39;third&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+<span class="s1">&#39;third&#39;</span>
+</pre></div>
+
+
 <p>To append new items to the end of a list, use the <code>append()</code> method:</p>
 <div class="highlight"><pre><span></span><span class="n">names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Tristan&quot;</span><span class="p">)</span>    <span class="c1"># names = [ &quot;Jeffrey&quot;, &quot;Dalia&quot;, &quot;Johnny&quot;, &quot;Rick&quot;, &quot;Tristan&quot; ]</span>
 </pre></div>
@@ -703,6 +806,7 @@ modify individual items of the list:</p>
 <p>You can extract or reassign a portion of a list by using the slicing operator:</p>
 <div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="n">names</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>    <span class="c1"># b = [ &quot;Jeffrey&quot;, &quot;Sue&quot; ]</span>
 <span class="n">c</span> <span class="o">=</span> <span class="n">names</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>    <span class="c1"># c = [ &quot;Dalia&quot;, &quot;Johnny&quot;, &quot;Rick&quot;, &quot;Tristan&quot; ]</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">names</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span>    <span class="c1"># d = [&quot;Johnny&quot;, &quot;Rick&quot;, &quot;Tristan&quot;]</span>
 <span class="n">names</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Homer&quot;</span>    <span class="c1"># names = [ &quot;Jeffrey&quot;, &quot;Homer&quot;, &quot;Dalia&quot;, &quot;Johnny&quot;, &quot;Rick&quot;, &quot;Tristan&quot;]</span>
 <span class="n">names</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;Keith&quot;</span><span class="p">,</span> <span class="s2">&quot;Brandon&quot;</span><span class="p">,</span> <span class="s2">&quot;Mark&quot;</span> <span class="p">]</span>
 <span class="c1"># names = [ &quot;Keith&quot;, &quot;Brandon&quot;, &quot;Mark&quot;, &quot;Dalia&quot;, &quot;Johnny&quot;, &quot;Rick&quot;, &quot;Tristan&quot; ]</span>
@@ -797,6 +901,95 @@ values using as shown:</p>
 
 <p>After the input lines have been converted into a list of floating-point numbers, the 
 built-in <code>min()</code> and <code>max()</code> functions compute the minimum and maximum values.</p>
+<p>Let's see a brief example section for working with lists:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">names</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;Peter&quot;</span><span class="p">,</span> <span class="s2">&quot;Dalia&quot;</span><span class="p">,</span> <span class="s2">&quot;Johnny&quot;</span><span class="p">,</span> <span class="s2">&quot;Rick&quot;</span> <span class="p">]</span>
+
+<span class="c1"># Basic operators</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s1">&#39;Dalia&#39;</span> <span class="ow">in</span> <span class="n">names</span>    <span class="c1"># Check if &#39;Dalia&#39; is in &#39;names&#39;</span>
+<span class="bp">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s1">&#39;Terry&#39;</span> <span class="ow">in</span> <span class="n">names</span>    <span class="c1"># Check if &#39;Terry&#39; is in &#39;names&#39;</span>
+<span class="bp">False</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">names</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;Jasmin&quot;</span><span class="p">,</span> <span class="s2">&quot;Philys&quot;</span><span class="p">,</span> <span class="s2">&quot;Ella&quot;</span><span class="p">]</span>    <span class="c1"># Concatenate lists</span>
+<span class="p">[</span><span class="s1">&#39;Peter&#39;</span><span class="p">,</span> <span class="s1">&#39;Dalia&#39;</span><span class="p">,</span> <span class="s1">&#39;Johnny&#39;</span><span class="p">,</span> <span class="s1">&#39;Rick&#39;</span><span class="p">,</span> <span class="s1">&#39;Jasmin&#39;</span><span class="p">,</span> <span class="s1">&#39;Philys&#39;</span><span class="p">,</span> <span class="s1">&#39;Ella&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="s2">&quot;Jasmin&quot;</span><span class="p">,</span> <span class="s2">&quot;Philys&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">4</span>    <span class="c1"># Replicate lists</span>
+<span class="p">[</span><span class="s1">&#39;Jasmin&#39;</span><span class="p">,</span> <span class="s1">&#39;Philys&#39;</span><span class="p">,</span> <span class="s1">&#39;Jasmin&#39;</span><span class="p">,</span> <span class="s1">&#39;Philys&#39;</span><span class="p">,</span> <span class="s1">&#39;Jasmin&#39;</span><span class="p">,</span> <span class="s1">&#39;Philys&#39;</span><span class="p">,</span> <span class="s1">&#39;Jasmin&#39;</span><span class="p">,</span> <span class="s1">&#39;Philys&#39;</span><span class="p">]</span>
+
+<span class="c1"># Built-in functions</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>    <span class="c1"># Length or amount of items in &#39;names&#39;</span>
+<span class="mi">4</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">min</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>    <span class="c1"># Minimum value in &#39;names&#39; (ASCII value of first letter &#39;D&#39;)</span>
+<span class="s1">&#39;Dalia&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">max</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>    <span class="c1"># Maximum value in &#39;names&#39; (ASCII value of first letter &#39;R&#39;)</span>
+<span class="s1">&#39;Rick&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">del</span> <span class="n">names</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>    <span class="c1"># Delete element in position[1] (&quot;Dalia&quot;)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">names</span>
+<span class="p">[</span><span class="s1">&#39;Peter&#39;</span><span class="p">,</span> <span class="s1">&#39;Johnny&#39;</span><span class="p">,</span> <span class="s1">&#39;Rick&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">del</span> <span class="n">names</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>    <span class="c1"># Delete element in position[-1] (&quot;Rick&quot;)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">names</span>
+<span class="p">[</span><span class="s1">&#39;Peter&#39;</span><span class="p">,</span> <span class="s1">&#39;Johnny&#39;</span><span class="p">]</span>
+
+<span class="c1"># &quot;Append&quot; method</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Brian&quot;</span><span class="p">)</span>    <span class="c1"># Append name &quot;Brian&quot; at the end of &#39;names&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">names</span>
+<span class="p">[</span><span class="s1">&#39;Peter&#39;</span><span class="p">,</span> <span class="s1">&#39;Johnny&#39;</span><span class="p">,</span> <span class="s1">&#39;Brian&#39;</span><span class="p">]</span>
+
+<span class="c1"># &quot;Count&quot; method</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">names</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;Johnny&quot;</span><span class="p">)</span>    <span class="c1"># Counts ocurrences of &quot;Johnny&quot; in &#39;names&#39;</span>
+<span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">names</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;Josh&quot;</span><span class="p">)</span>    <span class="c1"># Counts ocurrences of &quot;Josh&quot; in &#39;names&#39;</span>
+<span class="mi">0</span>
+
+<span class="c1"># &quot;Extend&quot; method</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">names</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;Trinity&quot;</span><span class="p">,</span> <span class="s2">&quot;Carly&quot;</span><span class="p">])</span>    <span class="c1"># Appends a new list at the end of &#39;names&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">names</span>                             
+<span class="p">[</span><span class="s1">&#39;Peter&#39;</span><span class="p">,</span> <span class="s1">&#39;Johnny&#39;</span><span class="p">,</span> <span class="s1">&#39;Brian&#39;</span><span class="p">,</span> <span class="s1">&#39;Trinity&#39;</span><span class="p">,</span> <span class="s1">&#39;Carly&#39;</span><span class="p">]</span>
+
+<span class="c1"># &quot;Index&quot; method</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">names</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">&quot;Carly&quot;</span><span class="p">)</span>    <span class="c1"># Returns the smallest &#39;i&#39; where s[i] == &quot;Carly&quot;</span>
+<span class="mi">4</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">names</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">&quot;Carly&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>    <span class="c1"># Returns the position of &#39;Carly&#39; between &#39;0, 5&#39;</span>
+<span class="mi">4</span>
+
+<span class="c1"># &quot;Insert&quot; method</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">names</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;Daniel&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">names</span>
+<span class="p">[</span><span class="s1">&#39;Peter&#39;</span><span class="p">,</span> <span class="s1">&#39;Johnny&#39;</span><span class="p">,</span> <span class="s1">&#39;Brian&#39;</span><span class="p">,</span> <span class="s1">&#39;Daniel&#39;</span><span class="p">,</span> <span class="s1">&#39;Trinity&#39;</span><span class="p">,</span> <span class="s1">&#39;Carly&#39;</span><span class="p">]</span>
+
+<span class="c1"># &quot;Pop&quot; method (used to implement a data structure called stack)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">names</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>    <span class="c1"># Returns the last element</span>
+<span class="s1">&#39;Carly&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">names</span>
+<span class="p">[</span><span class="s1">&#39;Peter&#39;</span><span class="p">,</span> <span class="s1">&#39;Johnny&#39;</span><span class="p">,</span> <span class="s1">&#39;Brian&#39;</span><span class="p">,</span> <span class="s1">&#39;Daniel&#39;</span><span class="p">,</span> <span class="s1">&#39;Trinity&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">names</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>    <span class="c1"># Returns the [1] element </span>
+<span class="s1">&#39;Johnny&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">names</span>
+<span class="p">[</span><span class="s1">&#39;Peter&#39;</span><span class="p">,</span> <span class="s1">&#39;Brian&#39;</span><span class="p">,</span> <span class="s1">&#39;Daniel&#39;</span><span class="p">,</span> <span class="s1">&#39;Trinity&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">names</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>    <span class="c1"># Returns the first element</span>
+<span class="s1">&#39;Peter&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">names</span>
+<span class="p">[</span><span class="s1">&#39;Brian&#39;</span><span class="p">,</span> <span class="s1">&#39;Daniel&#39;</span><span class="p">,</span> <span class="s1">&#39;Trinity&#39;</span><span class="p">]</span>
+
+<span class="c1"># &quot;Remove&quot; method</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">names</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;Brian&quot;</span><span class="p">)</span>    <span class="c1"># Searches for &quot;Brian&quot; and removes it from &#39;names&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">names</span>
+<span class="p">[</span><span class="s1">&#39;Daniel&#39;</span><span class="p">,</span> <span class="s1">&#39;Trinity&#39;</span><span class="p">]</span>
+
+<span class="c1"># &quot;Reverse&quot; method</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">names</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;Peter&quot;</span><span class="p">,</span> <span class="s2">&quot;Dalia&quot;</span><span class="p">,</span> <span class="s2">&quot;Johnny&quot;</span><span class="p">,</span> <span class="s2">&quot;Rick&quot;</span> <span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">names</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>    <span class="c1"># Reverses items of &#39;names&#39; in place</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">names</span>
+<span class="p">[</span><span class="s1">&#39;Rick&#39;</span><span class="p">,</span> <span class="s1">&#39;Johnny&#39;</span><span class="p">,</span> <span class="s1">&#39;Dalia&#39;</span><span class="p">,</span> <span class="s1">&#39;Peter&#39;</span><span class="p">]</span>
+
+<span class="c1"># &quot;Sort&quot; method</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">names</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>    <span class="c1"># Arrange items of &#39;names&#39; in place</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">names</span>
+<span class="p">[</span><span class="s1">&#39;Dalia&#39;</span><span class="p">,</span> <span class="s1">&#39;Johnny&#39;</span><span class="p">,</span> <span class="s1">&#39;Peter&#39;</span><span class="p">,</span> <span class="s1">&#39;Rick&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">names</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>    <span class="c1"># Arrange items of &#39;names&#39; in place in reverse order</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">names</span>
+<span class="p">[</span><span class="s1">&#39;Rick&#39;</span><span class="p">,</span> <span class="s1">&#39;Peter&#39;</span><span class="p">,</span> <span class="s1">&#39;Johnny&#39;</span><span class="p">,</span> <span class="s1">&#39;Dalia&#39;</span><span class="p">]</span>
+</pre></div>
+
+
 </div>
 <p><a class="read-more-less" href="#">(read more ...)</a></p>
 <h2 id="tuples">Tuples</h2>
