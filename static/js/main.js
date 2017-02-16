@@ -14,7 +14,7 @@ $(document).ready(function() {
 		}
 		else {
 			$link.text('read more »');
-			$('html,body').animate({scrollTop: (offset.top + 300)}, 'slow');
+			$('html,body').animate({scrollTop: (offset.top - 200)}, 'slow');
 		}
 	});
 });
