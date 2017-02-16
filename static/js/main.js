@@ -6,6 +6,8 @@ $(document).ready(function() {
 	$('a.read-more-less').click(function(event) {
 		event.preventDefault();
 		var $moreContent = $(this).parent().prev();
+		var offset = $moreContent.offset();
+		console.log(offset);
 		$moreContent.slideToggle('slow');
 		var $link = $(this);
 		if ($link.text() == 'read more »') {
