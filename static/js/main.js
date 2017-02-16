@@ -9,11 +9,11 @@ $(document).ready(function() {
 		console.log($moreContent);
 		$moreContent.slideToggle('slow');
 		var $link = $(this);
-		if ($link.text() == 'read more &#187;') {
-			$link.text('&#171; read less');
+		if ($link.text() == 'read more »') {
+			$link.text('« read less');
 		}
 		else {
-			$link.text('read more &#187;');
+			$link.text('read more »');
 		}
 	});
 });
