@@ -10,7 +10,7 @@ $(document).ready(function() {
 		$moreContent.slideToggle('slow');
 		var $link = $(this);
 		if ($link.text() == 'read more') {
-			$link.text('read less';
+			$link.text('read less');
 		}
 		else {
 			$link.text('read more');
