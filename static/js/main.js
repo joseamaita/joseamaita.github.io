@@ -7,14 +7,14 @@ $(document).ready(function() {
 		event.preventDefault();
 		var $moreContent = $(this).parent().prev();
 		var offset = $moreContent.offset();
-		console.log(offset);
-		$moreContent.slideToggle('slow');
 		var $link = $(this);
+		$moreContent.slideToggle('slow');
 		if ($link.text() == 'read more »') {
 			$link.text('« read less');
 		}
 		else {
 			$link.text('read more »');
+			$('html,body').animate({scrollTop: offset.top}, 'slow');
 		}
 	});
 });
