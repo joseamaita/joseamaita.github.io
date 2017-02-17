@@ -1001,6 +1001,75 @@ merely trying to store and work with data in your program, you are almost always
 dictionary than trying to come up with some kind of custom data structure on your own.</p>
 </div>
 <p><a class="read-more-less" href="#">read more &#187;</a></p>
+<h2 id="iteration-and-looping">Iteration and Looping</h2>
+<p>The most widely used looping construct is the <code>for</code> statement, which is used to iterate over a 
+collection of items. Iteration is one of Python's richest features. However, the most common form 
+of iteration is to simply loop over all the members of a sequence such as a string, list, or tuple. 
+Let's see:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]:</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="s2">&quot;2 to the {0:d} power is {1:d}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="n">n</span><span class="p">))</span>
+<span class="o">...</span> 
+<span class="mi">2</span> <span class="n">to</span> <span class="n">the</span> <span class="mi">1</span> <span class="n">power</span> <span class="ow">is</span> <span class="mi">2</span>
+<span class="mi">2</span> <span class="n">to</span> <span class="n">the</span> <span class="mi">2</span> <span class="n">power</span> <span class="ow">is</span> <span class="mi">4</span>
+<span class="mi">2</span> <span class="n">to</span> <span class="n">the</span> <span class="mi">3</span> <span class="n">power</span> <span class="ow">is</span> <span class="mi">8</span>
+<span class="mi">2</span> <span class="n">to</span> <span class="n">the</span> <span class="mi">4</span> <span class="n">power</span> <span class="ow">is</span> <span class="mi">16</span>
+<span class="mi">2</span> <span class="n">to</span> <span class="n">the</span> <span class="mi">5</span> <span class="n">power</span> <span class="ow">is</span> <span class="mi">32</span>
+<span class="mi">2</span> <span class="n">to</span> <span class="n">the</span> <span class="mi">6</span> <span class="n">power</span> <span class="ow">is</span> <span class="mi">64</span>
+<span class="mi">2</span> <span class="n">to</span> <span class="n">the</span> <span class="mi">7</span> <span class="n">power</span> <span class="ow">is</span> <span class="mi">128</span>
+<span class="mi">2</span> <span class="n">to</span> <span class="n">the</span> <span class="mi">8</span> <span class="n">power</span> <span class="ow">is</span> <span class="mi">256</span>
+<span class="mi">2</span> <span class="n">to</span> <span class="n">the</span> <span class="mi">9</span> <span class="n">power</span> <span class="ow">is</span> <span class="mi">512</span>
+</pre></div>
+
+
+<p>In this example, the variable <code>n</code> will be assigned successive items from the 
+list <code>[1, 2, 3, 4, ..., 9]</code> on each iteration. Because looping over ranges of integers is quite
+common, the following shortcut is often used for that purpose:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="s2">&quot;2 to the {0:d} power is {1:d}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="n">n</span><span class="p">))</span>
+<span class="o">...</span> 
+<span class="mi">2</span> <span class="n">to</span> <span class="n">the</span> <span class="mi">1</span> <span class="n">power</span> <span class="ow">is</span> <span class="mi">2</span>
+<span class="mi">2</span> <span class="n">to</span> <span class="n">the</span> <span class="mi">2</span> <span class="n">power</span> <span class="ow">is</span> <span class="mi">4</span>
+<span class="mi">2</span> <span class="n">to</span> <span class="n">the</span> <span class="mi">3</span> <span class="n">power</span> <span class="ow">is</span> <span class="mi">8</span>
+<span class="mi">2</span> <span class="n">to</span> <span class="n">the</span> <span class="mi">4</span> <span class="n">power</span> <span class="ow">is</span> <span class="mi">16</span>
+<span class="mi">2</span> <span class="n">to</span> <span class="n">the</span> <span class="mi">5</span> <span class="n">power</span> <span class="ow">is</span> <span class="mi">32</span>
+<span class="mi">2</span> <span class="n">to</span> <span class="n">the</span> <span class="mi">6</span> <span class="n">power</span> <span class="ow">is</span> <span class="mi">64</span>
+<span class="mi">2</span> <span class="n">to</span> <span class="n">the</span> <span class="mi">7</span> <span class="n">power</span> <span class="ow">is</span> <span class="mi">128</span>
+<span class="mi">2</span> <span class="n">to</span> <span class="n">the</span> <span class="mi">8</span> <span class="n">power</span> <span class="ow">is</span> <span class="mi">256</span>
+<span class="mi">2</span> <span class="n">to</span> <span class="n">the</span> <span class="mi">9</span> <span class="n">power</span> <span class="ow">is</span> <span class="mi">512</span>
+</pre></div>
+
+
+<div class="more-content">
+<p>The <code>range(i,j [,stride])</code> function creates an object that represents a range of integers with 
+values <strong>i</strong> to <strong>j-1</strong>. If the starting value is omitted, it's taken to be zero. An optional 
+stride can also be given as a third argument. Let's see:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span>
+<span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span>
+<span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">c</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">c</span>
+<span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span>
+<span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+</pre></div>
+
+
+<p>The <code>for</code> loop is one of Python's most powerful language features because you can create custom 
+iterator objects and generator functions that supply it with sequences of values.</p>
+</div>
+<p><a class="read-more-less" href="#">read more &#187;</a></p>
 					</div>
 					<div class="span4">
 						<h3>Sidebar</h3>

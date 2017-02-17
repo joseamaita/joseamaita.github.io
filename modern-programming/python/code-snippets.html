@@ -525,6 +525,83 @@ and <code>values</code> ) are available.</p>
 <p>Keys must be of an immutable type. This includes numbers, strings, and tuples. Values can be any 
 kind of object, including mutable types such as lists and dictionaries. The dictionary method <code>get</code> 
 optionally returns a user-definable value when a key isn't in a dictionary.</p>
+<h2 id="iteration-and-looping">Iteration and Looping</h2>
+<p>The <code>for</code> statement is not limited to sequences of integers and can be used to iterate over many 
+kinds of objects including strings, lists, dictionaries, and files. Let's see several examples
+below:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;Hello World&quot;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>    <span class="c1"># Print out the individual characters in a</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<span class="o">...</span> 
+<span class="n">H</span>
+<span class="n">e</span>
+<span class="n">l</span>
+<span class="n">l</span>
+<span class="n">o</span>
+
+<span class="n">W</span>
+<span class="n">o</span>
+<span class="n">r</span>
+<span class="n">l</span>
+<span class="n">d</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Peter&quot;</span><span class="p">,</span> <span class="s2">&quot;Dalia&quot;</span><span class="p">,</span> <span class="s2">&quot;Johnny&quot;</span><span class="p">,</span> <span class="s2">&quot;Rick&quot;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">b</span><span class="p">:</span>    <span class="c1"># Print out the members of a list</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+<span class="o">...</span> 
+<span class="n">Peter</span>
+<span class="n">Dalia</span>
+<span class="n">Johnny</span>
+<span class="n">Rick</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">c</span> <span class="o">=</span> <span class="p">{</span>
+<span class="o">...</span> <span class="s2">&quot;CNTV&quot;</span><span class="p">:</span> <span class="mf">126.84</span><span class="p">,</span> 
+<span class="o">...</span> <span class="s2">&quot;PLTR&quot;</span><span class="p">:</span> <span class="mf">321.78</span><span class="p">,</span>
+<span class="o">...</span> <span class="s2">&quot;PDVS&quot;</span><span class="p">:</span> <span class="mf">1007.87</span><span class="p">,</span>
+<span class="o">...</span> <span class="s2">&quot;SIDR&quot;</span><span class="p">:</span> <span class="mf">32.46</span><span class="p">,</span>
+<span class="o">...</span> <span class="s2">&quot;ALSA&quot;</span><span class="p">:</span> <span class="mf">15.45</span>
+<span class="o">...</span> <span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">c</span><span class="p">:</span>    <span class="c1"># Print out all of the members of a dictionary</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">c</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
+<span class="o">...</span> 
+<span class="n">CNTV</span> <span class="mf">126.84</span>
+<span class="n">PLTR</span> <span class="mf">321.78</span>
+<span class="n">PDVS</span> <span class="mf">1007.87</span>
+<span class="n">SIDR</span> <span class="mf">32.46</span>
+<span class="n">ALSA</span> <span class="mf">15.45</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;datafile&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>    <span class="c1"># Print all of the lines in a file</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="o">...</span> 
+  <span class="mi">1</span> <span class="mf">1050.000000</span>
+  <span class="mi">2</span> <span class="mf">1102.500000</span>
+  <span class="mi">3</span> <span class="mf">1157.625000</span>
+  <span class="mi">4</span> <span class="mf">1215.506250</span>
+  <span class="mi">5</span> <span class="mf">1276.281563</span>
+  <span class="mi">6</span> <span class="mf">1340.095641</span>
+  <span class="mi">7</span> <span class="mf">1407.100423</span>
+  <span class="mi">8</span> <span class="mf">1477.455444</span>
+  <span class="mi">9</span> <span class="mf">1551.328216</span>
+ <span class="mi">10</span> <span class="mf">1628.894627</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+
+
+<p>The following loop finds the first occurrence of an integer that is divisible by 7:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">item_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;string1&quot;</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mf">14.0</span><span class="p">,</span> <span class="s2">&quot;string2&quot;</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">70</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">item_list</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+<span class="o">...</span>         <span class="k">continue</span>
+<span class="o">...</span>     <span class="k">if</span> <span class="ow">not</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">7</span><span class="p">:</span>
+<span class="o">...</span>         <span class="k">print</span><span class="p">(</span><span class="s2">&quot;found an integer divisible by seven: {0:d}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="o">...</span>         <span class="k">break</span>
+<span class="o">...</span> 
+<span class="n">found</span> <span class="n">an</span> <span class="n">integer</span> <span class="n">divisible</span> <span class="n">by</span> <span class="n">seven</span><span class="p">:</span> <span class="mi">49</span>
+</pre></div>
+
+
+<p>To the variable <code>x</code> is sequentially assigned each value in the list. If <code>x</code> isn't an integer, 
+then the rest of this iteration is aborted by the <code>continue</code> statement. Flow control continues 
+with <code>x</code> set to the next item from the list. After the first appropriate integer is found, the 
+loop is ended by the <code>break</code> statement.</p>
 					</div>
 					<div class="span4">
 						<h3>Sidebar</h3>
