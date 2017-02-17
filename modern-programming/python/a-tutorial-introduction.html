@@ -867,6 +867,140 @@ as follows:</p>
 
 </div>
 <p><a class="read-more-less" href="#">read more &#187;</a></p>
+<h2 id="sets">Sets</h2>
+<p>A <em>set</em> is used to contain an unordered collection of objects. To create a set, use the <code>set()</code> 
+function and supply a sequence of items such as follows:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>    <span class="c1"># Create a set of numbers</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span>
+<span class="p">{</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="s2">&quot;Hello&quot;</span><span class="p">)</span>    <span class="c1"># Create a set of unique characters</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span>
+<span class="p">{</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">}</span>
+</pre></div>
+
+
+<p>Unlike lists and tuples, sets are unordered and cannot be indexed by numbers. Moreover, the 
+elements of a set are never duplicated. Notice above that only one <code>'l'</code> appears.</p>
+<div class="more-content">
+<p>Sets support a standard collection of operations, including union, intersection, difference, and 
+symmetric difference. Let's see:</p>
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">t</span> <span class="o">|</span> <span class="n">s</span>    <span class="c1"># Union of t and s</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">t</span> <span class="o">&amp;</span> <span class="n">s</span>    <span class="c1"># Intersection of t and s</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">t</span> <span class="o">-</span> <span class="n">s</span>    <span class="c1"># Set difference (items in t, but not in s)</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">t</span> <span class="o">^</span> <span class="n">s</span>    <span class="c1"># Symmetric difference (items in t or s, but not both)</span>
+</pre></div>
+
+
+<p>New items can be added to a set using <code>add()</code> or <code>update()</code> methods:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>    <span class="c1"># Add a single item</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span>
+<span class="p">{</span><span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">update</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">42</span><span class="p">])</span>    <span class="c1"># Add multiple items to s</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span>
+<span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">42</span><span class="p">}</span>
+</pre></div>
+
+
+<p>An item can be removed using <code>remove()</code>:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span>
+<span class="p">{</span><span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">}</span>
+</pre></div>
+
+
+</div>
+<p><a class="read-more-less" href="#">read more &#187;</a></p>
+<h2 id="dictionaries">Dictionaries</h2>
+<p>A <em>dictionary</em> is an associative array or hash table that contains objects indexed by keys. You 
+create a dictionary by enclosing the values in curly braces <code>{ }</code>, like this:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">stock</span> <span class="o">=</span> <span class="p">{</span>
+<span class="o">...</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;CNTV&quot;</span><span class="p">,</span>
+<span class="o">...</span> <span class="s2">&quot;shares&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+<span class="o">...</span> <span class="s2">&quot;price&quot;</span><span class="p">:</span> <span class="mf">126.84</span>
+<span class="o">...</span> <span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">stock</span>
+<span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;CNTV&#39;</span><span class="p">,</span> <span class="s1">&#39;shares&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;price&#39;</span><span class="p">:</span> <span class="mf">126.84</span><span class="p">}</span>
+</pre></div>
+
+
+<p>To access members of a dictionary, use the key-indexing operator:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">stock</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+<span class="s1">&#39;CNTV&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">stock</span><span class="p">[</span><span class="s1">&#39;shares&#39;</span><span class="p">]</span>
+<span class="mi">100</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">stock</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span>
+<span class="mf">126.84</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">value</span> <span class="o">=</span> <span class="n">stock</span><span class="p">[</span><span class="s1">&#39;shares&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">stock</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">value</span>
+<span class="mf">12684.0</span>
+</pre></div>
+
+
+<p>Modify or insert objects by doing this:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">stock</span><span class="p">[</span><span class="s1">&#39;shares&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">125</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">stock</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;February 4, 2014&quot;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">stock</span>
+<span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;CNTV&#39;</span><span class="p">,</span> <span class="s1">&#39;shares&#39;</span><span class="p">:</span> <span class="mi">125</span><span class="p">,</span> <span class="s1">&#39;price&#39;</span><span class="p">:</span> <span class="mf">126.84</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="s1">&#39;February 4, 2014&#39;</span><span class="p">}</span>
+</pre></div>
+
+
+<div class="more-content">
+<p>Although strings are the most common type of key, you can use many other Python objects, including 
+numbers and tuples. Some objects, including lists and dictionaries, cannot be used as keys because 
+their contents can change.</p>
+<p>A dictionary is a useful way to define an object that consists of named fields as shown previously. 
+However, dictionaries are also used as a container for performing fast lookups on unordered data. 
+Let's see a dictionary of stock prices:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">prices</span> <span class="o">=</span> <span class="p">{</span>
+<span class="o">...</span> <span class="s2">&quot;CNTV&quot;</span><span class="p">:</span> <span class="mf">126.84</span><span class="p">,</span> 
+<span class="o">...</span> <span class="s2">&quot;PLTR&quot;</span><span class="p">:</span> <span class="mf">321.78</span><span class="p">,</span>
+<span class="o">...</span> <span class="s2">&quot;PDVS&quot;</span><span class="p">:</span> <span class="mf">1007.87</span><span class="p">,</span>
+<span class="o">...</span> <span class="s2">&quot;SIDR&quot;</span><span class="p">:</span> <span class="mf">32.46</span><span class="p">,</span>
+<span class="o">...</span> <span class="s2">&quot;ALSA&quot;</span><span class="p">:</span> <span class="mf">15.45</span>
+<span class="o">...</span> <span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">prices</span>
+<span class="p">{</span><span class="s1">&#39;CNTV&#39;</span><span class="p">:</span> <span class="mf">126.84</span><span class="p">,</span> <span class="s1">&#39;PLTR&#39;</span><span class="p">:</span> <span class="mf">321.78</span><span class="p">,</span> <span class="s1">&#39;PDVS&#39;</span><span class="p">:</span> <span class="mf">1007.87</span><span class="p">,</span> <span class="s1">&#39;SIDR&#39;</span><span class="p">:</span> <span class="mf">32.46</span><span class="p">,</span> <span class="s1">&#39;ALSA&#39;</span><span class="p">:</span> <span class="mf">15.45</span><span class="p">}</span>
+</pre></div>
+
+
+<p>An empty dictionary is created in one of two ways:</p>
+<div class="highlight"><pre><span></span><span class="n">prices</span> <span class="o">=</span> <span class="p">{}</span>    <span class="c1"># An empty dict</span>
+<span class="n">prices</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>    <span class="c1"># An empty dict</span>
+</pre></div>
+
+
+<p>Dictionary membership is tested with the <code>in</code> operator:</p>
+<div class="highlight"><pre><span></span><span class="k">if</span> <span class="s2">&quot;VELM&quot;</span> <span class="ow">in</span> <span class="n">prices</span><span class="p">:</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">prices</span><span class="p">[</span><span class="s2">&quot;VELM&quot;</span><span class="p">]</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="mf">0.0</span>
+</pre></div>
+
+
+<p>This particular sequence of steps can also be performed more compactly like this:</p>
+<div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;VELM&quot;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+</pre></div>
+
+
+<p>To obtain a list of dictionary keys, convert a dictionary to a list:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">syms</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">syms</span>
+<span class="p">[</span><span class="s1">&#39;CNTV&#39;</span><span class="p">,</span> <span class="s1">&#39;PLTR&#39;</span><span class="p">,</span> <span class="s1">&#39;PDVS&#39;</span><span class="p">,</span> <span class="s1">&#39;SIDR&#39;</span><span class="p">,</span> <span class="s1">&#39;ALSA&#39;</span><span class="p">]</span>
+</pre></div>
+
+
+<p>Use the <code>del</code> statement to remove an element of a dictionary:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">del</span> <span class="n">prices</span><span class="p">[</span><span class="s2">&quot;SIDR&quot;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">prices</span>
+<span class="p">{</span><span class="s1">&#39;CNTV&#39;</span><span class="p">:</span> <span class="mf">126.84</span><span class="p">,</span> <span class="s1">&#39;PLTR&#39;</span><span class="p">:</span> <span class="mf">321.78</span><span class="p">,</span> <span class="s1">&#39;PDVS&#39;</span><span class="p">:</span> <span class="mf">1007.87</span><span class="p">,</span> <span class="s1">&#39;ALSA&#39;</span><span class="p">:</span> <span class="mf">15.45</span><span class="p">}</span>
+</pre></div>
+
+
+<p>Dictionaries are probably the most finely tuned data type in the Python interpreter. So, if you are 
+merely trying to store and work with data in your program, you are almost always better off using a 
+dictionary than trying to come up with some kind of custom data structure on your own.</p>
+</div>
+<p><a class="read-more-less" href="#">read more &#187;</a></p>
 					</div>
 					<div class="span4">
 						<h3>Sidebar</h3>

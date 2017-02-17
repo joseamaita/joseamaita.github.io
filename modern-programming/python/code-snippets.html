@@ -5,7 +5,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="author" content="José A. Maita F.">
-		<meta name="description" content="Block or bits of Python code to achieve and complete multiple tasks.">
+		<meta name="description" content="Blocks or bits of Python code to achieve and complete multiple tasks.">
 		<title>3LE AUTOMATION, C.A. | Making things happen | Python / Code Snippets</title>
 		<link media="all" rel="stylesheet" href="/static/css/bootstrap.min.css">
 		<link media="all" rel="stylesheet" href="/static/css/bootstrap-responsive.min.css">
@@ -98,7 +98,7 @@
 		<header class="subhead">
 			<div class="container">
 				<h1>Python / Code Snippets</h1>
-				<p class="lead">Block or bits of Python code to achieve and complete multiple tasks.</p>
+				<p class="lead">Blocks or bits of Python code to achieve and complete multiple tasks.</p>
 			</div>
 		</header>
 		<div class="container">
@@ -266,7 +266,7 @@ know what method to call on a class, we can use a dispatch method to determine i
 <span class="o">&gt;&gt;&gt;</span> <span class="n">string</span><span class="o">.</span><span class="n">ascii_uppercase</span>
 <span class="s1">&#39;ABCDEFGHIJKLMNOPQRSTUVWXYZ&#39;</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">string</span><span class="o">.</span><span class="n">printable</span>
-<span class="s1">&#39;0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!&quot;#$%&amp;</span><span class="se">\&#39;</span><span class="s1">()*+,-./:;&lt;=&gt;?@[</span><span class="se">\\</span><span class="s1">]^_`{|}~ </span><span class="se">\t\n\r\x0b\x0c</span><span class="s1">&#39;</span>
+<span class="s1">&#39;0123456789abcdefg...xyzABCDEFG...XYZ!&quot;#$%&amp;</span><span class="se">\&#39;</span><span class="s1">()*+,-./:;&lt;=&gt;?@[</span><span class="se">\\</span><span class="s1">]^_`{|}~ </span><span class="se">\t\n\r\x0b\x0c</span><span class="s1">&#39;</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">string</span><span class="o">.</span><span class="n">punctuation</span>
 <span class="s1">&#39;!&quot;#$%&amp;</span><span class="se">\&#39;</span><span class="s1">()*+,-./:;&lt;=&gt;?@[</span><span class="se">\\</span><span class="s1">]^_`{|}~&#39;</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">string</span><span class="o">.</span><span class="n">whitespace</span>
@@ -417,6 +417,114 @@ modifiability.</p>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">names</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">&quot;Peter&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>    <span class="c1"># Returns the position of &#39;Peter&#39; between &#39;0, 5&#39;</span>
 <span class="mi">4</span>
 </pre></div>
+
+
+<h2 id="sets">Sets</h2>
+<p>A set in Python is an unordered collection of objects, used in situations where membership and 
+uniqueness in the set are the main things you need to know about that object. You can think of sets 
+as a collection of dictionary keys without any associated values:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span>
+<span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">}</span>
+
+<span class="c1"># Basic operators</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">1</span> <span class="ow">in</span> <span class="n">x</span>
+<span class="bp">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">11</span> <span class="ow">in</span> <span class="n">x</span>
+<span class="bp">False</span>
+</pre></div>
+
+
+<p>You can create a set by using <code>set()</code> on a sequence, like a list. When a sequence is made into a 
+set, duplicates are removed. The <code>in</code> keyword is used to check for membership of an object in a 
+set.</p>
+<p>Want to know what methods <code>x</code> has available? Do this:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="nb">dir</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="p">[</span><span class="s1">&#39;__and__&#39;</span><span class="p">,</span> <span class="s1">&#39;__class__&#39;</span><span class="p">,</span> <span class="s1">&#39;__contains__&#39;</span><span class="p">,</span> <span class="s1">&#39;__delattr__&#39;</span><span class="p">,</span> <span class="s1">&#39;__dir__&#39;</span><span class="p">,</span> <span class="s1">&#39;__doc__&#39;</span><span class="p">,</span> <span class="s1">&#39;__eq__&#39;</span><span class="p">,</span> 
+<span class="s1">&#39;__format__&#39;</span><span class="p">,</span> <span class="s1">&#39;__ge__&#39;</span><span class="p">,</span> <span class="s1">&#39;__getattribute__&#39;</span><span class="p">,</span> <span class="s1">&#39;__gt__&#39;</span><span class="p">,</span> <span class="s1">&#39;__hash__&#39;</span><span class="p">,</span> <span class="s1">&#39;__iand__&#39;</span><span class="p">,</span> <span class="s1">&#39;__init__&#39;</span><span class="p">,</span> 
+<span class="s1">&#39;__init_subclass__&#39;</span><span class="p">,</span> <span class="s1">&#39;__ior__&#39;</span><span class="p">,</span> <span class="s1">&#39;__isub__&#39;</span><span class="p">,</span> <span class="s1">&#39;__iter__&#39;</span><span class="p">,</span> <span class="s1">&#39;__ixor__&#39;</span><span class="p">,</span> <span class="s1">&#39;__le__&#39;</span><span class="p">,</span> <span class="s1">&#39;__len__&#39;</span><span class="p">,</span> 
+<span class="s1">&#39;__lt__&#39;</span><span class="p">,</span> <span class="s1">&#39;__ne__&#39;</span><span class="p">,</span> <span class="s1">&#39;__new__&#39;</span><span class="p">,</span> <span class="s1">&#39;__or__&#39;</span><span class="p">,</span> <span class="s1">&#39;__rand__&#39;</span><span class="p">,</span> <span class="s1">&#39;__reduce__&#39;</span><span class="p">,</span> <span class="s1">&#39;__reduce_ex__&#39;</span><span class="p">,</span> <span class="s1">&#39;__repr__&#39;</span><span class="p">,</span> 
+<span class="s1">&#39;__ror__&#39;</span><span class="p">,</span> <span class="s1">&#39;__rsub__&#39;</span><span class="p">,</span> <span class="s1">&#39;__rxor__&#39;</span><span class="p">,</span> <span class="s1">&#39;__setattr__&#39;</span><span class="p">,</span> <span class="s1">&#39;__sizeof__&#39;</span><span class="p">,</span> <span class="s1">&#39;__str__&#39;</span><span class="p">,</span> <span class="s1">&#39;__sub__&#39;</span><span class="p">,</span> 
+<span class="s1">&#39;__subclasshook__&#39;</span><span class="p">,</span> <span class="s1">&#39;__xor__&#39;</span><span class="p">,</span> <span class="s1">&#39;add&#39;</span><span class="p">,</span> <span class="s1">&#39;clear&#39;</span><span class="p">,</span> <span class="s1">&#39;copy&#39;</span><span class="p">,</span> <span class="s1">&#39;difference&#39;</span><span class="p">,</span> <span class="s1">&#39;difference_update&#39;</span><span class="p">,</span> 
+<span class="s1">&#39;discard&#39;</span><span class="p">,</span> <span class="s1">&#39;intersection&#39;</span><span class="p">,</span> <span class="s1">&#39;intersection_update&#39;</span><span class="p">,</span> <span class="s1">&#39;isdisjoint&#39;</span><span class="p">,</span> <span class="s1">&#39;issubset&#39;</span><span class="p">,</span> <span class="s1">&#39;issuperset&#39;</span><span class="p">,</span> <span class="s1">&#39;pop&#39;</span><span class="p">,</span> 
+<span class="s1">&#39;remove&#39;</span><span class="p">,</span> <span class="s1">&#39;symmetric_difference&#39;</span><span class="p">,</span> <span class="s1">&#39;symmetric_difference_update&#39;</span><span class="p">,</span> <span class="s1">&#39;union&#39;</span><span class="p">,</span> <span class="s1">&#39;update&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span>
+<span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span><span class="o">.</span><span class="n">update</span><span class="p">([</span><span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">16</span><span class="p">])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span>
+<span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">16</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">14</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span>
+<span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">16</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span>
+<span class="p">{</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">16</span><span class="p">}</span>
+</pre></div>
+
+
+<h2 id="dictionaries">Dictionaries</h2>
+<p>Python's built-in dictionary data type provides associative array functionality implemented using 
+hash tables. The built-in <code>len()</code> function returns the number of key-value pairs in a dictionary. 
+The <code>del</code> statement can be used to delete a key-value pair. As is the case for lists, a number of 
+dictionary methods ( <code>clear</code> , <code>copy</code> , <code>get</code> , <code>items</code> , <code>keys</code> , <code>update</code> , 
+and <code>values</code> ) are available.</p>
+<p>Let's see a brief example section for working with dictionaries:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">prices</span> <span class="o">=</span> <span class="p">{</span>
+<span class="o">...</span> <span class="s2">&quot;CNTV&quot;</span><span class="p">:</span> <span class="mf">126.84</span><span class="p">,</span> 
+<span class="o">...</span> <span class="s2">&quot;PLTR&quot;</span><span class="p">:</span> <span class="mf">321.78</span><span class="p">,</span>
+<span class="o">...</span> <span class="s2">&quot;PDVS&quot;</span><span class="p">:</span> <span class="mf">1007.87</span><span class="p">,</span>
+<span class="o">...</span> <span class="s2">&quot;SIDR&quot;</span><span class="p">:</span> <span class="mf">32.46</span><span class="p">,</span>
+<span class="o">...</span> <span class="s2">&quot;ALSA&quot;</span><span class="p">:</span> <span class="mf">15.45</span>
+<span class="o">...</span> <span class="p">}</span>
+
+<span class="c1"># Basic operators</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s1">&#39;ALSA&#39;</span> <span class="ow">in</span> <span class="n">prices</span>    <span class="c1"># Check if &#39;ALSA&#39; is in &#39;prices&#39;</span>
+<span class="bp">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s1">&#39;VELM&#39;</span> <span class="ow">in</span> <span class="n">names</span>    <span class="c1"># Check if &#39;VELM&#39; is in &#39;prices&#39;</span>
+<span class="bp">False</span>
+
+<span class="c1"># Built-in functions</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>    <span class="c1"># Length or number of key-value pairs in &#39;prices&#39;</span>
+<span class="mi">5</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">del</span> <span class="n">prices</span><span class="p">[</span><span class="s1">&#39;SIDR&#39;</span><span class="p">]</span>    <span class="c1"># Delete key-value pair for &#39;SIDR&#39; key</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">prices</span>
+<span class="p">{</span><span class="s1">&#39;CNTV&#39;</span><span class="p">:</span> <span class="mf">126.84</span><span class="p">,</span> <span class="s1">&#39;PLTR&#39;</span><span class="p">:</span> <span class="mf">321.78</span><span class="p">,</span> <span class="s1">&#39;PDVS&#39;</span><span class="p">:</span> <span class="mf">1007.87</span><span class="p">,</span> <span class="s1">&#39;ALSA&#39;</span><span class="p">:</span> <span class="mf">15.45</span><span class="p">}</span>
+
+<span class="c1"># &quot;Clear&quot; method</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">prices</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>    <span class="c1"># Clear dictionary &#39;prices&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">prices</span>
+<span class="p">{}</span>
+
+<span class="c1"># &quot;Get&quot; method</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">prices</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ALSA&quot;</span><span class="p">,</span> <span class="s2">&quot;N/A&quot;</span><span class="p">)</span>    <span class="c1"># Get the price of &quot;ALSA&quot; key. If not, get &quot;N/A&quot;</span>
+<span class="mf">15.45</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">prices</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;SSCT&quot;</span><span class="p">,</span> <span class="s2">&quot;N/A&quot;</span><span class="p">)</span>    <span class="c1"># Get the price of &quot;SSCT&quot; key. If not, get &quot;N/A&quot;</span>
+<span class="s1">&#39;N/A&#39;</span>
+
+<span class="c1"># &quot;Items&quot; method</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="n">prices</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>    <span class="c1"># Convert dictionary items as list of tuples</span>
+<span class="p">[(</span><span class="s1">&#39;CNTV&#39;</span><span class="p">,</span> <span class="mf">126.84</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;PLTR&#39;</span><span class="p">,</span> <span class="mf">321.78</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;PDVS&#39;</span><span class="p">,</span> <span class="mf">1007.87</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;SIDR&#39;</span><span class="p">,</span> <span class="mf">32.46</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;ALSA&#39;</span><span class="p">,</span> <span class="mf">15.45</span><span class="p">)]</span>
+
+<span class="c1"># &quot;Keys&quot; method</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="n">prices</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>    <span class="c1"># Convert dictionary keys as list of keys</span>
+<span class="p">[</span><span class="s1">&#39;CNTV&#39;</span><span class="p">,</span> <span class="s1">&#39;PLTR&#39;</span><span class="p">,</span> <span class="s1">&#39;PDVS&#39;</span><span class="p">,</span> <span class="s1">&#39;SIDR&#39;</span><span class="p">,</span> <span class="s1">&#39;ALSA&#39;</span><span class="p">]</span>
+
+<span class="c1"># &quot;Values&quot; method</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="n">prices</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>    <span class="c1"># Convert dictionary values as list of values</span>
+<span class="p">[</span><span class="mf">126.84</span><span class="p">,</span> <span class="mf">321.78</span><span class="p">,</span> <span class="mf">1007.87</span><span class="p">,</span> <span class="mf">32.46</span><span class="p">,</span> <span class="mf">15.45</span><span class="p">]</span>
+
+<span class="c1"># &quot;Update&quot; method</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">prices</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;HIBO&quot;</span><span class="p">:</span> <span class="mf">31.91</span><span class="p">,</span> <span class="s2">&quot;GRGY&quot;</span><span class="p">:</span> <span class="mf">426.48</span><span class="p">})</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">prices</span>
+<span class="p">{</span><span class="s1">&#39;CNTV&#39;</span><span class="p">:</span> <span class="mf">126.84</span><span class="p">,</span> <span class="s1">&#39;PLTR&#39;</span><span class="p">:</span> <span class="mf">321.78</span><span class="p">,</span> <span class="s1">&#39;PDVS&#39;</span><span class="p">:</span> <span class="mf">1007.87</span><span class="p">,</span> <span class="s1">&#39;SIDR&#39;</span><span class="p">:</span> <span class="mf">32.46</span><span class="p">,</span> <span class="s1">&#39;ALSA&#39;</span><span class="p">:</span> <span class="mf">15.45</span><span class="p">,</span> <span class="s1">&#39;HIBO&#39;</span><span class="p">:</span> <span class="mf">31.91</span><span class="p">,</span> <span class="s1">&#39;GRGY&#39;</span><span class="p">:</span> <span class="mf">426.48</span><span class="p">}</span>
+</pre></div>
+
+
+<p>Keys must be of an immutable type. This includes numbers, strings, and tuples. Values can be any 
+kind of object, including mutable types such as lists and dictionaries. The dictionary method <code>get</code> 
+optionally returns a user-definable value when a key isn't in a dictionary.</p>
 					</div>
 					<div class="span4">
 						<h3>Sidebar</h3>
