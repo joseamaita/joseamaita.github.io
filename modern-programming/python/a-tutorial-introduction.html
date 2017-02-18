@@ -1041,7 +1041,7 @@ common, the following shortcut is often used for that purpose:</p>
 
 <div class="more-content">
 <p>The <code>range(i,j [,stride])</code> function creates an object that represents a range of integers with 
-values <strong>i</strong> to <strong>j-1</strong>. If the starting value is omitted, it's taken to be zero. An optional 
+values <em>i</em> to <em>j-1</em>. If the starting value is omitted, it's taken to be zero. An optional 
 stride can also be given as a third argument. Let's see:</p>
 <div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">a</span>
@@ -1068,6 +1068,77 @@ stride can also be given as a third argument. Let's see:</p>
 
 <p>The <code>for</code> loop is one of Python's most powerful language features because you can create custom 
 iterator objects and generator functions that supply it with sequences of values.</p>
+</div>
+<p><a class="read-more-less" href="#">read more &#187;</a></p>
+<h2 id="functions">Functions</h2>
+<p>Use the <code>def</code> statement to create a function, like this:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">remainder</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<span class="o">...</span>     <span class="n">q</span> <span class="o">=</span> <span class="n">a</span> <span class="o">//</span> <span class="n">b</span>    <span class="c1"># // is truncating division.</span>
+<span class="o">...</span>     <span class="n">r</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">q</span><span class="o">*</span><span class="n">b</span>
+<span class="o">...</span>     <span class="k">return</span> <span class="n">r</span>
+<span class="o">...</span>
+</pre></div>
+
+
+<p>To invoke a function, simply use the name of the function followed by its arguments enclosed in 
+parentheses:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="n">remainder</span><span class="p">(</span><span class="mi">37</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">result</span>
+<span class="mi">7</span>
+</pre></div>
+
+
+<div class="more-content">
+<p>You can use a tuple to return multiple values from a function:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">divide</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<span class="o">...</span>     <span class="n">q</span> <span class="o">=</span> <span class="n">a</span> <span class="o">//</span> <span class="n">b</span>    <span class="c1"># If a and b are integers, q is integer</span>
+<span class="o">...</span>     <span class="n">r</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">q</span><span class="o">*</span><span class="n">b</span>
+<span class="o">...</span>     <span class="k">return</span> <span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
+<span class="o">...</span>
+</pre></div>
+
+
+<p>When returning multiple values in a tuple, you can easily unpack the result into separate variables 
+like this:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">quotient</span><span class="p">,</span> <span class="n">remainder</span> <span class="o">=</span> <span class="n">divide</span><span class="p">(</span><span class="mi">1456</span><span class="p">,</span> <span class="mi">33</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">quotient</span>
+<span class="mi">44</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">remainder</span>
+<span class="mi">4</span>
+</pre></div>
+
+
+<p>To assign a default value to a function parameter, use assignment:</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">connect</span><span class="p">(</span><span class="n">hostname</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">300</span><span class="p">):</span>
+    <span class="c1"># Function body</span>
+</pre></div>
+
+
+<p>When default values are given in a function definition, they can be omitted from subsequent 
+function calls. When omitted, the argument will simply take on the default value. Let's see:</p>
+<div class="highlight"><pre><span></span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;www.python.org&#39;</span><span class="p">,</span> <span class="mi">80</span><span class="p">)</span>
+</pre></div>
+
+
+<p>You also can invoke functions by using keyword arguments and supplying the arguments in arbitrary 
+order. However, this requires you to know the names of the arguments in the function definition. 
+Let's see:</p>
+<div class="highlight"><pre><span></span><span class="n">connect</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">hostname</span><span class="o">=</span><span class="s2">&quot;www.python.org&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>When variables are created or assigned inside a function, their scope is local. That is, the
+variable is only defined inside the body of the function and is destroyed when the function 
+returns. To modify the value of a global variable from inside a function, use the <code>global</code> 
+statement as follows:</p>
+<div class="highlight"><pre><span></span><span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="o">...</span>
+<span class="k">def</span> <span class="nf">foo</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">count</span>
+    <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>    <span class="c1"># Changes the global variable count</span>
+</pre></div>
+
+
 </div>
 <p><a class="read-more-less" href="#">read more &#187;</a></p>
 					</div>

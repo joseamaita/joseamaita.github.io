@@ -602,6 +602,47 @@ below:</p>
 then the rest of this iteration is aborted by the <code>continue</code> statement. Flow control continues 
 with <code>x</code> set to the next item from the list. After the first appropriate integer is found, the 
 loop is ended by the <code>break</code> statement.</p>
+<h2 id="functions">Functions</h2>
+<p>Python provides flexible mechanisms for passing arguments to functions:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">funct1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+<span class="o">...</span>     <span class="n">value</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">y</span> <span class="o">+</span> <span class="n">z</span><span class="o">**</span><span class="mi">2</span>
+<span class="o">...</span>     <span class="k">if</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="o">...</span>         <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">y</span> <span class="o">+</span> <span class="n">z</span><span class="o">**</span><span class="mi">2</span>
+<span class="o">...</span>     <span class="k">else</span><span class="p">:</span>
+<span class="o">...</span>         <span class="k">return</span> <span class="mi">0</span>
+<span class="o">...</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">funct1</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="mi">15</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">funct1</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="n">v</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="mi">23</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">funct2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<span class="o">...</span>     <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">y</span> <span class="o">+</span> <span class="n">z</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="o">...</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">funct2</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="mi">21</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">funct3</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">*</span><span class="n">tup</span><span class="p">):</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span> <span class="o">+</span> <span class="n">tup</span><span class="p">)</span>
+<span class="o">...</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">funct3</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">funct3</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">funct4</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">**</span><span class="nb">dict</span><span class="p">):</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span>
+<span class="o">...</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">funct4</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="p">{</span><span class="s1">&#39;m&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">}</span>
+</pre></div>
+
+
+<p>Functions are defined using the <code>def</code> statement. The <code>return</code> statement is what a function uses 
+to return a value. This value can be of any type. If no <code>return</code> statement is encountered, 
+Python's <code>None</code> value is returned. Function arguments can be entered either by position or by 
+name (keyword). Function parameters can be defined with defaults that are used if a function call 
+leaves them out. A special parameter can be defined that will collect all extra positional 
+arguments in a function call into a tuple. Likewise, a special parameter can be defined that will 
+collect all extra keyword arguments in a function call into a dictionary.</p>
 					</div>
 					<div class="span4">
 						<h3>Sidebar</h3>
