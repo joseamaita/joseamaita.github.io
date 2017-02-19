@@ -1214,6 +1214,40 @@ number of other objects that support iteration. The fact that you can just plug 
 in for <code>s</code> can be a powerful tool for creating extensible programs.</p>
 </div>
 <p><a class="read-more-less" href="#">read more &#187;</a></p>
+<h2 id="coroutines">Coroutines</h2>
+<p>Normally, functions operate on a single set of input arguments. However, a function can also be 
+written to operate as a task that processes a sequence of inputs sent to it. This type of function 
+is known as a <em>coroutine</em> and is created by using the <code>yield</code> as an expression <code>(yield)</code> like 
+this:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">print_matches</span><span class="p">(</span><span class="n">matchtext</span><span class="p">):</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Looking for {0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">matchtext</span><span class="p">))</span>
+<span class="o">...</span>     <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+<span class="o">...</span>         <span class="n">line</span> <span class="o">=</span> <span class="p">(</span><span class="k">yield</span><span class="p">)</span>    <span class="c1"># Get a line of text</span>
+<span class="o">...</span>         <span class="k">if</span> <span class="n">matchtext</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+<span class="o">...</span>             <span class="k">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+<span class="o">...</span>
+</pre></div>
+
+
+<p>To use this function, you first call it, advance it to the first <code>(yield)</code>, and then start 
+sending data to it using <code>send()</code>. Let's see:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">matcher</span> <span class="o">=</span> <span class="n">print_matches</span><span class="p">(</span><span class="s2">&quot;python&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">matcher</span><span class="o">.</span><span class="n">__next__</span><span class="p">()</span>    <span class="c1"># Advance to the first (yield)</span>
+<span class="n">Looking</span> <span class="k">for</span> <span class="n">python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">matcher</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;Hello, World!&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">matcher</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;python is cool&quot;</span><span class="p">)</span>
+<span class="n">python</span> <span class="ow">is</span> <span class="n">cool</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">matcher</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;shhh!&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">matcher</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>    <span class="c1"># Done with the matcher function call</span>
+</pre></div>
+
+
+<div class="more-content">
+<p>A coroutine is suspended until a value is sent to it using <code>send()</code>. When this happens, that 
+value is returned by the <code>(yield)</code> expression inside the coroutine and is processed by the 
+statements that follow.</p>
+</div>
+<p><a class="read-more-less" href="#">read more &#187;</a></p>
 					</div>
 					<div class="span4">
 						<h3>Sidebar</h3>
