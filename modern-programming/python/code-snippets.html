@@ -643,6 +643,32 @@ name (keyword). Function parameters can be defined with defaults that are used i
 leaves them out. A special parameter can be defined that will collect all extra positional 
 arguments in a function call into a tuple. Likewise, a special parameter can be defined that will 
 collect all extra keyword arguments in a function call into a dictionary.</p>
+<h2 id="generators">Generators</h2>
+<p>Here's an example of hooking generators to create a simple processing pipeline:</p>
+<div class="highlight"><pre><span></span><span class="c1"># A python implementation of Unix &quot;tail -f | grep python&quot;</span>
+
+<span class="c1"># tail a file (like tail -f)</span>
+
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="k">def</span> <span class="nf">tail</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>    <span class="c1"># Move to EOF</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>    <span class="c1"># Try reading a new line of text</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">line</span><span class="p">:</span>    <span class="c1"># If nothing, sleep briefly and try again</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+            <span class="k">continue</span>
+        <span class="k">yield</span> <span class="n">line</span>
+
+<span class="k">def</span> <span class="nf">grep</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="n">searchtext</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">searchtext</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span> <span class="k">yield</span> <span class="n">line</span>
+
+<span class="n">wwwlog</span> <span class="o">=</span> <span class="n">tail</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;access-log&quot;</span><span class="p">))</span>
+<span class="n">pylines</span> <span class="o">=</span> <span class="n">grep</span><span class="p">(</span><span class="n">wwwlog</span><span class="p">,</span> <span class="s2">&quot;python&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">pylines</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+</pre></div>
 					</div>
 					<div class="span4">
 						<h3>Sidebar</h3>
