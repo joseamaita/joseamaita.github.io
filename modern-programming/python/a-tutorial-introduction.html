@@ -1245,8 +1245,16 @@ sending data to it using <code>send()</code>. Let's see:</p>
 <div class="more-content">
 <p>A coroutine is suspended until a value is sent to it using <code>send()</code>. When this happens, that 
 value is returned by the <code>(yield)</code> expression inside the coroutine and is processed by the 
-statements that follow.</p>
+statements that follow. Processing continues until the next <code>(yield)</code> expression is encountered, 
+at which point the function suspends. This continues until the coroutine function returns 
+or <code>close()</code> is called on it as shown above.</p>
+<p>Coroutines are useful when writing concurrent programs based on producer-consumer problems where 
+one part of a program is producing data to be consumed by another part of the program. In this 
+model, a coroutine represents a consumer of data.</p>
 </div>
+<p><a class="read-more-less" href="#">read more &#187;</a></p>
+<h2 id="objects-and-classes">Objects and Classes</h2>
+<div class="more-content"></div>
 <p><a class="read-more-less" href="#">read more &#187;</a></p>
 					</div>
 					<div class="span4">
