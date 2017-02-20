@@ -1254,7 +1254,128 @@ model, a coroutine represents a consumer of data.</p>
 </div>
 <p><a class="read-more-less" href="#">read more &#187;</a></p>
 <h2 id="objects-and-classes">Objects and Classes</h2>
-<div class="more-content"></div>
+<p>All values used in a program are objects. An <em>object</em> consists of internal data and methods that 
+perform various kinds of operations involving that data. You have already used objects and methods 
+when working with the built-in types such as strings and lists. Let's see:</p>
+<div class="highlight"><pre><span></span><span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="mi">65</span><span class="p">,</span> <span class="mi">90</span><span class="p">]</span>    <span class="c1"># Create a list object</span>
+<span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">41</span><span class="p">)</span>    <span class="c1"># Call the append() method</span>
+</pre></div>
+
+
+<p>The <code>dir()</code> function lists the methods available on an object and is a useful tool for 
+interactive experimentation:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="nb">dir</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+<span class="p">[</span><span class="s1">&#39;__add__&#39;</span><span class="p">,</span> <span class="s1">&#39;__class__&#39;</span><span class="p">,</span> <span class="s1">&#39;__contains__&#39;</span><span class="p">,</span> <span class="s1">&#39;__delattr__&#39;</span><span class="p">,</span> <span class="s1">&#39;__delitem__&#39;</span><span class="p">,</span> <span class="s1">&#39;__dir__&#39;</span><span class="p">,</span> <span class="s1">&#39;__doc__&#39;</span><span class="p">,</span> 
+<span class="s1">&#39;__eq__&#39;</span><span class="p">,</span> <span class="s1">&#39;__format__&#39;</span><span class="p">,</span> <span class="s1">&#39;__ge__&#39;</span><span class="p">,</span> <span class="s1">&#39;__getattribute__&#39;</span><span class="p">,</span> <span class="s1">&#39;__getitem__&#39;</span><span class="p">,</span> <span class="s1">&#39;__gt__&#39;</span><span class="p">,</span> <span class="s1">&#39;__hash__&#39;</span><span class="p">,</span> 
+<span class="s1">&#39;__iadd__&#39;</span><span class="p">,</span> <span class="s1">&#39;__imul__&#39;</span><span class="p">,</span> <span class="s1">&#39;__init__&#39;</span><span class="p">,</span> <span class="s1">&#39;__init_subclass__&#39;</span><span class="p">,</span> <span class="s1">&#39;__iter__&#39;</span><span class="p">,</span> <span class="s1">&#39;__le__&#39;</span><span class="p">,</span> <span class="s1">&#39;__len__&#39;</span><span class="p">,</span> 
+<span class="s1">&#39;__lt__&#39;</span><span class="p">,</span> <span class="s1">&#39;__mul__&#39;</span><span class="p">,</span> <span class="s1">&#39;__ne__&#39;</span><span class="p">,</span> <span class="s1">&#39;__new__&#39;</span><span class="p">,</span> <span class="s1">&#39;__reduce__&#39;</span><span class="p">,</span> <span class="s1">&#39;__reduce_ex__&#39;</span><span class="p">,</span> <span class="s1">&#39;__repr__&#39;</span><span class="p">,</span> 
+<span class="s1">&#39;__reversed__&#39;</span><span class="p">,</span> <span class="s1">&#39;__rmul__&#39;</span><span class="p">,</span> <span class="s1">&#39;__setattr__&#39;</span><span class="p">,</span> <span class="s1">&#39;__setitem__&#39;</span><span class="p">,</span> <span class="s1">&#39;__sizeof__&#39;</span><span class="p">,</span> <span class="s1">&#39;__str__&#39;</span><span class="p">,</span> 
+<span class="s1">&#39;__subclasshook__&#39;</span><span class="p">,</span> <span class="s1">&#39;append&#39;</span><span class="p">,</span> <span class="s1">&#39;clear&#39;</span><span class="p">,</span> <span class="s1">&#39;copy&#39;</span><span class="p">,</span> <span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="s1">&#39;extend&#39;</span><span class="p">,</span> <span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="s1">&#39;insert&#39;</span><span class="p">,</span> <span class="s1">&#39;pop&#39;</span><span class="p">,</span> 
+<span class="s1">&#39;remove&#39;</span><span class="p">,</span> <span class="s1">&#39;reverse&#39;</span><span class="p">,</span> <span class="s1">&#39;sort&#39;</span><span class="p">]</span>
+</pre></div>
+
+
+<p>When inspecting objects, you will see familiar methods such as <code>append()</code> and <code>insert()</code> 
+listed. However, you will also see special methods that always begin and end with a double 
+underscore. These methods implement various language operations. For example, the <code>__add__()</code> 
+method implements the <code>+</code> operator:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">items</span><span class="o">.</span><span class="n">__add__</span><span class="p">([</span><span class="mi">23</span><span class="p">,</span> <span class="mi">34</span><span class="p">])</span>
+<span class="p">[</span><span class="mi">65</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">41</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">34</span><span class="p">]</span>
+</pre></div>
+
+
+<p>The <code>class</code> statement is used to define new types of objects and for object-oriented programming. 
+For example, the following class defines a simple stack with <code>push()</code>, <code>pop()</code>, and <code>length()</code> 
+operations:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">class</span> <span class="nc">Stack</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="o">...</span>     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>    <span class="c1"># Initialize the stack</span>
+<span class="o">...</span>         <span class="bp">self</span><span class="o">.</span><span class="n">stack</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="o">...</span>     <span class="k">def</span> <span class="nf">push</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
+<span class="o">...</span>         <span class="bp">self</span><span class="o">.</span><span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">object</span><span class="p">)</span>
+<span class="o">...</span>     <span class="k">def</span> <span class="nf">pop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="o">...</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<span class="o">...</span>     <span class="k">def</span> <span class="nf">length</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="o">...</span>         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stack</span><span class="p">)</span>
+<span class="o">...</span>
+</pre></div>
+
+
+<div class="more-content">
+<p>In the first line of the class definition, the statement <code>class Stack(object)</code> declares <code>Stack</code> 
+to be an <code>object</code>. The use of parentheses is how Python specifies inheritance. In this 
+case, <code>Stack</code> inherits from <code>object</code>, which is the root of all Python types. Inside the class 
+definition, methods are defined using the <code>def</code> statement. The first argument in each method 
+always refers to the object itself. By convention, <code>self</code>is the name used for this argument. 
+All operations involving the attributes of an object must explicitly refer to the <code>self</code> variable. 
+Methods with leading and trailing double underscores are special methods. For example, <code>__init__</code> 
+is used to initialize an object after it's created.</p>
+<p>Use a class like this:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="n">Stack</span><span class="p">()</span>    <span class="c1"># Create a stack</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span>
+<span class="o">&lt;</span><span class="n">__main__</span><span class="o">.</span><span class="n">Stack</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7fd2d08abef0</span><span class="o">&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="s2">&quot;Ricky&quot;</span><span class="p">)</span>    <span class="c1"># Push some things onto it</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="mi">83</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">push</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span>
+<span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">y</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">y</span>
+<span class="mi">83</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">del</span> <span class="n">s</span>    <span class="c1"># Destroy s</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">NameError</span><span class="p">:</span> <span class="n">name</span> <span class="s1">&#39;s&#39;</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">defined</span>
+</pre></div>
+
+
+<p>In the previous example, an entirely new object was created to implement the stack. However, a 
+stack is almost identical to the built-in list object. Therefore, an alternative approach would be 
+to inherit from <code>list</code> and add an extra method:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">class</span> <span class="nc">Stack</span><span class="p">(</span><span class="nb">list</span><span class="p">):</span>
+<span class="o">...</span>     <span class="c1"># Add push() method for stack interface</span>
+<span class="o">...</span>     <span class="c1"># Note: lists already provide a pop() method.</span>
+<span class="o">...</span>     <span class="k">def</span> <span class="nf">push</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
+<span class="o">...</span>         <span class="bp">self</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">object</span><span class="p">)</span>
+<span class="o">...</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="n">Stack</span><span class="p">()</span>    <span class="c1"># Create a stack</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span>
+<span class="p">[]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="s2">&quot;Ricky&quot;</span><span class="p">)</span>    <span class="c1"># Push some things onto it</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="mi">83</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">push</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span>
+<span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">y</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">y</span>
+<span class="mi">83</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">del</span> <span class="n">s</span>    <span class="c1"># Destroy s</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">NameError</span><span class="p">:</span> <span class="n">name</span> <span class="s1">&#39;s&#39;</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">defined</span>
+</pre></div>
+
+
+<p>Normally, all of the methods defined within a class apply only to instances of that class (that is, 
+the objects that are created). However, different kinds of methods can be defined such as static 
+methods familiar to C++ and Java programmers. For example:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">EventHandler</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">dispatcherThread</span><span class="p">():</span>
+        <span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">):</span>
+            <span class="c1"># Wait for requests</span>
+            <span class="o">...</span>
+
+<span class="n">EventHandler</span><span class="o">.</span><span class="n">dispatcherThread</span><span class="p">()</span>    <span class="c1"># Call method like a function</span>
+</pre></div>
+
+
+<p>In this case, <code>@staticmethod</code> declares the method that follows to be a static 
+method. <code>@staticmethod</code> is an example of using an a <em>decorator</em>.</p>
+</div>
 <p><a class="read-more-less" href="#">read more &#187;</a></p>
 					</div>
 					<div class="span4">
