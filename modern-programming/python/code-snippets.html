@@ -690,6 +690,72 @@ collect all extra keyword arguments in a function call into a dictionary.</p>
     <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">matchers</span><span class="p">:</span>
         <span class="n">m</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>    <span class="c1"># Send data into each matcher coroutine</span>
 </pre></div>
+
+
+<h2 id="objects-and-classes">Objects and Classes</h2>
+<p>This is an example that might be the start of a simple shapes module for a drawing program. The 
+name of the file is <code>sh.py</code>:</p>
+<div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;sh module. Contains classes Shape, Square and Circle&quot;&quot;&quot;</span>
+
+<span class="k">class</span> <span class="nc">Shape</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Shape class: has method move&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+    <span class="k">def</span> <span class="nf">move</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">deltaX</span><span class="p">,</span> <span class="n">deltaY</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">+=</span> <span class="n">deltaX</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">+=</span> <span class="n">deltaY</span>
+
+<span class="k">class</span> <span class="nc">Square</span><span class="p">(</span><span class="n">Shape</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Square Class: inherits from Shape&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">side</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="n">Shape</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">side</span> <span class="o">=</span> <span class="n">side</span>
+
+<span class="k">class</span> <span class="nc">Circle</span><span class="p">(</span><span class="n">Shape</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Circle Class: inherits from Shape and has method area&quot;&quot;&quot;</span>
+    <span class="n">pi</span> <span class="o">=</span> <span class="mf">3.1415928</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="n">Shape</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="n">r</span>
+    <span class="k">def</span> <span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Circle area method: returns the area of the circle&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">radius</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">radius</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">pi</span>
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Circle of radius {0} at coordinates ({1},{2})&quot;</span>\
+        <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">radius</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Classes are defined using the <code>class</code> keyword. The instance initializer method (constructor) for 
+a class is always called <code>__init__</code>. Instance variables <code>x</code> and <code>y</code> are created and 
+initialized there. Methods, like functions, are defined using the <code>def</code> keyword. The first 
+argument of any method is by convention called <code>self</code>. When the method is invoked, <code>self</code> is 
+set to the instance that invoked the method. Class <code>Circle</code> inherits from class <code>Shape</code>. 
+The <code>pi</code> attribute is similar to but not exactly like a standard class variable. A class must, 
+in its initializer, explicitly call the initializer of its base class. The <code>__str__</code> method is 
+used by the <code>print</code> function. Other special attribute methods permit operator overloading or are 
+employed by built-in methods such as the length ( <code>len</code> ) function.</p>
+<p>Importing this file makes these classes available:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">sh</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">c1</span> <span class="o">=</span> <span class="n">sh</span><span class="o">.</span><span class="n">Circle</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">c2</span> <span class="o">=</span> <span class="n">sh</span><span class="o">.</span><span class="n">Circle</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">c1</span><span class="p">)</span>
+<span class="n">Circle</span> <span class="n">of</span> <span class="n">radius</span> <span class="mi">1</span> <span class="n">at</span> <span class="n">coordinates</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">c2</span><span class="p">)</span>
+<span class="n">Circle</span> <span class="n">of</span> <span class="n">radius</span> <span class="mi">5</span> <span class="n">at</span> <span class="n">coordinates</span> <span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">c2</span><span class="o">.</span><span class="n">area</span><span class="p">()</span>
+<span class="mf">78.53982</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">c2</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">c2</span><span class="p">)</span>
+<span class="n">Circle</span> <span class="n">of</span> <span class="n">radius</span> <span class="mi">5</span> <span class="n">at</span> <span class="n">coordinates</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">26</span><span class="p">)</span>
+</pre></div>
+
+
+<p>The initializer is implicitly called, and a circle instance is created. The <code>print</code> function 
+implicitly uses the special <code>__str__</code> method. We see that the <code>move</code> method of <code>Circle</code>'s 
+parent class <code>Shape</code> is available. A method is called using attribute syntax on the object 
+instance: <code>object.method()</code>. The first ( <code>self</code> ) parameter is set implicitly.</p>
 					</div>
 					<div class="span4">
 						<h3>Sidebar</h3>
