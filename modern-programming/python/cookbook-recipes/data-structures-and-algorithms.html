@@ -205,6 +205,154 @@ this, but you can often just pick a throwaway variable name for it. Let's see:</
 
 
 <p>However, make sure that the variable name you pick isn't being used for something else already.</p>
+<h3>Unpacking Elements from Iterables of Arbitrary Length</h3>
+<p><strong>Problem</strong></p>
+<p>You need to unpack N elements from an iterable, but the iterable may be longer than N elements, 
+causing a "too many values to unpack" exception.</p>
+<p><strong>Solution</strong></p>
+<p>Python "star expressions" can be used to address this problem. For example, suppose you run a 
+course and decide at the end of the semester that you're going to drop the first and last homework 
+grades, and only average the rest of them. If there are only four assignments, maybe you simply 
+unpack all four, but what if there are 24? A star expression makes it easy:</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">drop_first_last</span><span class="p">(</span><span class="n">grades</span><span class="p">):</span>
+    <span class="n">first</span><span class="p">,</span> <span class="o">*</span><span class="n">middle</span><span class="p">,</span> <span class="n">last</span> <span class="o">=</span> <span class="n">grades</span>
+    <span class="k">return</span> <span class="n">avg</span><span class="p">(</span><span class="n">middle</span><span class="p">)</span>
+</pre></div>
+
+
+<p>As another use case, suppose you have user records that consist of a name and email address, 
+followed by an arbitrary number of phone numbers. You could unpack the records like this:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">record</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;Robert&#39;</span><span class="p">,</span> <span class="s1">&#39;r.johnson@gmail.com&#39;</span><span class="p">,</span> <span class="s1">&#39;555-5612&#39;</span><span class="p">,</span> <span class="s1">&#39;1-305-2299&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">name</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="o">*</span><span class="n">phone_numbers</span> <span class="o">=</span> <span class="n">record</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">name</span>
+<span class="s1">&#39;Robert&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">email</span>
+<span class="s1">&#39;r.johnson@gmail.com&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">phone_numbers</span>
+<span class="p">[</span><span class="s1">&#39;555-5612&#39;</span><span class="p">,</span> <span class="s1">&#39;1-305-2299&#39;</span><span class="p">]</span>
+</pre></div>
+
+
+<p>It's worth noting that the <code>phone_numbers</code> variable will always be a list, regardless of how many 
+phone numbers are unpacked (including none). Thus, any code that uses <code>phone_numbers</code> won't have 
+to account for the possibility that it might not be a list or perform any kind of additional type 
+checking.</p>
+<p>The starred variable can also be the first one in the list. For example, say you have a sequence of 
+values representing your company's sales figures for the last eight quarters. If you want to see 
+how the most recent quarter stacks up to the average of the first seven, you could do something 
+like this:</p>
+<div class="highlight"><pre><span></span><span class="o">*</span><span class="n">trailing_qtrs</span><span class="p">,</span> <span class="n">current_qtr</span> <span class="o">=</span> <span class="n">sales_record</span>
+<span class="n">trailing_avg</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">trailing_qtrs</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">trailing_qtrs</span><span class="p">)</span>
+<span class="k">return</span> <span class="n">avg_comparison</span><span class="p">(</span><span class="n">trailing_avg</span><span class="p">,</span> <span class="n">current_qtr</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Let's see the specific example in action:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">sales_record</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="o">*</span><span class="n">trailing_qtrs</span><span class="p">,</span> <span class="n">current_qtr</span> <span class="o">=</span> <span class="n">sales_record</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">trailing_qtrs</span>
+<span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">current_qtr</span>
+<span class="mi">3</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">trailing_avg</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">trailing_qtrs</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">trailing_qtrs</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">trailing_avg</span>
+<span class="mf">7.142857142857143</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">avg_diff</span> <span class="o">=</span> <span class="n">trailing_avg</span> <span class="o">-</span> <span class="n">current_qtr</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">avg_diff</span>
+<span class="mf">4.142857142857143</span>
+</pre></div>
+
+
+<p><strong>Discussion</strong></p>
+<p>Extended iterable unpacking is tailor-made for unpacking iterables of unknown or arbitrary length. 
+Oftentimes, these iterables have some known component or pattern in their construction 
+(e.g. "everything after element 1 is a phone number"), and star unpacking lets the developer 
+leverage those patterns easily instead of performing acrobatics to get at the relevant elements in 
+the iterable.</p>
+<p>It is worth noting that the star syntax can be especially useful when iterating over a sequence of 
+tuples of varying length. For example, perhaps a sequence of tagged tuples:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Unpacking of tagged tuples of varying sizes</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">records</span> <span class="o">=</span> <span class="p">[</span>
+<span class="o">...</span> <span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+<span class="o">...</span> <span class="p">(</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="s1">&#39;hello&#39;</span><span class="p">),</span>
+<span class="o">...</span> <span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+<span class="o">...</span> <span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">do_foo</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="o">...</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">do_bar</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+<span class="o">...</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">tag</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span> <span class="ow">in</span> <span class="n">records</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">if</span> <span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;foo&#39;</span><span class="p">:</span>
+<span class="o">...</span>         <span class="n">do_foo</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+<span class="o">...</span>     <span class="k">if</span> <span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;bar&#39;</span><span class="p">:</span>
+<span class="o">...</span>         <span class="n">do_bar</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+<span class="o">...</span> 
+<span class="n">foo</span> <span class="mi">1</span> <span class="mi">2</span>
+<span class="n">bar</span> <span class="n">hello</span>
+<span class="n">foo</span> <span class="mi">3</span> <span class="mi">4</span>
+</pre></div>
+
+
+<p>Star unpacking can also be useful when combined with certain kinds of string processing operations, 
+such as splitting. For example:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">line</span> <span class="o">=</span> <span class="s1">&#39;nobody:*:-2:-2:Unprivileged User:/var/empty:/usr/bin/false&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">uname</span><span class="p">,</span> <span class="o">*</span><span class="n">fields</span><span class="p">,</span> <span class="n">homedir</span><span class="p">,</span> <span class="n">sh</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">uname</span>
+<span class="s1">&#39;nobody&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">homedir</span>
+<span class="s1">&#39;/var/empty&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">sh</span>
+<span class="s1">&#39;/usr/bin/false&#39;</span>
+</pre></div>
+
+
+<p>Sometimes you might want to unpack values and throw them away. You can't just specify a bare * when 
+unpacking, but you could use a common throwaway variable name, such as <code>_</code> or <code>ign</code> (ignored). 
+For example:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">record</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;SIDR&#39;</span><span class="p">,</span> <span class="mi">125</span><span class="p">,</span> <span class="mf">32.46</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2017</span><span class="p">))</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">name</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span><span class="p">,</span> <span class="p">(</span><span class="o">*</span><span class="n">_</span><span class="p">,</span> <span class="n">year</span><span class="p">)</span> <span class="o">=</span> <span class="n">record</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">name</span>
+<span class="s1">&#39;SIDR&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">year</span>
+<span class="mi">2017</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Marianne&quot;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">name</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span>
+<span class="s1">&#39;M&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">y</span>
+<span class="s1">&#39;a&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">z</span>
+<span class="s1">&#39;e&#39;</span>
+</pre></div>
+
+
+<p>There is a certain similarity between star unpacking and list-processing features of various 
+functional languages. For example, if you have a list, you can easily split it into head and tail 
+components like this:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">head</span><span class="p">,</span> <span class="o">*</span><span class="n">tail</span> <span class="o">=</span> <span class="n">items</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">head</span>
+<span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">tail</span>
+<span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+</pre></div>
+
+
+<p>One could imagine writing functions that perform such splitting in order to carry out some kind of 
+clever recursive algorithm. For example:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">sum</span><span class="p">(</span><span class="n">items</span><span class="p">):</span>
+<span class="o">...</span>     <span class="n">head</span><span class="p">,</span> <span class="o">*</span><span class="n">tail</span> <span class="o">=</span> <span class="n">items</span>
+<span class="o">...</span>     <span class="k">return</span> <span class="n">head</span> <span class="o">+</span> <span class="nb">sum</span><span class="p">(</span><span class="n">tail</span><span class="p">)</span> <span class="k">if</span> <span class="n">tail</span> <span class="k">else</span> <span class="n">head</span>
+<span class="o">...</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">sum</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+<span class="mi">36</span>
+</pre></div>
+
+
+<p>However, be aware that recursion really isn't a strong Python feature due to the inherent recursion 
+limit. Thus, this last example might be nothing more than an academic curiosity in practice.</p>
 					</div>
 					<div class="span4">
 						<h3>Sidebar</h3>
