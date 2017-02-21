@@ -756,6 +756,37 @@ employed by built-in methods such as the length ( <code>len</code> ) function.</
 implicitly uses the special <code>__str__</code> method. We see that the <code>move</code> method of <code>Circle</code>'s 
 parent class <code>Shape</code> is available. A method is called using attribute syntax on the object 
 instance: <code>object.method()</code>. The first ( <code>self</code> ) parameter is set implicitly.</p>
+<h2 id="exceptions">Exceptions</h2>
+<p>Exceptions (errors) can be caught and handled using the <code>try-except-else-finally</code> compound 
+statement. This statement can also catch and handle exceptions you define and raise yourself. Any 
+exception that isn't caught will cause the program to exit. Let's see a basic exception handling:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">EmptyFileError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="k">pass</span>
+<span class="n">filenames</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;myfile1&quot;</span><span class="p">,</span> <span class="s2">&quot;nonExistent&quot;</span><span class="p">,</span> <span class="s2">&quot;emptyFile&quot;</span><span class="p">,</span> <span class="s2">&quot;myfile2&quot;</span><span class="p">]</span>
+<span class="k">for</span> <span class="nb">file</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="nb">file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">line</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+            <span class="k">raise</span> <span class="n">EmptyFileError</span><span class="p">(</span><span class="s2">&quot;{0}: is empty&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">file</span><span class="p">))</span>
+    <span class="k">except</span> <span class="ne">IOError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;{0}: could not be opened: {1}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">file</span><span class="p">,</span> <span class="n">error</span><span class="o">.</span><span class="n">strerror</span><span class="p">))</span>
+    <span class="k">except</span> <span class="n">EmptyFileError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;{0}: {1}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">file</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()))</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Done processing!&quot;</span><span class="p">,</span> <span class="nb">file</span><span class="p">)</span>
+</pre></div>
+
+
+<p>We define our own exception type inheriting from the base <code>Exception</code> type. If an <code>IOError</code> 
+or <code>EmptyFileError</code> occurs during the execution of the statements in the <code>try</code> block, the 
+associated <code>except</code> block is executed. The <code>else</code> clause is optional and it's executed if no 
+exception occurs in the <code>try</code> block (note that in this example, <code>continue</code> statements in 
+the <code>except</code> blocks could have been used instead). The <code>finally</code> clause is optional and it's 
+executed at the end of the block whether an exception was raised or not.</p>
 					</div>
 					<div class="span4">
 						<h3>Sidebar</h3>

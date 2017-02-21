@@ -1377,6 +1377,63 @@ methods familiar to C++ and Java programmers. For example:</p>
 method. <code>@staticmethod</code> is an example of using an a <em>decorator</em>.</p>
 </div>
 <p><a class="read-more-less" href="#">read more &#187;</a></p>
+<h2 id="exceptions">Exceptions</h2>
+<p>If an error occurs in your program, an exception is raised and a traceback message such as the 
+following appears:</p>
+<div class="highlight"><pre><span></span><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+  <span class="n">File</span> <span class="s2">&quot;~/sh.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">23</span><span class="p">,</span> <span class="ow">in</span> <span class="n">__init__</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="n">radius</span>
+<span class="ne">NameError</span><span class="p">:</span> <span class="n">name</span> <span class="s1">&#39;radius&#39;</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">defined</span>
+</pre></div>
+
+
+<p>The traceback message indicates the type of error that occurred, along with its location. Normally, 
+errors cause a program to terminate. However, you can catch and handle exceptions 
+using <code>try</code> and <code>except</code> statements, like this:</p>
+<div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;datafile&quot;</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">IOError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="k">print</span> <span class="n">e</span>
+</pre></div>
+
+
+<div class="more-content">
+<p>If an <code>IOError</code> occurs, details concerning the cause of the error are placed in <code>e</code> and 
+control passes to the code in the <code>except</code> block. If some other kind of exception is raised, 
+it's passed to the enclosing code block (if any). If no errors occur, the code in the <code>except</code> 
+block is ignored. When an exception is handled, program execution resumes with the statement that 
+immediately follows the last except block. The program does not return to the location where the 
+exception occurred.</p>
+<p>The <code>raise</code> statement is used to signal an exception. When raising an exception, you can use one 
+of the built-in exceptions, like this:</p>
+<div class="highlight"><pre><span></span><span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Computer says no&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Also, it's possible to create your own exceptions.</p>
+<p>Proper management of system resources such as locks, files, and network connections is often a 
+tricky problem when combined with exception handling. To simplify such programming, you can use 
+the <code>with</code> statement with certain kinds of objects. Here is an example of writing code that uses 
+a mutex lock:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">threading</span>
+<span class="n">message_lock</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Lock</span><span class="p">()</span>
+<span class="o">...</span>
+<span class="k">with</span> <span class="n">message_lock</span><span class="p">:</span>
+    <span class="n">messages</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">newmessage</span><span class="p">)</span>
+</pre></div>
+
+
+<p>In this example, the <code>message_lock</code> object is automatically acquired when the <code>with</code> 
+statement executes. When execution leaves the context of the <code>with</code> block, the lock is 
+automatically released. This management takes place regardless of what happens inside the <code>with</code> 
+block. For example, if an exception occurs, the lock is released when control leaves the context of 
+the block.</p>
+<p>The <code>with</code> statement is normally only compatible with objects related to system resources or the 
+execution environment such as files, connections, and locks. However, user-defined objects can 
+define their own custom processing.</p>
+</div>
+<p><a class="read-more-less" href="#">read more &#187;</a></p>
 					</div>
 					<div class="span4">
 						<h3>Sidebar</h3>
