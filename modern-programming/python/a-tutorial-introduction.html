@@ -1490,6 +1490,180 @@ interactive experimentation:</p>
 
 </div>
 <p><a class="read-more-less" href="#">read more &#187;</a></p>
+<h2 id="getting-help">Getting Help</h2>
+<p>When working with Python, you have several sources of quickly available information. First, when 
+Python is running in interactive mode, you can use the <code>help()</code> command to get information about 
+built-in modules and other aspects of Python. Simply type <code>help()</code> by itself for general 
+information or <code>help('modulename')</code> for information about a specific module. The <code>help()</code> 
+command can also be used to return information about specific functions if you supply a function 
+name.</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">help</span><span class="p">()</span>
+
+<span class="n">Welcome</span> <span class="n">to</span> <span class="n">Python</span> <span class="mf">3.6</span><span class="s1">&#39;s help utility!</span>
+
+<span class="n">If</span> <span class="n">this</span> <span class="ow">is</span> <span class="n">your</span> <span class="n">first</span> <span class="n">time</span> <span class="n">using</span> <span class="n">Python</span><span class="p">,</span> <span class="n">you</span> <span class="n">should</span> <span class="n">definitely</span> <span class="n">check</span> <span class="n">out</span>
+<span class="n">the</span> <span class="n">tutorial</span> <span class="n">on</span> <span class="n">the</span> <span class="n">Internet</span> <span class="n">at</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">docs</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="mf">3.6</span><span class="o">/</span><span class="n">tutorial</span><span class="o">/.</span>
+
+<span class="n">Enter</span> <span class="n">the</span> <span class="n">name</span> <span class="n">of</span> <span class="nb">any</span> <span class="n">module</span><span class="p">,</span> <span class="n">keyword</span><span class="p">,</span> <span class="ow">or</span> <span class="n">topic</span> <span class="n">to</span> <span class="n">get</span> <span class="n">help</span> <span class="n">on</span> <span class="n">writing</span>
+<span class="n">Python</span> <span class="n">programs</span> <span class="ow">and</span> <span class="n">using</span> <span class="n">Python</span> <span class="n">modules</span><span class="o">.</span>  <span class="n">To</span> <span class="n">quit</span> <span class="n">this</span> <span class="n">help</span> <span class="n">utility</span> <span class="ow">and</span>
+<span class="k">return</span> <span class="n">to</span> <span class="n">the</span> <span class="n">interpreter</span><span class="p">,</span> <span class="n">just</span> <span class="nb">type</span> <span class="s2">&quot;quit&quot;</span><span class="o">.</span>
+
+<span class="n">To</span> <span class="n">get</span> <span class="n">a</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">available</span> <span class="n">modules</span><span class="p">,</span> <span class="n">keywords</span><span class="p">,</span> <span class="n">symbols</span><span class="p">,</span> <span class="ow">or</span> <span class="n">topics</span><span class="p">,</span> <span class="nb">type</span>
+<span class="s2">&quot;modules&quot;</span><span class="p">,</span> <span class="s2">&quot;keywords&quot;</span><span class="p">,</span> <span class="s2">&quot;symbols&quot;</span><span class="p">,</span> <span class="ow">or</span> <span class="s2">&quot;topics&quot;</span><span class="o">.</span>  <span class="n">Each</span> <span class="n">module</span> <span class="n">also</span> <span class="n">comes</span>
+<span class="k">with</span> <span class="n">a</span> <span class="n">one</span><span class="o">-</span><span class="n">line</span> <span class="n">summary</span> <span class="n">of</span> <span class="n">what</span> <span class="n">it</span> <span class="n">does</span><span class="p">;</span> <span class="n">to</span> <span class="nb">list</span> <span class="n">the</span> <span class="n">modules</span> <span class="n">whose</span> <span class="n">name</span>
+<span class="ow">or</span> <span class="n">summary</span> <span class="n">contain</span> <span class="n">a</span> <span class="n">given</span> <span class="n">string</span> <span class="n">such</span> <span class="k">as</span> <span class="s2">&quot;spam&quot;</span><span class="p">,</span> <span class="nb">type</span> <span class="s2">&quot;modules spam&quot;</span><span class="o">.</span>
+
+<span class="n">help</span><span class="o">&gt;</span>
+</pre></div>
+
+
+<div class="more-content">
+<p>For information about a specific module:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">help</span><span class="p">(</span><span class="s1">&#39;string&#39;</span><span class="p">)</span>
+<span class="n">Help</span> <span class="n">on</span> <span class="n">module</span> <span class="n">string</span><span class="p">:</span>
+
+<span class="n">NAME</span>
+    <span class="n">string</span> <span class="o">-</span> <span class="n">A</span> <span class="n">collection</span> <span class="n">of</span> <span class="n">string</span> <span class="n">constants</span><span class="o">.</span>
+
+<span class="n">MODULE</span> <span class="n">REFERENCE</span>
+    <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">docs</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="mf">3.6</span><span class="o">/</span><span class="n">library</span><span class="o">/</span><span class="n">string</span>
+
+    <span class="n">The</span> <span class="n">following</span> <span class="n">documentation</span> <span class="ow">is</span> <span class="n">automatically</span> <span class="n">generated</span> <span class="kn">from</span> <span class="nn">the</span> <span class="nn">Python</span>
+    <span class="n">source</span> <span class="n">files</span><span class="o">.</span>  <span class="n">It</span> <span class="n">may</span> <span class="n">be</span> <span class="n">incomplete</span><span class="p">,</span> <span class="n">incorrect</span> <span class="ow">or</span> <span class="n">include</span> <span class="n">features</span> <span class="n">that</span>
+    <span class="n">are</span> <span class="n">considered</span> <span class="n">implementation</span> <span class="n">detail</span> <span class="ow">and</span> <span class="n">may</span> <span class="n">vary</span> <span class="n">between</span> <span class="n">Python</span>
+    <span class="n">implementations</span><span class="o">.</span>  <span class="n">When</span> <span class="ow">in</span> <span class="n">doubt</span><span class="p">,</span> <span class="n">consult</span> <span class="n">the</span> <span class="n">module</span> <span class="n">reference</span> <span class="n">at</span> <span class="n">the</span>
+    <span class="n">location</span> <span class="n">listed</span> <span class="n">above</span><span class="o">.</span>
+
+<span class="n">DESCRIPTION</span>
+    <span class="n">Public</span> <span class="n">module</span> <span class="n">variables</span><span class="p">:</span>
+
+    <span class="n">whitespace</span> <span class="o">--</span> <span class="n">a</span> <span class="n">string</span> <span class="n">containing</span> <span class="nb">all</span> <span class="n">ASCII</span> <span class="n">whitespace</span>
+    <span class="n">ascii_lowercase</span> <span class="o">--</span> <span class="n">a</span> <span class="n">string</span> <span class="n">containing</span> <span class="nb">all</span> <span class="n">ASCII</span> <span class="n">lowercase</span> <span class="n">letters</span>
+    <span class="n">ascii_uppercase</span> <span class="o">--</span> <span class="n">a</span> <span class="n">string</span> <span class="n">containing</span> <span class="nb">all</span> <span class="n">ASCII</span> <span class="n">uppercase</span> <span class="n">letters</span>
+    <span class="n">ascii_letters</span> <span class="o">--</span> <span class="n">a</span> <span class="n">string</span> <span class="n">containing</span> <span class="nb">all</span> <span class="n">ASCII</span> <span class="n">letters</span>
+    <span class="n">digits</span> <span class="o">--</span> <span class="n">a</span> <span class="n">string</span> <span class="n">containing</span> <span class="nb">all</span> <span class="n">ASCII</span> <span class="n">decimal</span> <span class="n">digits</span>
+    <span class="n">hexdigits</span> <span class="o">--</span> <span class="n">a</span> <span class="n">string</span> <span class="n">containing</span> <span class="nb">all</span> <span class="n">ASCII</span> <span class="n">hexadecimal</span> <span class="n">digits</span>
+    <span class="n">octdigits</span> <span class="o">--</span> <span class="n">a</span> <span class="n">string</span> <span class="n">containing</span> <span class="nb">all</span> <span class="n">ASCII</span> <span class="n">octal</span> <span class="n">digits</span>
+    <span class="n">punctuation</span> <span class="o">--</span> <span class="n">a</span> <span class="n">string</span> <span class="n">containing</span> <span class="nb">all</span> <span class="n">ASCII</span> <span class="n">punctuation</span> <span class="n">characters</span>
+    <span class="n">printable</span> <span class="o">--</span> <span class="n">a</span> <span class="n">string</span> <span class="n">containing</span> <span class="nb">all</span> <span class="n">ASCII</span> <span class="n">characters</span> <span class="n">considered</span> <span class="n">printable</span>
+
+<span class="n">CLASSES</span>
+    <span class="n">builtins</span><span class="o">.</span><span class="n">object</span>
+        <span class="n">Formatter</span>
+        <span class="n">Template</span>
+
+    <span class="k">class</span> <span class="nc">Formatter</span><span class="p">(</span><span class="n">builtins</span><span class="o">.</span><span class="n">object</span><span class="p">)</span>
+     <span class="o">|</span>  <span class="n">Methods</span> <span class="n">defined</span> <span class="n">here</span><span class="p">:</span>
+     <span class="o">|</span>  
+     <span class="o">|</span>  <span class="n">check_unused_args</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">used_args</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+     <span class="o">|</span>  
+     <span class="o">|</span>  <span class="n">convert_field</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">conversion</span><span class="p">)</span>
+     <span class="o">|</span>  
+     <span class="o">|</span>  <span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+     <span class="o">|</span>  
+     <span class="o">|</span>  <span class="n">format_field</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">format_spec</span><span class="p">)</span>
+     <span class="o">|</span>  
+     <span class="o">|</span>  <span class="n">get_field</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field_name</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+     <span class="o">|</span>      <span class="c1"># given a field_name, find the object it references.</span>
+     <span class="o">|</span>      <span class="c1">#  field_name:   the field being looked up, e.g. &quot;0.name&quot;</span>
+     <span class="o">|</span>      <span class="c1">#                 or &quot;lookup[3]&quot;</span>
+     <span class="o">|</span>      <span class="c1">#  used_args:    a set of which args have been used</span>
+     <span class="o">|</span>      <span class="c1">#  args, kwargs: as passed in to vformat</span>
+     <span class="o">|</span>  
+     <span class="o">|</span>  <span class="n">get_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+     <span class="o">|</span>  
+     <span class="o">|</span>  <span class="n">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">format_string</span><span class="p">)</span>
+     <span class="o">|</span>      <span class="c1"># returns an iterable that contains tuples of the form:</span>
+     <span class="o">|</span>      <span class="c1"># (literal_text, field_name, format_spec, conversion)</span>
+     <span class="o">|</span>      <span class="c1"># literal_text can be zero length</span>
+     <span class="o">|</span>      <span class="c1"># field_name can be None, in which case there&#39;s no</span>
+     <span class="o">|</span>      <span class="c1">#  object to format and output</span>
+     <span class="o">|</span>      <span class="c1"># if field_name is not None, it is looked up, formatted</span>
+     <span class="o">|</span>      <span class="c1">#  with format_spec and conversion and then used</span>
+     <span class="o">|</span>  
+     <span class="o">|</span>  <span class="n">vformat</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">format_string</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+     <span class="o">|</span>  
+     <span class="o">|</span>  <span class="o">----------------------------------------------------------------------</span>
+     <span class="o">|</span>  <span class="n">Data</span> <span class="n">descriptors</span> <span class="n">defined</span> <span class="n">here</span><span class="p">:</span>
+     <span class="o">|</span>  
+     <span class="o">|</span>  <span class="n">__dict__</span>
+     <span class="o">|</span>      <span class="n">dictionary</span> <span class="k">for</span> <span class="n">instance</span> <span class="n">variables</span> <span class="p">(</span><span class="k">if</span> <span class="n">defined</span><span class="p">)</span>
+<span class="o">...</span>
+</pre></div>
+
+
+<p>Most Python functions have documentation strings that describe their usage. To print the doc string, 
+simply print the <code>__doc__</code> attribute. Here's an example:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="nb">repr</span><span class="o">.</span><span class="n">__doc__</span><span class="p">)</span>
+<span class="n">Return</span> <span class="n">the</span> <span class="n">canonical</span> <span class="n">string</span> <span class="n">representation</span> <span class="n">of</span> <span class="n">the</span> <span class="nb">object</span><span class="o">.</span>
+
+<span class="n">For</span> <span class="n">many</span> <span class="nb">object</span> <span class="n">types</span><span class="p">,</span> <span class="n">including</span> <span class="n">most</span> <span class="n">builtins</span><span class="p">,</span> <span class="nb">eval</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">obj</span><span class="p">))</span> <span class="o">==</span> <span class="n">obj</span><span class="o">.</span>
+</pre></div>
+
+
+<p>Last, but not least, most Python installations also include the command <code>pydoc3</code>, which can be 
+used to return documentation about Python modules:</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">pydoc3</span>
+<span class="n">pydoc</span> <span class="o">-</span> <span class="n">the</span> <span class="n">Python</span> <span class="n">documentation</span> <span class="n">tool</span>
+
+<span class="n">pydoc3</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span> <span class="o">...</span>
+    <span class="n">Show</span> <span class="n">text</span> <span class="n">documentation</span> <span class="n">on</span> <span class="n">something</span><span class="o">.</span>  <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span> <span class="n">may</span> <span class="n">be</span> <span class="n">the</span> <span class="n">name</span> <span class="n">of</span> <span class="n">a</span>
+    <span class="n">Python</span> <span class="n">keyword</span><span class="p">,</span> <span class="n">topic</span><span class="p">,</span> <span class="n">function</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="ow">or</span> <span class="n">package</span><span class="p">,</span> <span class="ow">or</span> <span class="n">a</span> <span class="n">dotted</span>
+    <span class="n">reference</span> <span class="n">to</span> <span class="n">a</span> <span class="k">class</span> <span class="nc">or</span> <span class="n">function</span> <span class="n">within</span> <span class="n">a</span> <span class="n">module</span> <span class="ow">or</span> <span class="n">module</span> <span class="ow">in</span> <span class="n">a</span>
+    <span class="n">package</span><span class="o">.</span>  <span class="n">If</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span> <span class="n">contains</span> <span class="n">a</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="n">it</span> <span class="ow">is</span> <span class="n">used</span> <span class="k">as</span> <span class="n">the</span> <span class="n">path</span> <span class="n">to</span> <span class="n">a</span>
+    <span class="n">Python</span> <span class="n">source</span> <span class="nb">file</span> <span class="n">to</span> <span class="n">document</span><span class="o">.</span> <span class="n">If</span> <span class="n">name</span> <span class="ow">is</span> <span class="s1">&#39;keywords&#39;</span><span class="p">,</span> <span class="s1">&#39;topics&#39;</span><span class="p">,</span>
+    <span class="ow">or</span> <span class="s1">&#39;modules&#39;</span><span class="p">,</span> <span class="n">a</span> <span class="n">listing</span> <span class="n">of</span> <span class="n">these</span> <span class="n">things</span> <span class="ow">is</span> <span class="n">displayed</span><span class="o">.</span>
+
+<span class="n">pydoc3</span> <span class="o">-</span><span class="n">k</span> <span class="o">&lt;</span><span class="n">keyword</span><span class="o">&gt;</span>
+    <span class="n">Search</span> <span class="k">for</span> <span class="n">a</span> <span class="n">keyword</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">synopsis</span> <span class="n">lines</span> <span class="n">of</span> <span class="nb">all</span> <span class="n">available</span> <span class="n">modules</span><span class="o">.</span>
+
+<span class="n">pydoc3</span> <span class="o">-</span><span class="n">p</span> <span class="o">&lt;</span><span class="n">port</span><span class="o">&gt;</span>
+    <span class="n">Start</span> <span class="n">an</span> <span class="n">HTTP</span> <span class="n">server</span> <span class="n">on</span> <span class="n">the</span> <span class="n">given</span> <span class="n">port</span> <span class="n">on</span> <span class="n">the</span> <span class="n">local</span> <span class="n">machine</span><span class="o">.</span>  <span class="n">Port</span>
+    <span class="n">number</span> <span class="mi">0</span> <span class="n">can</span> <span class="n">be</span> <span class="n">used</span> <span class="n">to</span> <span class="n">get</span> <span class="n">an</span> <span class="n">arbitrary</span> <span class="n">unused</span> <span class="n">port</span><span class="o">.</span>
+
+<span class="n">pydoc3</span> <span class="o">-</span><span class="n">b</span>
+    <span class="n">Start</span> <span class="n">an</span> <span class="n">HTTP</span> <span class="n">server</span> <span class="n">on</span> <span class="n">an</span> <span class="n">arbitrary</span> <span class="n">unused</span> <span class="n">port</span> <span class="ow">and</span> <span class="nb">open</span> <span class="n">a</span> <span class="n">Web</span> <span class="n">browser</span>
+    <span class="n">to</span> <span class="n">interactively</span> <span class="n">browse</span> <span class="n">documentation</span><span class="o">.</span>  <span class="n">The</span> <span class="o">-</span><span class="n">p</span> <span class="n">option</span> <span class="n">can</span> <span class="n">be</span> <span class="n">used</span> <span class="k">with</span>
+    <span class="n">the</span> <span class="o">-</span><span class="n">b</span> <span class="n">option</span> <span class="n">to</span> <span class="n">explicitly</span> <span class="n">specify</span> <span class="n">the</span> <span class="n">server</span> <span class="n">port</span><span class="o">.</span>
+
+<span class="n">pydoc3</span> <span class="o">-</span><span class="n">w</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span> <span class="o">...</span>
+    <span class="n">Write</span> <span class="n">out</span> <span class="n">the</span> <span class="n">HTML</span> <span class="n">documentation</span> <span class="k">for</span> <span class="n">a</span> <span class="n">module</span> <span class="n">to</span> <span class="n">a</span> <span class="nb">file</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">current</span>
+    <span class="n">directory</span><span class="o">.</span>  <span class="n">If</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span> <span class="n">contains</span> <span class="n">a</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="n">it</span> <span class="ow">is</span> <span class="n">treated</span> <span class="k">as</span> <span class="n">a</span> <span class="n">filename</span><span class="p">;</span> <span class="k">if</span>
+    <span class="n">it</span> <span class="n">names</span> <span class="n">a</span> <span class="n">directory</span><span class="p">,</span> <span class="n">documentation</span> <span class="ow">is</span> <span class="n">written</span> <span class="k">for</span> <span class="nb">all</span> <span class="n">the</span> <span class="n">contents</span><span class="o">.</span>
+</pre></div>
+
+
+<p>Simply type <code>pydoc3 topic</code> at a system command prompt:</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">pydoc3</span> <span class="n">asyncio</span>
+<span class="n">Help</span> <span class="n">on</span> <span class="n">package</span> <span class="n">asyncio</span><span class="p">:</span>
+
+<span class="n">NAME</span>
+    <span class="n">asyncio</span> <span class="o">-</span> <span class="n">The</span> <span class="n">asyncio</span> <span class="n">package</span><span class="p">,</span> <span class="n">tracking</span> <span class="n">PEP</span> <span class="mf">3156.</span>
+
+<span class="n">MODULE</span> <span class="n">REFERENCE</span>
+    <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">docs</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="mf">3.4</span><span class="o">/</span><span class="n">library</span><span class="o">/</span><span class="n">asyncio</span>
+
+    <span class="n">The</span> <span class="n">following</span> <span class="n">documentation</span> <span class="ow">is</span> <span class="n">automatically</span> <span class="n">generated</span> <span class="kn">from</span> <span class="nn">the</span> <span class="nn">Python</span>
+    <span class="n">source</span> <span class="n">files</span><span class="o">.</span>  <span class="n">It</span> <span class="n">may</span> <span class="n">be</span> <span class="n">incomplete</span><span class="p">,</span> <span class="n">incorrect</span> <span class="ow">or</span> <span class="n">include</span> <span class="n">features</span> <span class="n">that</span>
+    <span class="n">are</span> <span class="n">considered</span> <span class="n">implementation</span> <span class="n">detail</span> <span class="ow">and</span> <span class="n">may</span> <span class="n">vary</span> <span class="n">between</span> <span class="n">Python</span>
+    <span class="n">implementations</span><span class="o">.</span>  <span class="n">When</span> <span class="ow">in</span> <span class="n">doubt</span><span class="p">,</span> <span class="n">consult</span> <span class="n">the</span> <span class="n">module</span> <span class="n">reference</span> <span class="n">at</span> <span class="n">the</span>
+    <span class="n">location</span> <span class="n">listed</span> <span class="n">above</span><span class="o">.</span>
+
+<span class="n">PACKAGE</span> <span class="n">CONTENTS</span>
+    <span class="n">base_events</span>
+    <span class="n">base_subprocess</span>
+    <span class="n">constants</span>
+    <span class="n">coroutines</span>
+    <span class="n">events</span>
+    <span class="n">futures</span>
+    <span class="n">locks</span>
+    <span class="n">log</span>
+<span class="o">...</span>
+</pre></div>
+
+
+</div>
+<p><a class="read-more-less" href="#">read more &#187;</a></p>
 					</div>
 					<div class="span4">
 						<h3>Sidebar</h3>
