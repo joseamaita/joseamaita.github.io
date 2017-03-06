@@ -787,6 +787,66 @@ associated <code>except</code> block is executed. The <code>else</code> clause i
 exception occurs in the <code>try</code> block (note that in this example, <code>continue</code> statements in 
 the <code>except</code> blocks could have been used instead). The <code>finally</code> clause is optional and it's 
 executed at the end of the block whether an exception was raised or not.</p>
+<h2 id="modules">Modules</h2>
+<p>It's easy to create your own modules, which can be imported and used in the same way as Python's 
+built-in library modules. Here is a simple module with one function that prompts the user to enter 
+a filename and determines the number of times words occur in this file.</p>
+<div class="highlight"><pre><span></span><span class="c1"># file : wo.py</span>
+
+<span class="n">__doc__</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;wo module. Contains function: words_occur()&quot;&quot;&quot;</span>
+
+<span class="c1"># interface functions</span>
+<span class="k">def</span> <span class="nf">words_occur</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;words_occur() - count the ocurrences of words in a file.&quot;&quot;&quot;</span>
+    <span class="c1"># Prompt user for the name of the file to use.</span>
+    <span class="n">file_name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter the name of the file: &quot;</span><span class="p">)</span>
+    <span class="c1"># Open the file, read it and store its words in a list.</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    <span class="n">word_list</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="c1"># Count the number of occurences of each word in the file.</span>
+    <span class="n">occurs_dict</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">word_list</span><span class="p">:</span>
+        <span class="c1"># increment the occurrences count for this word</span>
+        <span class="n">occurs_dict</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">=</span> <span class="n">occurs_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="c1"># Print out the results.</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;File {0} has {1} words ({2} are unique)&quot;</span> \
+            <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">word_list</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">occurs_dict</span><span class="p">)))</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">occurs_dict</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">words_occur</span><span class="p">()</span>
+</pre></div>
+
+
+<p>Documentation strings are a standard way of documenting modules, functions, methods, and 
+classes ( <code>__doc__</code> ). Comments are anything beginning with a <code>#</code> character. The 
+function <code>read()</code> returns a string containing all the characters in a file, and the 
+function <code>split()</code> returns a list of the words of a string "split out" based on whitespace. Also, 
+you can use a <code>\</code> to break a long statement across multiple lines. The program can be run as a 
+script by typing <code>python3.6 wo.py</code> at a command line.</p>
+<p>If you place a file in one of the directories on the module search path, which can be found 
+in <code>sys.path</code>, then it can be imported like any of the built-in library modules using 
+the <code>import</code> statement:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">wo</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">wo</span><span class="o">.</span><span class="n">words_occur</span><span class="p">()</span>
+</pre></div>
+
+
+<p>Note that if you change the file <code>wo.py</code> on disk, <code>import</code> won't bring your changes into the 
+same interactive session. You use the <code>reload</code> function from the <code>imp</code> library in this 
+situation:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">wo</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">imp</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">imp</span><span class="o">.</span><span class="n">reload</span><span class="p">(</span><span class="n">wo</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="n">module</span> <span class="s1">&#39;wo&#39;</span> <span class="kn">from</span> <span class="s1">&#39;~python/exercises/modules/wo.py&#39;</span><span class="o">&gt;</span>
+</pre></div>
+
+
+<p>For larger projects, there is a generalization of the module concept called <em>packages</em>. This allows 
+you to easily group a number of modules together in a directory or directory subtree and import and 
+hierarchically refer to them using a <code>package.subpackage.module</code> syntax. This entails little more 
+than the creation of a possibly empty initialization file for each package or subpackage.</p>
 					</div>
 					<div class="span4">
 						<h3>Sidebar</h3>

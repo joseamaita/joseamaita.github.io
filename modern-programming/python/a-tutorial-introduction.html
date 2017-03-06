@@ -1434,6 +1434,62 @@ execution environment such as files, connections, and locks. However, user-defin
 define their own custom processing.</p>
 </div>
 <p><a class="read-more-less" href="#">read more &#187;</a></p>
+<h2 id="modules">Modules</h2>
+<p>As your programs grow in size, you will want to break them into multiple files for easier 
+maintenance. To do this, Python allows you to put definitions in a file and use them as a module 
+that can be imported into other programs and scripts. To create a module, put the relevant 
+statements and definitions into a file that has the same name as the module. Be aware that the file 
+must have a <code>.py</code> suffix. Here's an example:</p>
+<div class="highlight"><pre><span></span><span class="c1"># file : div.py</span>
+
+<span class="k">def</span> <span class="nf">divide</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">a</span> <span class="o">/</span> <span class="n">b</span>    <span class="c1"># If a and b are integers, q is an integer</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">q</span> <span class="o">*</span> <span class="n">b</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
+</pre></div>
+
+
+<p>To use your module in other programs, you can use the <code>import</code> statement:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">div</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">div</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="mi">2305</span><span class="p">,</span> <span class="mi">29</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="more-content">
+<p>The <code>import</code> statement creates a new namespace and executes all the statements in the 
+associated <code>.py</code> file within that namespace. To access the contents of the namespace after import, 
+simply use the name of the module as a prefix, as in <code>div.divide()</code> in the preceding example.</p>
+<p>If you want to import a module using a different name, supply the <code>import</code> statement with an 
+optional <code>as</code> qualifier, as follows:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">div</span> <span class="kn">as</span> <span class="nn">foo</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">foo</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="mi">2305</span><span class="p">,</span> <span class="mi">29</span><span class="p">)</span>
+</pre></div>
+
+
+<p>To import specific definitions into the current namespace, use the <code>from</code> statement:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">div</span> <span class="kn">import</span> <span class="n">divide</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">divide</span><span class="p">(</span><span class="mi">2305</span><span class="p">,</span> <span class="mi">29</span><span class="p">)</span>    <span class="c1"># No longer need the div prefix</span>
+</pre></div>
+
+
+<p>To load all of a module's contents into the current namespace, you can also use:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">div</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+
+
+<p>As with objects, the <code>dir()</code> function lists the contents of a module and is a useful tool for 
+interactive experimentation:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">string</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">dir</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+<span class="p">[</span><span class="s1">&#39;Formatter&#39;</span><span class="p">,</span> <span class="s1">&#39;Template&#39;</span><span class="p">,</span> <span class="s1">&#39;_ChainMap&#39;</span><span class="p">,</span> <span class="s1">&#39;_TemplateMetaclass&#39;</span><span class="p">,</span> <span class="s1">&#39;__all__&#39;</span><span class="p">,</span> <span class="s1">&#39;__builtins__&#39;</span><span class="p">,</span> 
+<span class="s1">&#39;__cached__&#39;</span><span class="p">,</span> <span class="s1">&#39;__doc__&#39;</span><span class="p">,</span> <span class="s1">&#39;__file__&#39;</span><span class="p">,</span> <span class="s1">&#39;__loader__&#39;</span><span class="p">,</span> <span class="s1">&#39;__name__&#39;</span><span class="p">,</span> <span class="s1">&#39;__package__&#39;</span><span class="p">,</span> <span class="s1">&#39;__spec__&#39;</span><span class="p">,</span> 
+<span class="s1">&#39;_re&#39;</span><span class="p">,</span> <span class="s1">&#39;_string&#39;</span><span class="p">,</span> <span class="s1">&#39;ascii_letters&#39;</span><span class="p">,</span> <span class="s1">&#39;ascii_lowercase&#39;</span><span class="p">,</span> <span class="s1">&#39;ascii_uppercase&#39;</span><span class="p">,</span> <span class="s1">&#39;capwords&#39;</span><span class="p">,</span> <span class="s1">&#39;digits&#39;</span><span class="p">,</span> 
+<span class="s1">&#39;hexdigits&#39;</span><span class="p">,</span> <span class="s1">&#39;octdigits&#39;</span><span class="p">,</span> <span class="s1">&#39;printable&#39;</span><span class="p">,</span> <span class="s1">&#39;punctuation&#39;</span><span class="p">,</span> <span class="s1">&#39;whitespace&#39;</span><span class="p">]</span>
+</pre></div>
+
+
+</div>
+<p><a class="read-more-less" href="#">read more &#187;</a></p>
 					</div>
 					<div class="span4">
 						<h3>Sidebar</h3>
