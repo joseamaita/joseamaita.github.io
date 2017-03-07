@@ -205,7 +205,7 @@ similar identifiers should be avoided.</p>
 <p>The identifiers <code>True</code> and <code>False</code> are interpreted as Boolean values with the integer values 
 of <code>1</code> and <code>0</code>, respectively. A number such as <code>1234</code> is interpreted as a decimal integer. To 
 specify an integer using octal, hexadecimal, or binary notation, precede the value 
-with <code>0o</code>, <code>0x</code>, or <code>0b</code>, respectively (for example, <code>0o644</code>, <code>0x100FEA8</code>, 
+with <code>0o</code>, <code>0x</code>, or <code>0b</code>, respectively (for example, <code>0o644</code>, <code>0x100fea8</code>, 
 or <code>0b11101010</code>).</p>
 <p>Integers in Python can have an arbitrary number of digits, so if you want to specify a really large 
 integer, just write out all of the digits, as in <code>12345678901234567890</code>.</p>
@@ -316,26 +316,93 @@ escape codes:</p>
 </tr>
 <tr>
 <td>\uxxxx</td>
-<td>Unicode character (\u0000 to \uFFFF)</td>
+<td>Unicode character (\u0000 to \uffff)</td>
 </tr>
 <tr>
 <td>\Uxxxxxxxx</td>
-<td>Unicode character (\U00000000 to \uFFFFFFFF)</td>
+<td>Unicode character (\U00000000 to \uffffffff)</td>
 </tr>
 <tr>
-<td charname>\N</td>
+<td>\N&#123;charname&#125;</td>
 <td>Unicode character name</td>
 </tr>
 <tr>
 <td>\xhh</td>
-<td>Hexadecimal value (\x00 to \xFF)</td>
+<td>Hexadecimal value (\x00 to \xff)</td>
 </tr>
 </tbody>
 </table>
 <p>The escape codes <code>\OOO</code> and <code>\xhh</code> are used to embed characters into a string literal that 
 can't be easily typed (that is, control codes, nonprinting characters, symbols, international 
 characters, and so on). For these escape codes, you have to specify an integer value corresponding 
-to a character value.</p>
+to a character value. For example, if you wanted to write a string literal for the word "Mañana", 
+you might write it as "Ma\xf1ana" where <code>\xf1</code> is the character code for <code>ñ</code>.</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;Ma</span><span class="se">\xf1</span><span class="s2">ana&quot;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span>
+<span class="s1">&#39;Mañana&#39;</span>
+</pre></div>
+
+
+<p>In Python 3, all strings are already Unicode. The escape codes of <code>\uxxxx</code>, <code>\Uxxxxxxxx</code>, 
+and <code>\N&amp;#123;charname&amp;#125;</code> are used to insert arbitrary characters into a Unicode literal. 
+Every Unicode character has an assigned <em>code point</em>, which is typically denoted in Unicode charts 
+as <code>U+XXXX</code> where <code>XXXX</code> is a sequence of four or more hexadecimal digits. (Note that this 
+notation is not Python syntax but is often used by authors when describing Unicode characters). For 
+example, the character <code>ñ</code> has a code point of <code>U+00F1</code>. The <code>\u</code> escape code is used to 
+insert Unicode characters with code points in the range <code>U+0000</code> to <code>U+FFFF</code> (for 
+example, <code>\u00f1</code>). The <code>\U</code> escape code is used to insert characters in the range <code>U+10000</code> 
+and above (for example, <code>\U00012345</code>). One subtle caution concerning the <code>\U</code> escape code is 
+that Unicode characters with code points above <code>U+10000</code> usually get decomposed into a pair of 
+characters known as a <em>surrogate pair</em>. This has to do with the internal representation of Unicode 
+strings.</p>
+<p>Unicode characters also have a descriptive name. If you know the name, you can use 
+the <code>\N&amp;#123;character name&amp;#125;</code> escape sequence. For example:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;Ma</span><span class="se">\N{LATIN SMALL LETTER N WITH TILDE}</span><span class="s2">ana&quot;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span>
+<span class="s1">&#39;Mañana&#39;</span>
+</pre></div>
+
+
+<p>Want to know more about code points and character names? Then, 
+go <a href="http://unicode.org/charts/">here</a>.</p>
+<p>Optionally, you can precede a string literal with an <code>r</code> or <code>R</code>, such as in <code>r'\d'</code>. These 
+strings are known as <em>raw strings</em> because all their backslash characters are left intact. That is, 
+the string literally contains the enclosed text, including the backslashes. The main use of raw 
+strings is to specify literals where the backslash character has some significance. Examples might 
+include the specification of regular expression patterns with the <code>re</code> module or specifying a 
+filename on a Windows machine (for example, <code>r'c:\newdata\tests'</code>).</p>
+<p>Raw strings cannot end in a single backslash, such as <code>r"\"</code>. Within raw strings, <code>\uxxxx</code> 
+escape sequences are still interpreted as Unicode characters, provided that the number of 
+preceding <code>\</code> characters is odd. For instance, <code>r"\u1234"</code> defines a raw Unicode string with 
+the single character <code>U+1234</code>, whereas <code>r"\\u1234"</code> defines a seven-character string in which 
+the first two characters are slashes and the remaining five characters are the literal <code>"u1234"</code>.</p>
+<p>String literals should not be defined using a sequence of raw bytes that correspond to a data 
+encoding such as UTF-8 or UTF-16. For example, directly writing a raw UTF-8 encoded string such 
+as <code>r"Ma\xc3\xb1ana"</code> simply produces a seven-character string U+004D, U+0061, U+00C3, U+00B1, 
+U+0061, U+006E, U+0061, which is probably not what you intended. This is because in UTF-8, the 
+multibyte sequence <code>\xc3\xb1</code> is supposed to represent the single character <code>U+00F1</code>, not the 
+two characters <code>U+00C3</code> and <code>U+00B1</code>. To specify an encoded byte string as a literal, prefix 
+the first quote with a "b" as in <code>b"Ma\xc3\xb1ana"</code>. When defined, this literally creates a 
+string of single bytes. From this representation, it is possible to create a normal string by 
+decoding the value of the byte literal with its <code>decode()</code> method. Let's see:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;Ma</span><span class="se">\xf1</span><span class="s2">ana&quot;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span>
+<span class="s1">&#39;Mañana&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+<span class="n">b</span><span class="s1">&#39;Ma</span><span class="se">\xc3\xb1</span><span class="s1">ana&#39;</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="n">b</span><span class="s2">&quot;Ma</span><span class="se">\xc3\xb1</span><span class="s2">ana&quot;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span>
+<span class="n">b</span><span class="s1">&#39;Ma</span><span class="se">\xc3\xb1</span><span class="s1">ana&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+<span class="s1">&#39;Mañana&#39;</span>
+</pre></div>
+
+
+<p>The use of byte literals is quite rare in most programs because this syntax did not appear until 
+Python 2.6, and in that version there is no difference between a byte literal and a normal string. 
+In Python 3, however, byte literals are mapped to a new <code>bytes</code> datatype that behaves differently 
+than a normal string.</p>
 </div>
 <p><a class="read-more-less" href="#">read more &#187;</a></p>
 					</div>
