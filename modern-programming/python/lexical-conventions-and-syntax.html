@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="author" content="José A. Maita F.">
+		<meta name="description" content="Description of the syntactic and lexical conventions of a Python program.">
+		<title>3LE AUTOMATION, C.A. | Making things happen | Python / Lexical Conventions and Syntax</title>
+		<link media="all" rel="stylesheet" href="/static/css/bootstrap.min.css">
+		<link media="all" rel="stylesheet" href="/static/css/bootstrap-responsive.min.css">
+		<link media="all" rel="stylesheet" href="/static/css/main.css">
+		<link media="all" rel="stylesheet" href="/static/css/monokai.css">
+		<link rel="shortcut icon" href="/static/img/favicon.png">
+		<link media="all" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+	</head>
+	<body>
+		<div id="navigation-bar" class="navbar navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container">
+					<button data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar" type="button">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="brand" href="/">
+						<img src="/static/img/3leautomation-logo.png" alt="3leautomation-logo">
+					</a>
+					<div class="nav-collapse collapse" style="height: 0px;">
+						<ul class="nav">
+							<li class="dropdown">
+								<a class="dropdown-toggle" href="#" data-toggle="dropdown">
+									<i class="icon-list"></i> Areas of Knowledge
+									<i class="icon-chevron-down"></i>
+								</a>
+								<ul class="dropdown-menu">
+									<li>
+										<a href="/industrial-automation/">
+											Industrial Automation
+										</a>
+									</li>
+									<li>
+										<a href="/project-management/">
+											Project Management
+										</a>
+									</li>
+									<li>
+										<a href="/modern-programming/">
+											Modern Programming
+										</a>
+									</li>
+									<li>
+										<a href="/web-development/">
+											Web Development
+										</a>
+									</li>
+									<li>
+										<a href="/it-security/">
+											IT Security
+										</a>
+									</li>
+									<li>
+										<a href="/internet-of-things/">
+											Internet of Things
+										</a>
+									</li>
+									<li>
+										<a href="/cloud-computing/">
+											Cloud Computing
+										</a>
+									</li>
+									<li>
+										<a href="/cutting-edge-technologies/">
+											Cutting-Edge Technologies
+										</a>
+									</li>
+									<li>
+										<a href="/electronics-engineering/">
+											Electronics Engineering
+										</a>
+									</li>
+									<li>
+										<a href="/version-control-systems/">
+											Version Control Systems
+										</a>
+									</li>
+								</ul>
+							</li>
+							<li><a href="#"><i class="icon-briefcase"></i> Portfolio</a></li>
+							<li><a href="#"><i class="icon-wrench"></i> Training</a></li>
+							<li><a href="#"><i class="icon-bookmark"></i> News</a></li>
+							<li><a href="#"><i class="icon-envelope"></i> Contact</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<header class="subhead">
+			<div class="container">
+				<h1>Python / Lexical Conventions and Syntax</h1>
+				<p class="lead">Description of the syntactic and lexical conventions of a Python program.</p>
+			</div>
+		</header>
+		<div class="container">
+			<ol class="breadcrumb">
+				<li><a href="/">Home</a> <span class="divider">/</span></li>
+				<li class="active">Python / Lexical Conventions and Syntax</li>
+			</ol>
+		</div>
+		<section class="content-page">
+			<div class="container">
+				<div class="row">
+					<div class="span8">
+<h2 id="line-structure-and-indentation">Line Structure and Indentation</h2>
+<p>Each statement in a program is terminated with a newline. Long statements can span multiple lines 
+by using the line-continuation character <code>(\)</code>, as shown here:</p>
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">n</span><span class="p">))</span> <span class="o">+</span> \
+    <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">n</span><span class="p">))</span>
+</pre></div>
+
+
+<p>You don't need the line-continuation character when the definition of a triple-quoted string, list, 
+tuple, or dictionary spans multiple lines. More generally, any part of a program enclosed in 
+parentheses <code>(...)</code>, brackets <code>[...]</code>, braces <code>{...}</code>, or triple quotes can span multiple 
+lines without use of the line-continuation character because they clearly denote the start and end 
+of a definition.</p>
+<p>Indentation is used to denote different blocks of code, such as the bodies of functions, 
+conditionals, loops, and classes. The amount of indentation used for the first statement of a block 
+is arbitrary, but the indentation of the entire block must be consistent. Let's see:</p>
+<div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">a</span><span class="p">:</span>
+    <span class="n">statement1</span>    <span class="c1"># Consistent indentation</span>
+    <span class="n">statement2</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">statement3</span>
+      <span class="n">statement4</span>    <span class="c1"># Inconsistent indentation (error)</span>
+</pre></div>
+
+
+<div class="more-content">
+<p>If the body of a function, conditional, loop, or class is short and contains only a single
+statement, it can be placed on the same line, like this:</p>
+<div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">a</span><span class="p">:</span>  <span class="n">statement1</span>
+<span class="k">else</span><span class="p">:</span>  <span class="n">statement2</span>
+</pre></div>
+
+
+<p>To denote an empty body or block, use the <code>pass</code> statement:</p>
+<div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">a</span><span class="p">:</span>
+    <span class="k">pass</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">statements</span>
+</pre></div>
+
+
+<p>Although tabs can be used for indentation, this practice is discouraged. The use of spaces is 
+universally preferred (and encouraged) by the Python programming community. Running Python with
+the <code>-t</code> option prints warning messages when tabs and spaces are mixed inconsistently within 
+the same program block. The <code>-tt</code> option turns these warning messages into <code>TabError</code> 
+exceptions.</p>
+<p>To place more than one statement on a line, separate the statements with a semicolon <code>(;)</code>. A 
+line containing a single statement can also be terminated by a semicolon, although this is 
+unnecessary.</p>
+<p>The <code>#</code> character denotes a comment that extends to the end of the line. A <code>#</code> appearing inside 
+a quoted string doesn't start a comment, however.</p>
+<p>Finally, the interpreter ignores all blank lines except when running in interactive mode. In this 
+case, a blank line signals the end of input when typing a statement that spans multiple lines.</p>
+</div>
+<p><a class="read-more-less" href="#">read more &#187;</a></p>
+<h2 id="identifiers-and-reserved-words">Identifiers and Reserved Words</h2>
+<p>An <em>identifier</em> is a name used to identify variables, functions, classes, modules, and other 
+objects. Identifiers can include letters, numbers, and the underscore character <code>(_)</code> but must 
+always start with a nonnumeric character. Letters are currently confined to the characters A-Z and 
+a-z in the ISO-Latin character set. Because identifiers are case-sensitive, <code>FOO</code> is different 
+from <code>foo</code>. Special symbols such as <code>$</code>, <code>%</code>, and <code>@</code> are not allowed in identifiers. In 
+addition, words such as <code>if</code>, <code>else</code>, and <code>for</code> are reserved and cannot be used as identifier 
+names. The following list shows all the reserved words:</p>
+<div class="highlight"><pre><span></span><span class="ow">and</span>          <span class="k">del</span>          <span class="kn">from</span>          <span class="nn">nonlocal</span>          <span class="nn">try</span>
+<span class="k">as</span>           <span class="k">elif</span>         <span class="k">global</span>        <span class="ow">not</span>               <span class="k">while</span>
+<span class="k">assert</span>       <span class="k">else</span>         <span class="k">if</span>            <span class="ow">or</span>                <span class="k">with</span>
+<span class="k">break</span>        <span class="k">except</span>       <span class="kn">import</span>        <span class="nn">pass</span>              <span class="nn">yield</span>
+<span class="k">class</span>        <span class="nc">exec</span>         <span class="ow">in</span>            <span class="k">print</span>
+<span class="k">continue</span>     <span class="k">finally</span>      <span class="ow">is</span>            <span class="k">raise</span>
+<span class="k">def</span>          <span class="nf">for</span>          <span class="k">lambda</span>        <span class="k">return</span>
+</pre></div>
+
+
+<div class="more-content">
+<p>Identifiers starting or ending with underscores often have special meanings. For example, 
+identifiers starting with a single underscore such as <code>_foo</code> are not imported by 
+the <code>from module import *</code> statement. Identifiers with leading and trailing double underscores 
+such as <code>__init__</code> are reserved for special methods, and identifiers with leading double 
+underscores such as <code>__bar</code> are used to implement private class members. General-purpose use of 
+similar identifiers should be avoided.</p>
+</div>
+<p><a class="read-more-less" href="#">read more &#187;</a></p>
+<h2 id="numeric-literals">Numeric Literals</h2>
+<p>There are four (04) types of built-in numeric literals:</p>
+<ul>
+<li>Booleans</li>
+<li>Integers</li>
+<li>Floating-point numbers</li>
+<li>Complex numbers</li>
+</ul>
+<div class="more-content">
+<p>The identifiers <code>True</code> and <code>False</code> are interpreted as Boolean values with the integer values 
+of <code>1</code> and <code>0</code>, respectively. A number such as <code>1234</code> is interpreted as a decimal integer. To 
+specify an integer using octal, hexadecimal, or binary notation, precede the value 
+with <code>0o</code>, <code>0x</code>, or <code>0b</code>, respectively (for example, <code>0o644</code>, <code>0x100FEA8</code>, 
+or <code>0b11101010</code>).</p>
+<p>Integers in Python can have an arbitrary number of digits, so if you want to specify a really large 
+integer, just write out all of the digits, as in <code>12345678901234567890</code>.</p>
+<p>Numbers such as <code>123.34</code> and <code>1.2334e+02</code> are interpreted as floating-point numbers. An integer 
+or floating-point number with a trailing <code>j</code> or <code>J</code> , such as <code>12.34J</code>, is an imaginary 
+number. You can create complex numbers with real and imaginary parts by adding a real number and an 
+imaginary number, as in <code>1.2 + 12.34j</code>.</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">c</span> <span class="o">=</span> <span class="mf">1.2</span> <span class="o">+</span> <span class="mf">12.34j</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">c</span>
+<span class="p">(</span><span class="mf">1.2</span><span class="o">+</span><span class="mf">12.34j</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">c</span><span class="o">.</span><span class="n">real</span>
+<span class="mf">1.2</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">c</span><span class="o">.</span><span class="n">imag</span>
+<span class="mf">12.34</span>
+</pre></div>
+
+
+</div>
+<p><a class="read-more-less" href="#">read more &#187;</a></p>
+<h2 id="string-literals">String Literals</h2>
+<p>String literals are used to specify a sequence of characters and are defined by enclosing text in 
+single ('), double ("), or triple (''' or """) quotes. There is no semantic difference between 
+quoting styles other than the requirement that you use the same type of quote to start and 
+terminate a string. Single -and double- quoted strings must be defined on a single line, whereas 
+triple-quoted strings can span multiple lines and include all of the enclosed formatting (that is, 
+newlines, tabs, spaces, and so on). Adjacent strings (separated by white space, newline, or a 
+line-continuation character) such as <code>"hello"'world'</code> are concatenated to form a single 
+string <code>"helloworld"</code>.</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Hello, </span>
+<span class="s2">... World&quot;&quot;&quot;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span>
+<span class="s1">&#39;Hello, </span><span class="se">\n</span><span class="s1">World&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;hello&quot;</span>   <span class="s1">&#39;world&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span>
+<span class="s1">&#39;helloworld&#39;</span>
+</pre></div>
+
+
+<div class="more-content">
+<p>Within string literals, the backslash <code>(\)</code> character is used to escape special characters such 
+as newlines, the backslash itself, quotes, and nonprinting characters. Unrecognized escape sequences 
+are left in the string unmodified and include the leading backslash. Let's see a list of accepted 
+escape codes:</p>
+<p><span class="label">Standard Character Escape Codes</span></p>
+<table>
+<thead>
+<tr>
+<th>Character</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\</td>
+<td>Newline continuation</td>
+</tr>
+<tr>
+<td>\</td>
+<td>Backslash</td>
+</tr>
+<tr>
+<td>\'</td>
+<td>Single quote</td>
+</tr>
+<tr>
+<td>\"</td>
+<td>Double quote</td>
+</tr>
+<tr>
+<td>\a</td>
+<td>Bell</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>Backspace</td>
+</tr>
+<tr>
+<td>\e</td>
+<td>Escape</td>
+</tr>
+<tr>
+<td>\0</td>
+<td>Null</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>Line feed</td>
+</tr>
+<tr>
+<td>\v</td>
+<td>Vertical tab</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>Horizontal tab</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>Carriage return</td>
+</tr>
+<tr>
+<td>\f</td>
+<td>Form feed</td>
+</tr>
+<tr>
+<td>\OOO</td>
+<td>Octal value (\000 to \377)</td>
+</tr>
+<tr>
+<td>\uxxxx</td>
+<td>Unicode character (\u0000 to \uFFFF)</td>
+</tr>
+<tr>
+<td>\Uxxxxxxxx</td>
+<td>Unicode character (\U00000000 to \uFFFFFFFF)</td>
+</tr>
+<tr>
+<td charname>\N</td>
+<td>Unicode character name</td>
+</tr>
+<tr>
+<td>\xhh</td>
+<td>Hexadecimal value (\x00 to \xFF)</td>
+</tr>
+</tbody>
+</table>
+<p>The escape codes <code>\OOO</code> and <code>\xhh</code> are used to embed characters into a string literal that 
+can't be easily typed (that is, control codes, nonprinting characters, symbols, international 
+characters, and so on). For these escape codes, you have to specify an integer value corresponding 
+to a character value.</p>
+</div>
+<p><a class="read-more-less" href="#">read more &#187;</a></p>
+					</div>
+					<div class="span4">
+						<h3>Sidebar</h3>
+					</div>
+				</div>
+			</div>
+		</section>
+		<footer class="footer">
+			<div class="container">
+				<p>&copy; 2017 3LE AUTOMATION, C.A. | RIF: J-40269154-8</p>
+				<p>Puerto Ordaz, Estado Bolívar, CP 8050, Venezuela</p>
+				<p style="margin-top: 10px; font-size: 11px;">
+					Site powered by <a href="http://getpelican.com/">Pelican</a>, 
+					<a href="http://getbootstrap.com/2.3.2/">Bootstrap</a> and Markdown.
+				</p>
+				<ul class="footer-links">
+					<li><a href="http://blog.3leautomation.com">Blog</a></li>
+					<li class="muted">|</li>
+					<li><a href="https://twitter.com/3leautomation">Twitter</a></li>
+					<li class="muted">|</li>
+					<li><a href="http://3leautomation.com">Training</a></li>
+					<li class="muted">|</li>
+					<li><a href="http://3leautomation.com/about-author.html">About</a></li>
+				</ul>
+			</div>
+		</footer>
+		<script src="/static/js/jquery-1.9.1.min.js"></script>
+		<script src="/static/js/bootstrap.min.js"></script>
+		<script src="/static/js/main.js"></script>
+	</body>
+</html>
