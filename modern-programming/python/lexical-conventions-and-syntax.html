@@ -548,6 +548,30 @@ definition. In addition, a documentation string cannot be computed or assigned f
 an expression. The documentation string always has to be a string literal enclosed in quotes.</p>
 </div>
 <p><a class="read-more-less" href="#">read more &#187;</a></p>
+<h2 id="decorators">Decorators</h2>
+<p>Function, method, or class definitions may be preceded by a special symbol known as a <em>decorator</em>, 
+the purpose of which is to modify the behavior of the definition that follows. Decorators are 
+denoted with the <code>@</code> symbol and must be placed on a separate line immediately before the 
+corresponding function, method, or class. Here's an example:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">class</span> <span class="nc">Foo</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="o">...</span>     <span class="nd">@staticmethod</span>
+<span class="o">...</span>     <span class="k">def</span> <span class="nf">bar</span><span class="p">():</span>
+<span class="o">...</span>         <span class="k">pass</span>
+<span class="o">...</span>
+</pre></div>
+
+
+<div class="more-content">
+<p>More than one decorator can be used, but each one must be on a separate line. Here's an example:</p>
+<div class="highlight"><pre><span></span><span class="nd">@foo</span>
+<span class="nd">@bar</span>
+<span class="k">def</span> <span class="nf">spam</span><span class="p">():</span>
+    <span class="k">pass</span>
+</pre></div>
+
+
+</div>
+<p><a class="read-more-less" href="#">read more &#187;</a></p>
 					</div>
 					<div class="span4">
 						<h3>Sidebar</h3>
