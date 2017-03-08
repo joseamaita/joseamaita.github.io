@@ -524,6 +524,30 @@ and in the ellipsis <code>(...)</code> used in extended slicing operations.</p>
 inside a quoted string literal.</p>
 </div>
 <p><a class="read-more-less" href="#">read more &#187;</a></p>
+<h2 id="documentation-strings">Documentation Strings</h2>
+<p>If the first statement of a module, class, or function definition is a string, that string becomes a 
+documentation string for the associated object, as in the following example:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">fact</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<span class="o">...</span>     <span class="s2">&quot;This function computes a factorial&quot;</span>
+<span class="o">...</span>     <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&lt;=</span><span class="mi">1</span><span class="p">):</span> <span class="k">return</span> <span class="mi">1</span>
+<span class="o">...</span>     <span class="k">else</span><span class="p">:</span> <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">fact</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+<span class="o">...</span>
+</pre></div>
+
+
+<p>Code-browsing and documentation-generation tools sometimes use documentation strings. The strings 
+are accessible in the <code>__doc__</code> attribute of an object, as shown here:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">fact</span><span class="o">.</span><span class="n">__doc__</span><span class="p">)</span>
+<span class="n">This</span> <span class="n">function</span> <span class="n">computes</span> <span class="n">a</span> <span class="n">factorial</span>
+</pre></div>
+
+
+<div class="more-content">
+<p>The indentation of the documentation string must be consistent with all the other statements in a 
+definition. In addition, a documentation string cannot be computed or assigned from a variable as 
+an expression. The documentation string always has to be a string literal enclosed in quotes.</p>
+</div>
+<p><a class="read-more-less" href="#">read more &#187;</a></p>
 					</div>
 					<div class="span4">
 						<h3>Sidebar</h3>
