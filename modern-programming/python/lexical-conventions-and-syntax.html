@@ -572,6 +572,24 @@ corresponding function, method, or class. Here's an example:</p>
 
 </div>
 <p><a class="read-more-less" href="#">read more &#187;</a></p>
+<h2 id="source-code-encoding">Source Code Encoding</h2>
+<p>Python source programs are normally written in standard 7-bit ASCII. However, users working in 
+Unicode environments may find this awkward, especially if they must write a lot of string literals 
+with international characters.</p>
+<p>It is possible to write Python source code in a different encoding by including a special encoding 
+comment in the first or second line of a Python program:</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3.6</span>
+<span class="c1"># -*- coding: UTF-8 -*-</span>
+<span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;Mañana&quot;</span>    <span class="c1"># String in quotes is directly encoded in UTF-8.</span>
+</pre></div>
+
+
+<div class="more-content">
+<p>When the special <code>coding:</code> comment is supplied, string literals may be typed in directly using a 
+Unicode-aware editor. However, other elements of Python, including identifier names and reserved 
+words, should still be restricted to ASCII characters.</p>
+</div>
+<p><a class="read-more-less" href="#">read more &#187;</a></p>
 					</div>
 					<div class="span4">
 						<h3>Sidebar</h3>
