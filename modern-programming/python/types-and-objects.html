@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="author" content="José A. Maita F.">
+		<meta name="description" content="Description of the inner workings of the Python object model and provides an overview of the built-in data types.">
+		<title>3LE AUTOMATION, C.A. | Making things happen | Python / Types and Objects</title>
+		<link media="all" rel="stylesheet" href="/static/css/bootstrap.min.css">
+		<link media="all" rel="stylesheet" href="/static/css/bootstrap-responsive.min.css">
+		<link media="all" rel="stylesheet" href="/static/css/main.css">
+		<link media="all" rel="stylesheet" href="/static/css/monokai.css">
+		<link rel="shortcut icon" href="/static/img/favicon.png">
+		<link media="all" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+	</head>
+	<body>
+		<div id="navigation-bar" class="navbar navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container">
+					<button data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar" type="button">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="brand" href="/">
+						<img src="/static/img/3leautomation-logo.png" alt="3leautomation-logo">
+					</a>
+					<div class="nav-collapse collapse" style="height: 0px;">
+						<ul class="nav">
+							<li class="dropdown">
+								<a class="dropdown-toggle" href="#" data-toggle="dropdown">
+									<i class="icon-list"></i> Areas of Knowledge
+									<i class="icon-chevron-down"></i>
+								</a>
+								<ul class="dropdown-menu">
+									<li>
+										<a href="/industrial-automation/">
+											Industrial Automation
+										</a>
+									</li>
+									<li>
+										<a href="/project-management/">
+											Project Management
+										</a>
+									</li>
+									<li>
+										<a href="/modern-programming/">
+											Modern Programming
+										</a>
+									</li>
+									<li>
+										<a href="/web-development/">
+											Web Development
+										</a>
+									</li>
+									<li>
+										<a href="/it-security/">
+											IT Security
+										</a>
+									</li>
+									<li>
+										<a href="/internet-of-things/">
+											Internet of Things
+										</a>
+									</li>
+									<li>
+										<a href="/cloud-computing/">
+											Cloud Computing
+										</a>
+									</li>
+									<li>
+										<a href="/cutting-edge-technologies/">
+											Cutting-Edge Technologies
+										</a>
+									</li>
+									<li>
+										<a href="/electronics-engineering/">
+											Electronics Engineering
+										</a>
+									</li>
+									<li>
+										<a href="/version-control-systems/">
+											Version Control Systems
+										</a>
+									</li>
+								</ul>
+							</li>
+							<li><a href="#"><i class="icon-briefcase"></i> Portfolio</a></li>
+							<li><a href="#"><i class="icon-wrench"></i> Training</a></li>
+							<li><a href="#"><i class="icon-bookmark"></i> News</a></li>
+							<li><a href="#"><i class="icon-envelope"></i> Contact</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<header class="subhead">
+			<div class="container">
+				<h1>Python / Types and Objects</h1>
+				<p class="lead">Description of the inner workings of the Python object model and provides an overview of the built-in data types.</p>
+			</div>
+		</header>
+		<div class="container">
+			<ol class="breadcrumb">
+				<li><a href="/">Home</a> <span class="divider">/</span></li>
+				<li class="active">Python / Types and Objects</li>
+			</ol>
+		</div>
+		<section class="content-page">
+			<div class="container">
+				<div class="row">
+					<div class="span8">
+<p>All the data stored in a Python program is built around the concept of an <em>object</em>. Objects include 
+fundamental data types such as numbers, strings, lists, and dictionaries. However, it's also 
+possible to create user-defined objects in the form of classes. In addition, most objects related to 
+program structure and the internal operation of the interpreter are also exposed.</p>
+<h2 id="terminology">Terminology</h2>
+<p>Every piece of data stored in a program is an object. Each object has an identity, a type (which is 
+also known as its class), and a value. For example, when you write <code>a = 76</code>, an integer object 
+is created with the value of <code>76</code>. You can view the <em>identity</em> of an object as a pointer to its 
+location in memory. The object <code>a</code> is a name that refers to this specific location.</p>
+<p>The <em>type</em> of an object, also known as the object's <em>class</em>, describes the internal representation 
+of the object as well as the methods and operations that it supports. When an object of a particular 
+type is created, that object is sometimes called an <em>instance</em> of that type. After an instance is 
+created, its identity and type cannot be changed. If an object's value can be modified, the object 
+is said to be <em>mutable</em>. If the value cannot be modified, the object is said to be <em>immutable</em>. An 
+object that contains references to other objects is said to be a <em>container</em> or <em>collection</em>.</p>
+<p>Most objects are characterized by a number of data attributes and methods. An <em>attribute</em> is a value 
+associated with an object. A <em>method</em> is a function that performs some sort of operation on an 
+object when the method is invoked as a function. Attributes and methods are accessed using the 
+dot <code>(.)</code> operator.</p>
+<div class="more-content">
+<p>Let's see some examples:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">15</span> <span class="o">+</span> <span class="mi">12j</span>    <span class="c1"># Create a complex number</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">i</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">imag</span>    <span class="c1"># Get the imaginary part (an attribute)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">i</span>
+<span class="mf">12.0</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;John&quot;</span><span class="p">,</span> <span class="s2">&quot;Mary&quot;</span><span class="p">,</span> <span class="s2">&quot;Sean&quot;</span><span class="p">]</span>    <span class="c1"># Create a list of names</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Ronald&quot;</span><span class="p">)</span>    <span class="c1"># Add a new element using the append method</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">names</span>
+<span class="p">[</span><span class="s1">&#39;John&#39;</span><span class="p">,</span> <span class="s1">&#39;Mary&#39;</span><span class="p">,</span> <span class="s1">&#39;Sean&#39;</span><span class="p">,</span> <span class="s1">&#39;Ronald&#39;</span><span class="p">]</span>
+</pre></div>
+
+
+</div>
+<p><a class="read-more-less" href="#">read more &#187;</a></p>
+<h2 id="object-identity-and-type">Object Identity and Type</h2>
+<p>The built-in function <code>id()</code> returns the identity of an object as an integer. This integer usually 
+corresponds to the object's location in memory, although this is specific to the Python 
+implementation and no such interpretation of the identity should be made. It is guaranteed to be 
+unique among simultaneously existing objects (CPython uses the object's memory address).</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="nb">id</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>
+<span class="mi">140013913860360</span>    <span class="c1"># this number has no specific meaning</span>
+</pre></div>
+
+
+<p>The <code>is</code> operator compares the identity of two objects. The built-in function <code>type()</code> returns 
+the type of an object. Let's see an example of different ways you might compare two objects:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Compare two objects</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">compare</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<span class="o">...</span>     <span class="k">if</span> <span class="n">a</span> <span class="ow">is</span> <span class="n">b</span><span class="p">:</span>
+<span class="o">...</span>         <span class="c1"># a and b are the same object</span>
+<span class="o">...</span>         <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Same objects&quot;</span><span class="p">)</span>
+<span class="o">...</span>     <span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="p">:</span>
+<span class="o">...</span>         <span class="c1"># a and b have the same value</span>
+<span class="o">...</span>         <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Same value&quot;</span><span class="p">)</span>
+<span class="o">...</span>     <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+<span class="o">...</span>         <span class="c1"># a and b have the same type</span>
+<span class="o">...</span>         <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Same type&quot;</span><span class="p">)</span>
+<span class="o">...</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">compare</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">Same</span> <span class="n">objects</span>
+<span class="n">Same</span> <span class="n">value</span>
+<span class="n">Same</span> <span class="nb">type</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">11</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">compare</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">Same</span> <span class="nb">type</span>
+</pre></div>
+
+
+<div class="more-content">
+<p>The type of an object is itself an object known as the object's class. This object is uniquely 
+defined and is always the same for all instances of a given type. Therefore, the type can be 
+compared using the <code>is</code> operator. All type objects are assigned names that can be used to perform 
+type checking. Most of these names are built-ins, such as <code>list</code>, <code>dict</code>, and <code>file</code>. Let's 
+see:</p>
+<div class="highlight"><pre><span></span><span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">list</span><span class="p">:</span>
+    <span class="n">s</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">dict</span><span class="p">:</span>
+    <span class="n">d</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Because types can be specialized by defining classes, a better way to check types is to use the 
+built-in <code>isinstance(object, type)</code> function. Let's see:</p>
+<div class="highlight"><pre><span></span><span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+    <span class="n">s</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+    <span class="n">d</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Because the <code>isinstance()</code> function is aware of inheritance, it is the preferred way to check the 
+type of any Python object.</p>
+<p>Although type checks can be added to a program, type checking is often not as useful as you might 
+imagine. For one, excessive checking severely affects performance. Second, programs don't always 
+define objects that neatly fit into an inheritance hierarchy. For instance, if the purpose of the 
+preceding <code>isinstance(s, list)</code> statement is to test whether <code>s</code> is "list-like", it wouldn't 
+work with objects that had the same programming interface as a list but didn't directly inherit from 
+the built-in <code>list</code> type. Another option for adding type-checking to a program is to define 
+abstract base classes.</p>
+</div>
+<p><a class="read-more-less" href="#">read more &#187;</a></p>
+<h2 id="reference-counting-and-garbage-collection">Reference Counting and Garbage Collection</h2>
+<p>All objects are reference-counted. An object's reference count is increased whenever it's assigned 
+to a new name or placed in a container such as a list, tuple, or dictionary. Let's see:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">sys</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">89</span>    <span class="c1"># Create an object with value 89</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">sys</span><span class="o">.</span><span class="n">getrefcount</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>    <span class="c1"># Get current reference count on 89</span>
+<span class="mi">7</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span> <span class="o">=</span> <span class="n">a</span>    <span class="c1"># Increase reference count on 89</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">sys</span><span class="o">.</span><span class="n">getrefcount</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>    <span class="c1"># Get reference increased on 89</span>
+<span class="mi">8</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">c</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">c</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>    <span class="c1"># Increase reference count on 89</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">sys</span><span class="o">.</span><span class="n">getrefcount</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>    <span class="c1"># Get reference increased again on 89</span>
+<span class="mi">9</span>
+</pre></div>
+
+
+<div class="more-content">
+<p>This example creates a single object containing the value <code>89</code>. The identifier <code>a</code> is merely a 
+name that refers to the newly created object. When <code>b</code> is assigned <code>a</code>, <code>b</code> becomes a new name 
+for the same object and the object's reference count increases. Likewise, when you place <code>b</code> into 
+a list, the object's reference count increases again. Throughout the example, only one object 
+contains <code>89</code>. All other operations are simply creating new references to the object.</p>
+<p>An object's reference count is decreased by the <code>del</code> statement or whenever a reference goes out 
+of scope (or is reassigned). Let's see:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">del</span> <span class="n">a</span>    <span class="c1"># Decrease reference count on 89</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">22</span>    <span class="c1"># Decrease reference count on 89</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">2.0</span>    <span class="c1"># Decrease reference count on 89</span>
+</pre></div>
+
+
+<p>In many cases, the reference count is much higher than you might guess. For immutable data such as 
+numbers and strings, the interpreter aggressively shares objects between different parts of the 
+program in order to conserve memory.</p>
+<p>When an object's reference count reaches zero, it is garbage-collected. However, in some cases a 
+circular dependency may exist among a collection of objects that are no longer in use. Let's see:</p>
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">{</span> <span class="p">}</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">{</span> <span class="p">}</span>
+<span class="n">a</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span>    <span class="c1"># a contains reference to b</span>
+<span class="n">b</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span>    <span class="c1"># b contains reference to a</span>
+<span class="k">del</span> <span class="n">a</span>
+<span class="k">del</span> <span class="n">b</span>
+</pre></div>
+
+
+<p>In this example, the <code>del</code> statements decrease the reference count of <code>a</code> and <code>b</code> and destroy 
+the names used to refer to the underlying objects. However, because each object contains a reference 
+to the other, the reference count doesn't drop to zero and the objects remain allocated (resulting 
+in a memory leak). To address this problem, the interpreter periodically executes a cycle detector 
+that searches for cycles of inaccessible objects and deletes them. The cycle-detection algorithm 
+runs periodically as the interpreter allocates more and more memory during execution. The exact 
+behavior can be fine-tuned and controlled using functions in the <code>gc</code> module.</p>
+</div>
+<p><a class="read-more-less" href="#">read more &#187;</a></p>
+<h2 id="references-and-copies">References and Copies</h2>
+<p>When a program makes an assignment such as <code>a = b</code>, a new reference to <code>b</code> is created. For 
+immutable objects such as numbers and strings, this assignment effectively creates a copy of <code>b</code>. 
+However, the behavior is quite different for mutable objects such as lists and dictionaries. Let's 
+see:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span> <span class="o">=</span> <span class="n">a</span>    <span class="c1"># b is a reference to a</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span> <span class="ow">is</span> <span class="n">a</span>
+<span class="bp">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">100</span>    <span class="c1"># Change an element in b</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span>    <span class="c1"># Notice how a also changed</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+</pre></div>
+
+
+<div class="more-content">
+<p>Because <code>a</code> and <code>b</code> refer to the same object in the example above, a change made to one of the 
+variables is reflected in the other. To avoid this, you have to create a copy of an object rather 
+than a new reference.</p>
+<p>Two types of copy operations are applied to container objects such as lists and dictionaries: a 
+shallow copy and a deep copy. A <em>shallow copy</em> creates a new object but populates it with references 
+to the items contained in the original object. Let's see:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>    <span class="c1"># Create a shallow copy of a</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span> <span class="ow">is</span> <span class="n">a</span>
+<span class="bp">False</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>    <span class="c1"># Append element to b</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="mi">100</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span>    <span class="c1"># Notice that a is unchanged</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">100</span>    <span class="c1"># Modify an element inside b</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="mi">100</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span>    <span class="c1"># Notice the change inside a</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
+</pre></div>
+
+
+<p>In this case, <code>a</code> and <code>b</code> are separate list objects, but the elements they contain are shared. 
+Therefore, a modification to one of the elements of <code>a</code> also modifies an element of <code>b</code>.</p>
+<p>A <em>deep copy</em> creates a new object and recursively copies all the objects it contains. There is no 
+built-in operation to create deep copies of objects. However, the <code>copy.deepcopy()</code> function in 
+the standard library can be used. Let's see:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">copy</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">100</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span>    <span class="c1"># Notice that a is unchanged</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
+</pre></div>
+
+
+</div>
+<p><a class="read-more-less" href="#">read more &#187;</a></p>
+					</div>
+					<div class="span4">
+						<h3>Sidebar</h3>
+					</div>
+				</div>
+			</div>
+		</section>
+		<footer class="footer">
+			<div class="container">
+				<p>&copy; 2017 3LE AUTOMATION, C.A. | RIF: J-40269154-8</p>
+				<p>Puerto Ordaz, Estado Bolívar, CP 8050, Venezuela</p>
+				<p style="margin-top: 10px; font-size: 11px;">
+					Site powered by <a href="http://getpelican.com/">Pelican</a>, 
+					<a href="http://getbootstrap.com/2.3.2/">Bootstrap</a> and Markdown.
+				</p>
+				<ul class="footer-links">
+					<li><a href="http://blog.3leautomation.com">Blog</a></li>
+					<li class="muted">|</li>
+					<li><a href="https://twitter.com/3leautomation">Twitter</a></li>
+					<li class="muted">|</li>
+					<li><a href="http://3leautomation.com">Training</a></li>
+					<li class="muted">|</li>
+					<li><a href="http://3leautomation.com/about-author.html">About</a></li>
+				</ul>
+			</div>
+		</footer>
+		<script src="/static/js/jquery-1.9.1.min.js"></script>
+		<script src="/static/js/bootstrap.min.js"></script>
+		<script src="/static/js/main.js"></script>
+	</body>
+</html>
