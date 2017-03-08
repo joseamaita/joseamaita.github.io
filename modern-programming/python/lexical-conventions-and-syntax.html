@@ -174,13 +174,38 @@ a-z in the ISO-Latin character set. Because identifiers are case-sensitive, <cod
 from <code>foo</code>. Special symbols such as <code>$</code>, <code>%</code>, and <code>@</code> are not allowed in identifiers. In 
 addition, words such as <code>if</code>, <code>else</code>, and <code>for</code> are reserved and cannot be used as identifier 
 names. The following list shows all the reserved words:</p>
-<div class="highlight"><pre><span></span><span class="ow">and</span>          <span class="k">del</span>          <span class="kn">from</span>          <span class="nn">nonlocal</span>          <span class="nn">try</span>
-<span class="k">as</span>           <span class="k">elif</span>         <span class="k">global</span>        <span class="ow">not</span>               <span class="k">while</span>
-<span class="k">assert</span>       <span class="k">else</span>         <span class="k">if</span>            <span class="ow">or</span>                <span class="k">with</span>
-<span class="k">break</span>        <span class="k">except</span>       <span class="kn">import</span>        <span class="nn">pass</span>              <span class="nn">yield</span>
-<span class="k">class</span>        <span class="nc">exec</span>         <span class="ow">in</span>            <span class="k">print</span>
-<span class="k">continue</span>     <span class="k">finally</span>      <span class="ow">is</span>            <span class="k">raise</span>
-<span class="k">def</span>          <span class="nf">for</span>          <span class="k">lambda</span>        <span class="k">return</span>
+<div class="highlight"><pre><span></span><span class="ow">and</span>
+<span class="k">as</span>
+<span class="k">assert</span>
+<span class="k">break</span>
+<span class="k">class</span>
+<span class="nc">continue</span>
+<span class="k">def</span>
+<span class="nf">del</span>
+<span class="k">elif</span>
+<span class="k">else</span>
+<span class="k">except</span>
+<span class="k">exec</span>
+<span class="k">finally</span>
+<span class="k">for</span>
+<span class="kn">from</span>
+<span class="nn">global</span>
+<span class="k">if</span>
+<span class="kn">import</span>
+<span class="nn">in</span>
+<span class="ow">is</span>
+<span class="k">lambda</span>
+<span class="n">nonlocal</span>
+<span class="ow">not</span>
+<span class="ow">or</span>
+<span class="k">pass</span>
+<span class="k">print</span>
+<span class="k">raise</span>
+<span class="k">return</span>
+<span class="k">try</span>
+<span class="k">while</span>
+<span class="k">with</span>
+<span class="k">yield</span>
 </pre></div>
 
 
@@ -403,6 +428,100 @@ decoding the value of the byte literal with its <code>decode()</code> method. Le
 Python 2.6, and in that version there is no difference between a byte literal and a normal string. 
 In Python 3, however, byte literals are mapped to a new <code>bytes</code> datatype that behaves differently 
 than a normal string.</p>
+</div>
+<p><a class="read-more-less" href="#">read more &#187;</a></p>
+<h2 id="containers">Containers</h2>
+<p>Values enclosed in square brackets <code>[...]</code>, parentheses <code>(...)</code>, and braces <code>{...}</code> denote a 
+collection of objects contained in a list, tuple, and dictionary, respectively, as in the following 
+example:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">2.34</span><span class="p">,</span> <span class="s2">&quot;Robert&quot;</span><span class="p">]</span>    <span class="c1"># A list</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">33</span><span class="p">)</span>    <span class="c1"># A tuple</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">z</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>    <span class="c1"># A dictionary</span>
+</pre></div>
+
+
+<div class="more-content">
+<p>List, tuple, and dictionary literals can span multiple lines without using the line-continuation 
+character <code>(\)</code>. In addition, a trailing comma is allowed on the last item. For example:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="p">[</span> 
+<span class="o">...</span> <span class="mi">1</span><span class="p">,</span>
+<span class="o">...</span> <span class="mf">2.34</span><span class="p">,</span>
+<span class="o">...</span> <span class="s2">&quot;Robert&quot;</span><span class="p">,</span>
+<span class="o">...</span> <span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">2.34</span><span class="p">,</span> <span class="s1">&#39;Robert&#39;</span><span class="p">]</span>
+</pre></div>
+
+
+</div>
+<p><a class="read-more-less" href="#">read more &#187;</a></p>
+<h2 id="operators-delimiters-and-special-symbols">Operators, Delimiters, and Special Symbols</h2>
+<p>The following operators are recognized:</p>
+<div class="highlight"><pre><span></span><span class="o">+</span>    <span class="c1"># addition</span>
+<span class="o">-</span>    <span class="c1"># subtraction</span>
+<span class="o">*</span>    <span class="c1"># multiplication</span>
+<span class="o">**</span>   <span class="c1"># exponentiation</span>
+<span class="o">/</span>    <span class="c1"># division</span>
+<span class="o">//</span>   <span class="c1"># quotient</span>
+<span class="o">%</span>    <span class="c1"># remainder</span>
+<span class="o">&gt;&gt;</span>   <span class="c1"># shift right</span>
+<span class="o">&lt;&lt;</span>   <span class="c1"># shift left</span>
+<span class="o">&amp;</span>    <span class="c1"># bitwise AND</span>
+<span class="o">|</span>    <span class="c1"># bitwise OR</span>
+<span class="o">^</span>    <span class="c1"># bitwise XOR</span>
+<span class="o">~</span>    <span class="c1"># bitwise NOT</span>
+<span class="o">&gt;</span>    <span class="c1"># greater than</span>
+<span class="o">&lt;</span>    <span class="c1"># less than</span>
+<span class="o">&gt;=</span>   <span class="c1"># greater or equal than</span>
+<span class="o">&lt;=</span>   <span class="c1"># less or equal than</span>
+<span class="o">==</span>   <span class="c1"># test equality</span>
+<span class="o">!=</span>   <span class="c1"># test difference</span>
+<span class="o">&lt;&gt;</span>   <span class="c1"># test range (greater than and less than)</span>
+
+<span class="o">+=</span>   <span class="c1"># addition accumulated</span>
+<span class="o">-=</span>   <span class="c1"># subtraction accumulated</span>
+<span class="o">*=</span>   <span class="c1"># multiplication accumulated</span>
+<span class="o">**=</span>  <span class="c1"># exponentiation accumulated</span>
+<span class="o">/=</span>   <span class="c1"># division accumulated</span>
+<span class="o">//=</span>  <span class="c1"># quocient accumulated</span>
+<span class="o">%=</span>   <span class="c1"># remainder accumulated</span>
+<span class="o">&gt;&gt;=</span>  <span class="c1"># shift right accumulated</span>
+<span class="o">&lt;&lt;=</span>  <span class="c1"># shift left accumulated</span>
+<span class="o">&amp;=</span>   <span class="c1"># bitwise AND accumulated</span>
+<span class="o">|=</span>   <span class="c1"># bitwise OR accumulated</span>
+<span class="o">^=</span>   <span class="c1"># bitwise XOR accumulated</span>
+</pre></div>
+
+
+<div class="more-content">
+<p>The following tokens serve as delimiters for expressions, lists, dictionaries, and various parts of 
+a statement:</p>
+<div class="highlight"><pre><span></span><span class="p">(</span> <span class="p">)</span>    <span class="c1"># expressions, tuples</span>
+<span class="p">[</span> <span class="p">]</span>    <span class="c1"># lists</span>
+<span class="p">{</span> <span class="p">}</span>    <span class="c1"># dictionaries</span>
+<span class="p">,</span>      <span class="c1"># separation of elements and arguments to a function</span>
+<span class="p">:</span>      <span class="c1"># start definition of block code</span>
+<span class="o">.</span>      <span class="c1"># floating-point numbers and in the ellipsis</span>
+<span class="o">=</span>      <span class="c1"># identifier assignment</span>
+<span class="p">;</span>      <span class="c1"># statement separator in the same line</span>
+</pre></div>
+
+
+<p>For example, the equal <code>(=)</code> character serves as a delimiter between the name and value of an 
+assignment, whereas the comma <code>(,)</code> character is used to delimit arguments to a function, 
+elements in lists and tuples, and so on. The period <code>(.)</code> is also used in floating-point numbers 
+and in the ellipsis <code>(...)</code> used in extended slicing operations.</p>
+<p>Finally, the following special symbols are also used:</p>
+<div class="highlight"><pre><span></span><span class="s1">&#39;      # single-quote for string literals</span>
+<span class="s2">&quot;      # double-quote for string literals</span>
+<span class="c1">#      # comments</span>
+\      <span class="c1"># line-continuation character and start of escape code</span>
+<span class="err">@</span>      <span class="c1"># decorators</span>
+</pre></div>
+
+
+<p>The characters <code>$</code> and <code>?</code> have no meaning in Python and cannot appear in a program except 
+inside a quoted string literal.</p>
 </div>
 <p><a class="read-more-less" href="#">read more &#187;</a></p>
 					</div>
