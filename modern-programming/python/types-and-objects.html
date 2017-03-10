@@ -486,6 +486,55 @@ floating-point numbers on the machine. Normally this is IEEE 754, which provides
 the <code>double</code> type in C. Python doesn't support 32-bit single-precision floating-point numbers. If 
 precise control over the space and precision of numbers is an issue in your program, consider using 
 the numpy extension (for more information on this package, go <a href="http://www.numpy.org/">here</a>).</p>
+<p>Complex numbers are represented as a pair of floating-point numbers. The real and imaginary parts of 
+a complex number <code>z</code> are available in <code>z.real</code> and <code>z.imag</code>. The method <code>z.conjugate()</code> 
+calculates the complex conjugate of <code>z</code> (the conjugate of <em>a+bj</em> is <em>a-bj</em>).</p>
+<p>Numeric types have a number of properties and methods that are meant to simplify operations 
+involving mixed arithmetic. For simplified compatibility with rational numbers (found in 
+the <code>fractions</code> module), integers have the properties <code>x.numerator</code> and <code>x.denominator</code>. An 
+integer or floating-point number <code>y</code> has the properties <code>y.real</code> and <code>y.imag</code> as well as the 
+method <code>y.conjugate()</code> for compatibility with complex numbers. A floating-point number <code>y</code> can 
+be converted into a pair of integers representing a fraction using <code>y.as_integer_ratio()</code>. The 
+method <code>y.is_integer()</code> tests if a floating-point number <code>y</code> represents an integer value. 
+Methods <code>y.hex()</code> and <code>y.fromhex()</code> can be used to work with floating-point numbers using their 
+low-level binary representation.</p>
+<p>Several additional numeric types are defined in library modules. The <code>decimal</code> module provides 
+support for generalized base-10 decimal arithmetic. The <code>fractions</code> module adds a rational number 
+type.</p>
+<h3>Sequence Types</h3>
+<p><em>Sequences</em> represent ordered sets of objects indexed by non-negative integers and include strings, 
+lists, and tuples. Strings are sequences of characters, and lists and tuples are sequences of 
+arbitrary Python objects. Strings and tuples are immutable; lists allow insertion, deletion, and 
+substitution of elements. All sequences support iteration.</p>
+<p>Let's see some operations and methods applicable to all sequences:</p>
+<div class="highlight"><pre><span></span>s[i]                    # Returns element i of a sequence
+s[i:j]                  # Returns a slice
+s[i:j:stride]           # Returns an extended slice
+len(s)                  # Number of elements in s
+min(s)                  # Minimum value in s
+max(s)                  # Maximum value in s
+sum(s [,initial])       # Sum of items in s (plus the initial value if provided)
+all(s)                  # Checks whether all items in s are True
+any(s)                  # Checks whether any item in s is True
+</pre></div>
+
+
+<p>Element <em>i</em> of sequence <em>s</em> is selected using the indexing operator <em>s[i]</em>, and subsequences are 
+selected using the slicing operator <em>s[i:j]</em> or extended slicing operator <em>s[i:j:stride]</em>. The 
+length of any sequence is returned using the built-in <code>len(s)</code> function. You can find the minimum 
+and maximum values of a sequence by using the built-in <code>min(s)</code> and <code>max(s)</code> functions. However, 
+these functions only work for sequences in which the elements can be ordered (typically numbers and 
+strings). The function <code>sum(s)</code> sums items in <em>s</em> but only works for numeric data.</p>
+<p>Now, let's see the additional operators that can be applied to mutable sequences such as lists:</p>
+<div class="highlight"><pre><span></span>s[i] = v                # Item assignment
+s[i:j] = t              # Slice assignment
+s[i:j:stride] = t       # Extended slice assignment
+del s[i]                # Item deletion
+del s[i:j]              # Slice deletion
+del s[i:j:stride]       # Extended slice deletion
+</pre></div>
+
+
 </div>
 <p><a class="read-more-less" href="#">read more &#187;</a></p>
 					</div>
