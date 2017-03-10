@@ -468,12 +468,24 @@ in programs. These are grouped into a few major categories:</p>
 </tbody>
 </table>
 <div class="more-content">
-<h3>The None type</h3>
+<h3>The None Type</h3>
 <p>The <code>None</code> type denotes a null object (an object with no value). Python provides exactly one null 
 object, which is written as <code>None</code> in a program. This object is returned by functions that don't 
 explicitly return a value. <code>None</code> is frequently used as the default value of optional arguments, 
 so that the function can detect whether the caller has actually passed a value for that 
 argument. <code>None</code> has no attributes and evaluates to <code>False</code> in Boolean expressions.</p>
+<h3>Numeric Types</h3>
+<p>Python uses four (04) numeric types: Booleans, integers, floating-point numbers, and complex 
+numbers. Except for Booleans, all numeric objects are signed. All numeric types are immutable.</p>
+<p>Booleans are represented by two values: <code>True</code> and <code>False</code>. The names <code>True</code> and <code>False</code> are 
+respectively mapped to the numerical values of <code>1</code> and <code>0</code>.</p>
+<p>Integers represent whole numbers of unlimited range (limited only by available memory).</p>
+<p>Floating-point numbers are represented using the native double-precision (64-bit) representation of 
+floating-point numbers on the machine. Normally this is IEEE 754, which provides approximately 
+17 digits of precision and an exponent in the range of -308 to 308. This is the same as 
+the <code>double</code> type in C. Python doesn't support 32-bit single-precision floating-point numbers. If 
+precise control over the space and precision of numbers is an issue in your program, consider using 
+the numpy extension (for more information on this package, go <a href="http://www.numpy.org/">here</a>).</p>
 </div>
 <p><a class="read-more-less" href="#">read more &#187;</a></p>
 					</div>
